@@ -3,7 +3,6 @@ import { FaHome, FaDollarSign } from "react-icons/fa";
 
 const tabs = [
   { name: "Home", path: "/", icon: FaHome },
-  { name: "Balance", path: "balance", icon: FaDollarSign },
 ];
 
 export function Tabs() {

@@ -14,17 +14,12 @@ export function Header() {
     return "Home";
   }, [pathname]);
   return (
-    <header className="w-full h-fit bg-black">
-      <div className="h-16 flex justify-between items-center gap-1 p-2">
-        <div className="flex items-baseline ml-2 gap-2">
-          {!basePaths.some((base) => pathname === base) && (
-            <button onClick={() => navigate(-1)}>
-              <FaChevronLeft />
-            </button>
-          )}
-          <h1 className="text-left text-xl capitalize inline">{title}</h1>
-        </div>
-      </div>
-    </header>
+    <div className="header">
+      {!basePaths.some((base) => pathname === base) && (
+        <button onClick={() => navigate(-1)}>
+          <FaChevronLeft />
+        </button>
+      )}
+    </div>
   );
 }
