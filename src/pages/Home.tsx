@@ -1,10 +1,10 @@
 import text_logo from "../assets/text_logo.png";
 import { useNFTs } from "../hooks/useNFTs";
-
+import { Link } from "react-router-dom";
 export default function Home() {
   const nfts = useNFTs();
   console.log(nfts);
-  
+
   return (
     <div className="home">
       <div className="home-content">
@@ -21,6 +21,7 @@ export default function Home() {
                 <div className="home-tab-description">Stake your cars!</div>
               </div>
             </button>
+            <Link to={"/stake"}>
             <button className="home-tab">
               <div className="home-tab-text">
                 <div className="home-tab-title">Leaderboard</div>
@@ -29,6 +30,7 @@ export default function Home() {
                 </div>
               </div>
             </button>
+            </Link>
             <button className="home-tab">
               <div className="home-tab-text">
                 <div className="home-tab-title">Garage</div>

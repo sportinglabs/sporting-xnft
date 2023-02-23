@@ -7,6 +7,7 @@ import "tw-elements";
 import { Layout } from "./components/Layout";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
+import Stake from "./pages/Stake";
 
 declare global {
   interface Window {
@@ -19,6 +20,12 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [{ index: true, element: <Home /> }],
+  },
+  {
+    path: "/stake",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [{ index: true, element: <Stake /> }],
   },
 ]);
 
