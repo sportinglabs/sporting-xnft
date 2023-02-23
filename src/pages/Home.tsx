@@ -1,6 +1,10 @@
 import text_logo from "../assets/text_logo.png";
+import { useNFTs } from "../hooks/useNFTs";
 
 export default function Home() {
+  const nfts = useNFTs();
+  console.log(nfts);
+  
   return (
     <div className="home">
       <div className="home-content">
