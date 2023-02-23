@@ -1,0 +1,40 @@
+@font-face {
+    font-family: "inter-tight-regular";
+    src: url("./fonts/inter-tight-regular.ttf");
+}
+
+@font-face {
+    font-family: "inter-tight-semibold";
+    src: url("./fonts/inter-tight-semibold.ttf");
+}
+
+@font-face {
+    font-family: "jetbrains-bold";
+    src: url("./fonts/jetbrains-bold.ttf");
+}
+
+@font-face {
+    font-family: "sonara-rounded";
+    src: url("./fonts/sonara-rounded.otf");
+}
+
+:root {
+    --black: rgb(0, 0, 0);
+    --black-faded: rgba(0, 0, 0, 0.1);
+    --white: rgb(255, 255, 255);
+    --white-faded: rgba(255, 255, 255, 0.1);
+    --signature: rgb(36, 220, 162);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: black;
+}
