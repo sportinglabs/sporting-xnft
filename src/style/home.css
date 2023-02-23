@@ -43,13 +43,18 @@
     cursor: pointer;
 }
 
-.home-tab:hover {
+.home-tab:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.home-tab:not(:disabled):hover {
     background-color: var(--black);
     color: white;
     transition-duration: 0.2s;
 }
 
-.home-tab:not(:hover) {
+.home-tab:not(:disabled):not(:hover) {
     background-color: var(--white-faded);
     color: white;
     transition-duration: 0.2s;

@@ -15,26 +15,28 @@ export default function Home() {
         </div>
         <div className="home-section-2">
           <div className="home-tabs">
-            <button className="home-tab">
-              <div className="home-tab-text">
-                <div className="home-tab-title">Stake</div>
-                <div className="home-tab-description">Stake your cars!</div>
-              </div>
-            </button>
             <Link to={"/stake"}>
-            <button className="home-tab">
-              <div className="home-tab-text">
-                <div className="home-tab-title">Leaderboard</div>
-                <div className="home-tab-description">
-                  Winning is everything.
+              <button className="home-tab">
+                <div className="home-tab-text">
+                  <div className="home-tab-title">Stake</div>
+                  <div className="home-tab-description">Stake your cars!</div>
                 </div>
-              </div>
-            </button>
+              </button>
             </Link>
-            <button className="home-tab">
+            <Link to={"/leaderboard"}>
+              <button className="home-tab">
+                <div className="home-tab-text">
+                  <div className="home-tab-title">Leaderboard</div>
+                  <div className="home-tab-description">
+                    Winning is everything.
+                  </div>
+                </div>
+              </button>
+            </Link>
+            <button className="home-tab" disabled>
               <div className="home-tab-text">
                 <div className="home-tab-title">Garage</div>
-                <div className="home-tab-description">Tune your drive!</div>
+                <div className="home-tab-description">Tune your drive! Coming soon.</div>
               </div>
             </button>
           </div>
