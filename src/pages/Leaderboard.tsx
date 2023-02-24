@@ -1,20 +1,14 @@
-import { Stakeable } from "../components/Stakeable";
+import { BoardItem } from "../components/BoardItem";
 
 export default function Leaderboard() {
   return (
-    <div className="stake">
-      <div className="stake-content">
-        <div className="stake-title">Stake</div>
-        <div className="stake-items-container">
-          <div className="stake-items">
-            <div className="stake-items-content">
-              <Stakeable />
-              <Stakeable />
-              <Stakeable />
-              <Stakeable />
-              <Stakeable />
-              <Stakeable />
-            </div>
+    <div className="leaderboard">
+      <div className="leaderboard-content">
+        <div className="leaderboard-title">Leaderboard</div>
+        <div className="leaderboard-filter">Filter</div>
+        <div className="leaderboard-items-container">
+          <div className="leaderboard-items">
+            <div className="leaderboard-items-content"></div>
           </div>
         </div>
       </div>

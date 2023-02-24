@@ -43,6 +43,16 @@ export default function Home() {
                 </div>
               </div>
             </button>
+            <Link to={"/leaderboard"}>
+              <button className="home-tab">
+                <div className="home-tab-text">
+                  <div className="home-tab-title">Settings</div>
+                  <div className="home-tab-description">
+                    
+                  </div>
+                </div>
+              </button>
+            </Link>
           </div>
         </div>
       </div>
