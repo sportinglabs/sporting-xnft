@@ -20,7 +20,7 @@ export function usePublicKey(): PublicKey {
 }
 
 export function usePublicKeys(): PublicKey {
-  const [publicKeys, setPublicKeys] = useState(window.xnft.publicKeys);
+  const [publicKeys, setPublicKeys] = useState(window.xnft.publicKeys);//- TODO: hook problem lösen: hooks(useState) können nicht innerhalb funktionen initialisiert werden.
   useEffect(() => {
     window.xnft.on("publicKeysUpdate", () => {
       setPublicKeys(window.xnft.publicKeys);
@@ -28,6 +28,20 @@ export function usePublicKeys(): PublicKey {
   }, [setPublicKeys]);
   return publicKeys;
 }
+
+
+/* 
+ - hab hier was versucht, keine ahnung obs geht.
+export function usePublicKeys(): PublicKey {
+  const publicKeys = { keys: window.xnft.publicKeys };
+  useEffect(() => {
+    window.xnft.on("publicKeysUpdate", () => {
+      publicKeys.keys = window.xnft.publicKeys;
+      console.log(publicKeys.keys);
+    });
+  }, [publicKeys]);
+  return publicKeys.keys;
+} */
 
 /** @deprecated use blockchain-specific connections instead */
 export function useConnection(): Connection {

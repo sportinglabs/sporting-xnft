@@ -5,17 +5,17 @@ export function BoardItem(props: {
   last: string;
 }) {
   return (
-    <div>
-      <div>
+    <div className="board-item">
+      <div className="board-cell-rank">
         <p>{props.rank}</p>
       </div>
-      <div>
+      <div className="board-cell-name">
         <p>{props.name}</p>
       </div>
-      <div>
+      <div className="board-cell-total">
         <p>◎{props.total}</p>
       </div>
-      <div>
+      <div className="board-cell-last">
         <p>◎{props.last}</p>
       </div>
     </div>
