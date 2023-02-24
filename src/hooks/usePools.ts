@@ -3,16 +3,18 @@ import { useEffect, useState } from "react";
 import { usePublicKeys } from "./xnft-hooks";
 import { getAllPools } from "../sdk";
 import { Wallet } from "@coral-xyz/anchor";
+import { useWallet } from "./useWallet";
 
 export const usePools = () => {
   const [pools, setPools] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const publicKey = usePublicKeys();
-  console.log(publicKey);
+  const { publicKey } = useWallet();
   
-  const { connection } = useConnection();  
+  const { connection } = useConnection();
+  console.log(connection);
+   
 
   useEffect(() => {
     const fetchPools = async () => {

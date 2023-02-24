@@ -1,16 +1,16 @@
+import { useConnection } from "@solana/wallet-adapter-react";
 import { useEffect, useState } from "react";
-import { useSolanaConnection, usePublicKeys } from "../hooks/xnft-hooks"
 import { getNFTsByOwner } from "../utils/nfts";
+import { useWallet } from "./useWallet";
 
 export const useNFTs = () => {
   const [nfts, setNfts] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const publicKey = usePublicKeys();
-  console.log(publicKey);
+  const { publicKey } = useWallet()
   
-  const connection = useSolanaConnection();
+  const connection = useConnection();
 
   useEffect(() => {
     const fetchNFTs = async () => {
