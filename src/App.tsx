@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     path: "/stake",
     element: <Layout />,
     errorElement: <ErrorPage />,
-    children: [{ index: false, element: <Stake /> }],
+    children: [{ index: true, element: <Stake /> }],
   },
 ]);
 
