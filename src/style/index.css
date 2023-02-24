@@ -1,21 +1,21 @@
 @font-face {
-    font-family: "inter-tight-regular";
-    src: url("./fonts/inter-tight-regular.ttf");
+    font-family: "jetbrains-light";
+    src: url("./fonts/jb-light.ttf");
 }
 
 @font-face {
-    font-family: "inter-tight-semibold";
-    src: url("./fonts/inter-tight-semibold.ttf");
+    font-family: "jetbrains-medium";
+    src: url("./fonts/jb-medium.ttf");
 }
 
 @font-face {
     font-family: "jetbrains-bold";
-    src: url("./fonts/jetbrains-bold.ttf");
+    src: url("./fonts/jb-bold.ttf");
 }
 
 @font-face {
     font-family: "sonara-rounded";
-    src: url("./fonts/sonara-rounded.otf");
+    src: url("./fonts/sonara.otf");
 }
 
 ::-webkit-scrollbar {

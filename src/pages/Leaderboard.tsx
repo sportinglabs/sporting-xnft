@@ -1,6 +1,6 @@
 import { Stakeable } from "../components/Stakeable";
 
-export default function Stake() {
+export default function Leaderboard() {
   return (
     <div className="stake">
       <div className="stake-content">

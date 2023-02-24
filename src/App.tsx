@@ -7,6 +7,7 @@ import { Layout } from "./components/Layout";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import Stake from "./pages/Stake";
+import Leaderboard from "./pages/Leaderboard";
 
 declare global {
   interface Window {
@@ -25,6 +26,12 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [{ index: true, element: <Stake /> }],
+  },
+  {
+    path: "/leaderboard",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [{ index: true, element: <Leaderboard /> }],
   },
 ]);
 
