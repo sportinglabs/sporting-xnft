@@ -34,5 +34,4 @@ dist-ssr
 web-build/
 .xnft-bundle/
 xnft-bundle.zip
-
 .env.*
