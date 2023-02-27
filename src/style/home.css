@@ -23,32 +23,28 @@
 }
 
 .home-tabs {
-    width: calc(100vw - 80px);
-    height: calc(50vh - 60px);
+    width: calc(100vw - 40px);
+    height: calc(50vh - 40px);
     margin: 0;
-    padding: 20px;
-    padding-bottom: 0px;
     text-align: center;
-    background-color: var(--white-faded);
     border-radius: 10px;
-    box-shadow: inset 0 0 10px var(--black);
     overflow-y: scroll;
 }
 
 .home-tab {
     position: relative;
     margin-top: 0px;
-    margin-bottom: 20px;
-    width: calc(100vw - 80px);
+    margin-bottom: 10px;
+    width: calc(100vw - 40px);
     height: 15vh;
     background-color: var(--white-faded);
     border-radius: 10px;
-    border: 0px solid black;
+    border: 0px solid var(--black);
     cursor: pointer;
 }
 
 .home-tab:disabled {
-    opacity: 0.5;
+    opacity: 0.2;
     cursor: not-allowed;
 }
 
@@ -72,7 +68,7 @@
 }
 
 .home-tab-title {
-    font-family: "jetbrains-bold";
+    font-family: "sonara-rounded";
     font-size: 24px;
     color: var(--signature);
     margin: 0;

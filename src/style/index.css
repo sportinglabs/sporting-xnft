@@ -36,11 +36,12 @@
 }
 
 :root {
-    --black: rgb(0, 0, 0);
-    --black-faded: rgba(0, 0, 0, 0.1);
+    --black: rgb(32, 32, 32);
+    --black-faded: rgba(0, 0, 0, 0.5);
     --white: rgb(255, 255, 255);
     --white-faded: rgba(255, 255, 255, 0.1);
     --signature: rgb(36, 220, 162);
+    --signature-faded: rgba(36, 220, 162, 0.2);
 }
 
 .route-container {
@@ -57,7 +58,7 @@ body {
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
-    background-color: black;
+    background-color: var(--black);
 }
 
 .header {

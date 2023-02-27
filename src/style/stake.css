@@ -20,8 +20,8 @@
     align-items: flex-end;
     justify-content: center;
     color: var(--white);
-    font-family: "jetbrains-medium";
-    font-size: 36px;
+    font-family: "sonara-rounded";
+    font-size: 24px;
 }
 
 .stake-items-container {
@@ -36,73 +36,111 @@
 
 .stake-items {
     width: calc(100vw - 40px);
-    height: calc(85vh - 60px);
-    padding-bottom: 20px;
+    height: calc(85vh - 40px);
     display: flex;
     align-items: flex-start;
     justify-content: center;
     border-radius: 10px;
-    background-color: var(--white-faded);
-    box-shadow: inset 0 0 10px var(--black);
     overflow-y: scroll;
 }
 
 
 /*staking item*/
 
-.stakeable {
+.race-selection {
     width: calc(100vw - 80px);
-    height: 20vh;
+    height: 40vh;
     margin: 0;
-    margin-top: 20px;
-    padding: 0;
-    padding-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: "jetbrains-light";
+    font-size: 12px;
+    position: relative;
+    width: calc(100vw- 120px);
+    background-image: url("../assets/backgrounds/australia.png");
+    background-size: calc(100vw - 20px);
+    cursor: pointer;
+    opacity: 0;
+}
+
+.australia {
+    background-image: url("../assets/backgrounds/australia.png");
+}
+
+.saudi-arabia {
+    background-image: url("../assets/backgrounds/saudi-arabia.png");
+}
+
+.azerbaijan {
+    background-image: url("../assets/backgrounds/azerbaijan.png");
+}
+
+.race-date {
+    font-family: "jetbrains-light";
+    color: var(--white);
+    height: 10vh;
+}
+
+.race-selection-trackmap {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.race-info {
+    font-family: "jetbrains-light";
+    color: var(--white);
+    height: 20vh;
     display: flex;
     align-items: center;
     justify-content: left;
-    border-radius: 10px;
-    background-color: var(--white-faded);
+}
+
+.race-selection-name {
+    margin-bottom: 10px;
+    font-family: "sonara-rounded";
+    font-size: 18px;
+    color: var(--signature);
+}
+
+.race-status {
     font-family: "jetbrains-light";
-    font-size: 12px;
-}
-
-.stakeable-image {
-    height: calc(20vh - 20px);
-    border-radius: 10px;
-}
-
-.stakeable-content {
+    color: var(--white);
+    height: 10vh;
     display: flex;
     align-items: flex-end;
     justify-content: left;
 }
 
-.stakeable-details {
-    margin-left: 10px;
-}
-
-.stakeable-text {
-    display: flex;
-    align-items: flex-start;
-    justify-content: left;
-    height: 10vh;
-}
-
-.stakeable-name {
-    color: var(--signature);
-}
-
-.stakeable-points {
-    color: var(--white);
-}
-
-.stakeable-button {
-    height: calc(10vh - 30px);
-    width: calc(60vw - 50px);
-    margin-top: 10px;
+.race-selection-buttons button {
+    margin-right: 5px;
+    padding: 10px;
+    background-color: var(--white-faded);
     border: 0px solid var(--white-faded);
-    border-radius: 5px;
-    background-color: var(--signature);
-    color: var(--black);
+    border-radius: 10px;
     font-family: "jetbrains-bold";
+    color: white;
+}
+
+button.race-live-status {
+    background-color: rgba(138, 43, 226, 0.2);
+}
+
+button.expired {
+    background-color: rgba(55, 0, 255, 0.2);
+}
+
+button.live {
+    background-color: var(--signature);
+    color: black;
+}
+
+button.upcoming {
+    background-color: rgba(255, 32, 181, 0.4);
+}
+
+button.race-staked-amount {
+    background-color: var(--signature-faded);
 }
