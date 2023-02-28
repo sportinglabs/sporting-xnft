@@ -1,10 +1,4 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { CarSelection } from "./CarSelection";
-import australiaTrack from "../../assets/racetracks/australia.svg";
-import azerbaijanTrack from "../../assets/racetracks/azerbaijan.svg";
-import saudiTrack from "../../assets/racetracks/saudi-arabia.svg";
-
 export default function RaceSelection(props: {
   race_id: string;
   country: string;
@@ -13,7 +7,7 @@ export default function RaceSelection(props: {
   day_date: string;
   status: string;
   staked: number;
-  track: number;
+  racetrack: string;
   isModalOpen: boolean;
   controlModal: Function;
   setRaceID: Function;
@@ -37,9 +31,14 @@ export default function RaceSelection(props: {
             <div className="race-selection-dayspan">{props.day_date}</div>
           </div>
           <div className="race-selection-trackmap">
-            {props.track == 0 && <img src={australiaTrack} alt="" />}
-            {props.track == 1 && <img src={saudiTrack} alt="" />}
-            {props.track == 2 && <img src={azerbaijanTrack} alt="" />}
+            <img
+              src={
+                "https://raw.githubusercontent.com/sportinglabs/resources/main/" +
+                props.racetrack +
+                ".svg"
+              }
+              alt="racetrack"
+            />
           </div>
         </div>
       </div>

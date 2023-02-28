@@ -5,6 +5,7 @@ import { useWallet } from "../hooks/useWallet";
 import RaceSelection from "../components/stake/RaceSelection";
 import { CarSelection } from "../components/stake/CarSelection";
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 const races = [
   {
@@ -15,7 +16,7 @@ const races = [
     day_date: "17-18",
     status: "live",
     staked: 89,
-    track: 0,
+    racetrack: "saudia-arabia",
   },
   {
     race_id: "SLR-0002",
@@ -25,7 +26,7 @@ const races = [
     day_date: "31-02",
     status: "upcoming",
     staked: 15,
-    track: 0,
+    racetrack: "australia",
   },
   {
     race_id: "SLR-0003",
@@ -35,7 +36,7 @@ const races = [
     day_date: "28-30",
     status: "upcoming",
     staked: 9,
-    track: 0,
+    racetrack: "azerbaijan",
   },
 ];
 export default function Stake() {
@@ -49,36 +50,38 @@ export default function Stake() {
 
   return (
     <>
-      <div className="stake">
-        <div className="stake-content">
-          <div className="stake-title">Pick a race</div>
-          <div className="stake-items-container">
-            <div className="stake-items">
-              <div className="stake-items-content">
-                {races.map((r) => (
-                  <RaceSelection
-                    race_id={r.race_id}
-                    country={r.country}
-                    name={r.name}
-                    month_date={r.month_date}
-                    day_date={r.day_date}
-                    status={r.status}
-                    staked={r.staked}
-                    track={r.track}
-                    key={r.race_id}
-                    isModalOpen={modalOpen}
-                    controlModal={controlModal}
-                    setRaceID={setRaceID}
-                  />
-                ))}
+      <AnimatePresence>
+        <div className="stake">
+          <div className="stake-content">
+            <div className="stake-title">Pick a race</div>
+            <div className="stake-items-container">
+              <div className="stake-items">
+                <div className="stake-items-content">
+                  {races.map((r) => (
+                    <RaceSelection
+                      race_id={r.race_id}
+                      country={r.country}
+                      name={r.name}
+                      month_date={r.month_date}
+                      day_date={r.day_date}
+                      status={r.status}
+                      staked={r.staked}
+                      racetrack={r.racetrack}
+                      key={r.race_id}
+                      isModalOpen={modalOpen}
+                      controlModal={controlModal}
+                      setRaceID={setRaceID}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      {modalOpen && (
-        <CarSelection controlModal={controlModal} race_id={raceID} />
-      )}
+        {modalOpen && (
+          <CarSelection controlModal={controlModal} race_id={raceID} />
+        )}
+      </AnimatePresence>
     </>
   );
 }

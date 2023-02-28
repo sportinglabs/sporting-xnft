@@ -67,14 +67,17 @@
 
 .australia {
     background: url("../assets/backgrounds/australia.png") no-repeat;
+    background-size: calc(100vw - 20px);
 }
 
 .saudi-arabia {
     background: url("../assets/backgrounds/saudi-arabia.png") no-repeat;
+    background-size: calc(100vw - 20px);
 }
 
 .azerbaijan {
     background: url("../assets/backgrounds/azerbaijan.png") no-repeat;
+    background-size: calc(100vw - 20px);
 }
 
 .race-date {
@@ -87,6 +90,7 @@
     position: absolute;
     top: 20px;
     right: 20px;
+    max-width: 39vw;
 }
 
 .race-info {
@@ -152,9 +156,89 @@ button.race-staked-amount {
     width: 100vw;
     height: 100vh;
     z-index: 1000;
+    background-color: var(--black);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    color: var(--signature);
+}
+
+.car-selection-content {
+    width: calc(100vw - 20px);
+    height: calc(100vh - 60px);
     background-color: var(--black-faded);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.car-selection-title {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: calc(10vh);
+    font-family: "sonara-rounded";
+    font-size: 18px;
     color: var(--signature);
+    text-align: center;
+}
+
+.car-selection-list {
+    width: calc(100vw - 20px);
+    height: calc(90vh - 60px);
+    margin: 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+    overflow-y: scroll;
+}
+
+.car-selection-list-content {
+    border-radius: 10px;
+}
+
+.car-selection-item {
+    width: calc(100vw - 40px);
+    height: 20vh;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: var(--black-faded);
+    border-radius: 10px;
+    position: relative;
+}
+
+.car-selection-name {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: var(--white);
+    font-family: "jetbrains-bold";
+}
+
+.car-selection-metadata {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: calc(100vw - 60px);
+    min-height: 10vh;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.car-selection-attribute {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.car-selection-attribute-name {
+    font-family: "jetbrains-medium";
+    color: var(--signature);
+}
+
+.car-selection-attribute-value {
+    font-family: "jetbrains-light";
+    color: var(--white);
 }
