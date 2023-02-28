@@ -1,19 +1,12 @@
 import car from "../assets/car.png";
-export function Stakeable(props: {}) {
+import { motion } from "framer-motion";
+export function CarSelection(props: {
+  controlModal: Function;
+  race_id: string;
+}) {
   return (
-    <div className="stakeable">
-      <div className="stakeable-content">
-        <img className="stakeable-image" src={car} />
-        <div className="stakeable-details">
-          <div className="stakeable-text">
-            <div className="stakeable-text-content">
-              <div className="stakeable-name">Mercedes AMG Petronas</div>
-              <div className="stakeable-points">Points: 1460</div>
-            </div>
-          </div>
-          <button className="stakeable-button">stake</button>
-        </div>
-      </div>
-    </div>
+    <motion.div className="car-selection" onClick={() => props.controlModal()}>
+      {props.race_id}
+    </motion.div>
   );
 }

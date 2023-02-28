@@ -59,22 +59,22 @@
     font-size: 12px;
     position: relative;
     width: calc(100vw- 120px);
-    background-image: url("../assets/backgrounds/australia.png");
+    background: url("../assets/backgrounds/australia.png") no-repeat;
     background-size: calc(100vw - 20px);
     cursor: pointer;
     opacity: 0;
 }
 
 .australia {
-    background-image: url("../assets/backgrounds/australia.png");
+    background: url("../assets/backgrounds/australia.png") no-repeat;
 }
 
 .saudi-arabia {
-    background-image: url("../assets/backgrounds/saudi-arabia.png");
+    background: url("../assets/backgrounds/saudi-arabia.png") no-repeat;
 }
 
 .azerbaijan {
-    background-image: url("../assets/backgrounds/azerbaijan.png");
+    background: url("../assets/backgrounds/azerbaijan.png") no-repeat;
 }
 
 .race-date {
@@ -143,4 +143,18 @@ button.upcoming {
 
 button.race-staked-amount {
     background-color: var(--signature-faded);
+}
+
+.car-selection {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    background-color: var(--black-faded);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--signature);
 }

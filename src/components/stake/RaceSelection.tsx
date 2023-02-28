@@ -1,11 +1,12 @@
-import car from "../assets/car.png";
-import React from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { CarSelection } from "./CarSelection";
 import australiaTrack from "../../assets/racetracks/australia.svg";
 import azerbaijanTrack from "../../assets/racetracks/azerbaijan.svg";
 import saudiTrack from "../../assets/racetracks/saudi-arabia.svg";
 
 export default function RaceSelection(props: {
+  race_id: string;
   country: string;
   name: string;
   month_date: string;
@@ -13,6 +14,9 @@ export default function RaceSelection(props: {
   status: string;
   staked: number;
   track: number;
+  isModalOpen: boolean;
+  controlModal: Function;
+  setRaceID: Function;
 }) {
   return (
     <motion.div
@@ -21,7 +25,8 @@ export default function RaceSelection(props: {
       whileHover={{ scale: 0.95 }}
       whileTap={{ scale: 0.9 }}
       onClick={() => {
-        console.log("clicked");
+        props.setRaceID(props.race_id);
+        props.controlModal();
       }}
       transition={{ duration: 0.2 }}
     >
@@ -34,6 +39,7 @@ export default function RaceSelection(props: {
           <div className="race-selection-trackmap">
             {props.track == 0 && <img src={australiaTrack} alt="" />}
             {props.track == 1 && <img src={saudiTrack} alt="" />}
+            {props.track == 2 && <img src={azerbaijanTrack} alt="" />}
           </div>
         </div>
       </div>
