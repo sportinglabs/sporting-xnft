@@ -76,6 +76,9 @@ export function CarSelection(props: {
             ))}
           </div>
         </div>
+        <div className="car-selection-button">
+          <button onClick={() => props.controlModal()}>Back</button>
+        </div>
       </div>
     </motion.div>
   );

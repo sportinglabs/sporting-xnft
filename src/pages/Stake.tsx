@@ -6,6 +6,7 @@ import RaceSelection from "../components/stake/RaceSelection";
 import { CarSelection } from "../components/stake/CarSelection";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import { stake } from "../sdk";
 
 const races = [
   {

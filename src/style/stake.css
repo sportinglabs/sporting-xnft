@@ -158,14 +158,14 @@ button.race-staked-amount {
     z-index: 1000;
     background-color: var(--black);
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: center;
     color: var(--signature);
 }
 
 .car-selection-content {
     width: calc(100vw - 20px);
-    height: calc(100vh - 60px);
+    height: 85vh;
     background-color: var(--black);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -173,18 +173,19 @@ button.race-staked-amount {
 
 .car-selection-title {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
-    height: calc(10vh);
+    height: calc(15vh);
     font-family: "sonara-rounded";
     font-size: 18px;
     color: var(--signature);
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .car-selection-list {
     width: calc(100vw - 20px);
-    height: calc(90vh - 60px);
+    height: calc(85vh - 70px);
     margin: 0;
     border-radius: 10px;
     display: flex;
@@ -241,4 +242,37 @@ button.race-staked-amount {
 .car-selection-attribute-value {
     font-family: "jetbrains-light";
     color: var(--white);
+}
+
+.car-selection-button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.car-selection-button button {
+    margin-right: 5px;
+    padding: 10px;
+    background-color: var(--white-faded);
+    border: 0px solid var(--white-faded);
+    border-radius: 10px;
+    font-family: "jetbrains-bold";
+    color: white;
+    cursor: pointer;
+    width: 30vw;
+}
+
+.car-selection-button button:hover {
+    color: var(--signature);
+    background-color: var(--black-faded);
+    transition-duration: 0.2s;
+}
+
+.car-selection-button button:not(:hover) {
+    transition-duration: 0.2s;
+}
+
+.car-selection-button button:active {
+    color: var(--signature);
+    background-color: var(--white);
 }
