@@ -1,8 +1,6 @@
 import { useConnection } from "@solana/wallet-adapter-react";
 import { useEffect, useState } from "react";
-import { usePublicKeys } from "./xnft-hooks";
-import { getAllPools } from "../sdk";
-import { Wallet } from "@coral-xyz/anchor";
+import { getAllPools } from "sporting-f1-sdk";
 import { useWallet } from "./useWallet";
 
 export const usePools = () => {
@@ -11,10 +9,9 @@ export const usePools = () => {
   const [error, setError] = useState(false);
 
   const { publicKey } = useWallet();
-  
+
   const { connection } = useConnection();
   console.log(connection);
-   
 
   useEffect(() => {
     const fetchPools = async () => {
@@ -22,19 +19,19 @@ export const usePools = () => {
       setError(false);
 
       try {
-        const pools = await getAllPools(connection)
-        setPools(pools)
-        setLoading(false)
+        const pools = await getAllPools(connection);
+        setPools(pools);
+        setLoading(false);
       } catch (error) {
-        console.error(error)
-        setError(true)
-        setLoading(false)
+        console.error(error);
+        setError(true);
+        setLoading(false);
       }
-    }
+    };
 
     console.log("fetching pools");
-    fetchPools()
-  }, [])
+    fetchPools();
+  }, []);
 
-  return { pools, loading, error }
-}
+  return { pools, loading, error };
+};

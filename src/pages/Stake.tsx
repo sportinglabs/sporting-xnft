@@ -6,7 +6,7 @@ import RaceSelection from "../components/stake/RaceSelection";
 import { CarSelection } from "../components/stake/CarSelection";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { stake } from "../sdk";
+import { stake } from "sporting-f1-sdk";
 
 const races = [
   {
@@ -48,6 +48,7 @@ export default function Stake() {
   const controlModal = () => (modalOpen ? close() : open());
 
   const nfts = useNFTs();
+  // const pools = usePools();
 
   return (
     <>
