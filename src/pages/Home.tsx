@@ -35,14 +35,6 @@ export default function Home() {
                 </div>
               </button>
             </Link>
-            <button className="home-tab" disabled>
-              <div className="home-tab-text">
-                <div className="home-tab-title">Garage</div>
-                <div className="home-tab-description">
-                  Tune your drive! Coming soon.
-                </div>
-              </div>
-            </button>
           </div>
         </div>
       </div>
