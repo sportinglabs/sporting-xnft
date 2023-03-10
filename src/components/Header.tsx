@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const basePaths = ["/", "/balance"];
+const basePaths = ["/", "/balance", "/mint"];
 export function Header() {
   const { pathname } = useLocation();
   const navigate = useNavigate();

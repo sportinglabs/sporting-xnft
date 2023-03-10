@@ -1,3 +1,5 @@
+import { DateTime } from "@metaplex-foundation/js";
+
 export function parseNumber(str: string, precision: number) {
   if (str === "." || str === "") {
     return str;
@@ -27,3 +29,11 @@ export function msToTimeLeft(duration: number) {
   const days = Math.floor(duration / (1000 * 60 * 60 * 24));
   return `${days}d ${hours}h ${minutes}m`;
 }
+
+export const toDate = (value?: DateTime) => {
+  if (!value) {
+    return;
+  }
+
+  return new Date(value.toNumber() * 1000);
+};

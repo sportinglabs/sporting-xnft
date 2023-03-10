@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Stake from "./pages/Stake";
 import Leaderboard from "./pages/Leaderboard";
 import { ConnectionProvider } from "@solana/wallet-adapter-react";
+import { MintPage } from "./pages/MintPage";
 
 declare global {
   interface Window {
@@ -34,6 +35,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [{ index: true, element: <Leaderboard /> }],
   },
+  {
+    path: "/Mint",
+    element: <MintPage />,
+    errorElement: <ErrorPage />,
+    children: [{ index: true, element: <MintPage /> }],
+  }
 ]);
 
 function App() {

@@ -35,6 +35,16 @@ export default function Home() {
                 </div>
               </button>
             </Link>
+            <Link to={"/mint"}>
+              <button className="home-tab">
+                <div className="home-tab-text">
+                  <div className="home-tab-title">Mint</div>
+                  <div className="home-tab-description">
+                    Mint an NFT
+                  </div>
+                </div>
+              </button>
+            </Link>
           </div>
         </div>
       </div>
