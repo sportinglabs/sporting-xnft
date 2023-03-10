@@ -1,0 +1,86 @@
+.mint {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.mint-title {
+    width: 100vw;
+    height: 15vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    color: var(--white);
+    font-family: "sonara-rounded";
+    font-size: 24px;
+}
+
+.mint-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin: 0;
+    margin-top: 20px;
+    padding: 0;
+}
+
+.mint-cover img {
+    width: 70vw;
+}
+
+.mint-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin: 0;
+    margin-top: 5px;
+    padding: 0;
+}
+
+.mint-button button {
+    border: 0px solid var(--white);
+    width: calc(80vw + 30px);
+    padding: 15px;
+    border-radius: 10px;
+    background-color: var(--signature);
+    color: var(--black);
+    font-family: "jetbrains-medium";
+    font-size: 24px;
+}
+
+.mint-countdown,
+.mint-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin: 0;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.mint-countdown {
+    margin-top: 20px;
+}
+
+.mint-countdown div,
+.mint-status div {
+    width: 80vw;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: var(--white-faded);
+    color: var(--white);
+    font-family: "jetbrains-medium";
+    font-size: 14px;
+}

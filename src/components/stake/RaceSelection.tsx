@@ -33,11 +33,11 @@ export default function RaceSelection(props: {
           <div className="race-selection-trackmap">
             <img
               src={
-                "https://raw.githubusercontent.com/sportinglabs/resources/main/" +
+                "https://raw.githubusercontent.com/sportinglabs/resources/main/racemaps/" +
                 props.racetrack +
                 ".svg"
               }
-              alt="racetrack"
+              alt={"racetrack" + props.racetrack}
             />
           </div>
         </div>

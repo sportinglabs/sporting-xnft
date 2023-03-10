@@ -35,7 +35,7 @@ export default function Home() {
                 </div>
               </button>
             </Link>
-            <Link to={"/mint"}>
+            <Link to={"/purchase"}>
               <button className="home-tab">
                 <div className="home-tab-text">
                   <div className="home-tab-title">Mint</div>

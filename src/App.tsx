@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import Stake from "./pages/Stake";
 import Leaderboard from "./pages/Leaderboard";
 import { ConnectionProvider } from "@solana/wallet-adapter-react";
-import { MintPage } from "./pages/MintPage";
+import Mint from "./pages/Mint";
 
 declare global {
   interface Window {
@@ -36,11 +36,11 @@ const router = createBrowserRouter([
     children: [{ index: true, element: <Leaderboard /> }],
   },
   {
-    path: "/Mint",
-    element: <MintPage />,
+    path: "/purchase",
+    element: <Layout />,
     errorElement: <ErrorPage />,
-    children: [{ index: true, element: <MintPage /> }],
-  }
+    children: [{ index: true, element: <Mint /> }],
+  },
 ]);
 
 function App() {
@@ -48,7 +48,7 @@ function App() {
     <ConnectionProvider endpoint={import.meta.env.VITE_RPC_URL}>
       <RouterProvider router={router} />
     </ConnectionProvider>
-  )
+  );
 }
 
 export default App;
