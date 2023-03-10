@@ -41,7 +41,7 @@ export const Mint = () => {
         <div className="stake">
           <div className="stake-content">
             <div className="stake-title">Mint</div>
-            <img src={mintBanner} className="home-title-image" />
+            {/* <img src={mintBanner} className="home-title-image" /> */}
             <div>
             {cm && cm.candyGuard && (
               <>
