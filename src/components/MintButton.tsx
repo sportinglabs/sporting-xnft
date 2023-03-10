@@ -57,11 +57,13 @@ export const MintButton = () => {
     }
 
     return (
+      <div className='mint-button'>
       <button
           className={"px-8 btn btn-block border-none animate-pulse bg-gradient-to-r from-[#67aafc] to-[#ee982f] hover:from-pink-500 hover:to-yellow-500 " + (loading && " loading")}
           onClick={() => onClick()}
       >
           <span>Mint</span>
       </button>
+      </div>
     );
 };
