@@ -1,7 +1,5 @@
 .mint {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    position: relative;
     margin: 0;
     padding: 0;
     width: 100vw;
@@ -9,6 +7,16 @@
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.mint-preview {
+    position: absolute;
+    top: 0;
+}
+
+.mint-action {
+    position: absolute;
+    bottom: 20px;
 }
 
 .mint-title {
@@ -35,7 +43,8 @@
 }
 
 .mint-cover img {
-    width: 70vw;
+    width: calc(80vw + 30px);
+    border-radius: 10px;
 }
 
 .mint-button {
@@ -56,7 +65,23 @@
     background-color: var(--signature);
     color: var(--black);
     font-family: "jetbrains-medium";
-    font-size: 24px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.mint-button button:hover {
+    background-color: var(--white);
+    color: var(--black);
+    transition-duration: 0.2s;
+}
+
+.mint-button button:active {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.mint-button button:not(:hover) {
+    transition-duration: 0.2s;
 }
 
 .mint-countdown,

@@ -1,12 +1,8 @@
-import { useConnection } from "@solana/wallet-adapter-react";
 import { useNFTs } from "../hooks/useNFTs";
-import { usePools } from "../hooks/usePools";
-import { useWallet } from "../hooks/useWallet";
 import RaceSelection from "../components/stake/RaceSelection";
 import { CarSelection } from "../components/stake/CarSelection";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { stake } from "sporting-f1-sdk";
 
 const races = [
   {
