@@ -47,7 +47,7 @@ export default function Mint() {
                   <div className="text-center mt-4 ">
                     {/* @ts-ignore */}
                     <Countdown
-                      date={toDate(cm.candyGuard.guards.startDate?.date)}
+                      date={toDate(cm.candyGuard.groups[0].guards.startDate?.date)}
                       onComplete={() => {
                         setIsActive(true);
                       }}
@@ -55,7 +55,7 @@ export default function Mint() {
                       onMount={() => {
                         if (
                           // @ts-ignore
-                          toDate(cm?.candyGuard?.guards.startDate?.date) >
+                          toDate(cm?.candyGuard.groups[0].guards.startDate?.date) >
                           new Date()
                         ) {
                           setIsActive(false);

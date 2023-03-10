@@ -8,11 +8,12 @@ import { useConnection } from "@solana/wallet-adapter-react";
 import { useWallet } from "../hooks/useWallet";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { toDate } from "../utils";
 
 export const MintButton = () => {
   const [loading, setLoading] = useState(false);
   const { connection } = useConnection();
-  const wallet = useWallet();
+  const wallet = useWallet();  
 
   const onClick = async () => {
     // const allowList = await (await fetch("/allowList.json")).json()
@@ -33,13 +34,16 @@ export const MintButton = () => {
       walletAdapterIdentity(wallet)
     );
     const candyMachineAddress = new PublicKey(
-      "8Z1r48UAvmghrYP23hCr18tN7cRhcEEafSAWnnWpms7K"
+      "8juEXpPuJQwccyF3R56npbMaEUNVS9eiz39KVbSqtaUd"
     );
-
     
     const cm = await metaplex
       .candyMachines()
       .findByAddress({ address: candyMachineAddress });
+
+    // @ts-ignore
+    const phase = toDate(cm.candyGuard?.groups[1].guards.startDate?.date) > new Date() ? "wl" : "pub";
+    console.log(phase);
 
     let res;
 
@@ -56,8 +60,9 @@ export const MintButton = () => {
       res = await metaplex.candyMachines().mint({
         candyMachine: cm,
         collectionUpdateAuthority: new PublicKey(
-          "PeRXuY1P4cnzDZEPH1ancRVSyQMDpnTF27BwmQ1kkWq"
+          "37zhnSs3SRavzQ8GDAHHfJ65Fb6gZH7XvrCesqBHEhNw"
         ),
+        group: phase
       });
     } catch (error) {
       console.log(error);
@@ -73,10 +78,7 @@ export const MintButton = () => {
   return (
     <div className="mint-button">
       <motion.button
-        className={
-          "px-8 btn btn-block border-none animate-pulse bg-gradient-to-r from-[#67aafc] to-[#ee982f] hover:from-pink-500 hover:to-yellow-500 " +
-          (loading && " loading")
-        }
+        className={(loading ? "loading" : "loading")}
         onClick={() => onClick()}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

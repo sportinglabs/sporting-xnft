@@ -11,7 +11,7 @@ export const useCandyMachine = () => {
 
   const { publicKey } = useWallet();
 
-  const connection = useConnection();
+  const { connection } = useConnection();
 
   useEffect(() => {
     const fetchNFTs = async () => {
@@ -20,7 +20,8 @@ export const useCandyMachine = () => {
 
       try {
         const cm = await getCandyMachine(
-          "8Z1r48UAvmghrYP23hCr18tN7cRhcEEafSAWnnWpms7K"
+          "8juEXpPuJQwccyF3R56npbMaEUNVS9eiz39KVbSqtaUd",
+          connection
         );
         setCm(cm);
         setLoading(false);
