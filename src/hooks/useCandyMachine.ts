@@ -20,7 +20,7 @@ export const useCandyMachine = () => {
 
       try {
         const cm = await getCandyMachine(
-          "8juEXpPuJQwccyF3R56npbMaEUNVS9eiz39KVbSqtaUd",
+          "4J9n1kDaK4Y7oyN2tBt93HxGr9kLfLK8t9hTGr39JgD8",
           connection
         );
         setCm(cm);
