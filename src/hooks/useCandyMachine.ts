@@ -19,10 +19,7 @@ export const useCandyMachine = () => {
       setError(false);
 
       try {
-        const cm = await getCandyMachine(
-          "8juEXpPuJQwccyF3R56npbMaEUNVS9eiz39KVbSqtaUd",
-          connection
-        );
+        const cm = await getCandyMachine(import.meta.env.VITE_CM, connection);
         setCm(cm);
         setLoading(false);
       } catch (error) {

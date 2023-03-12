@@ -34,7 +34,7 @@ export const MintButton = () => {
       walletAdapterIdentity(wallet)
     );
     const candyMachineAddress = new PublicKey(
-      "8juEXpPuJQwccyF3R56npbMaEUNVS9eiz39KVbSqtaUd"
+      import.meta.env.VITE_CM
     );
     
     const cm = await metaplex
