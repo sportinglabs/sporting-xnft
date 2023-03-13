@@ -4,7 +4,7 @@ import { useWallet } from "./useWallet";
 import { CandyMachine } from "@metaplex-foundation/js";
 import { getCandyMachine } from "../utils/candyMachine";
 
-export const useCandyMachine = () => {
+export const useCandyMachine = (reload?: number) => {
   const [cm, setCm] = useState<CandyMachine>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -31,7 +31,7 @@ export const useCandyMachine = () => {
 
     console.log("fetching nfts");
     fetchNFTs();
-  }, [connection, publicKey]);
+  }, [connection, publicKey, reload]);
 
   return { cm, loading, error };
 };

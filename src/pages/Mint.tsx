@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Countdown from "react-countdown";
 import { toDate } from "../utils";
 import { MintButton } from "../components/MintButton";
@@ -10,11 +10,28 @@ import nft_unrevealed from "../assets/nft-unrevealed.png";
 import icon from "../assets/icon.png";
 
 import { isButtonElement } from "react-router-dom/dist/dom";
+import axios from "axios";
 
 export default function Mint() {
-  const { cm, loading, error } = useCandyMachine();
+  const [reload, setReload] = useState(0);
+  const { cm, loading, error } = useCandyMachine(reload);
   const [isActive, setIsActive] = useState(false);
   const [popup, setPopup] = useState(false);
+  const [mintRes, setMintRes] = useState<any>();
+  const [metadata, setMetadata] = useState<any>();
+  
+  useEffect(() => {
+    const fetchMetadata = async() => {
+      const { data } = await axios.get(mintRes.uri)
+
+      setMetadata(data)
+      
+    }
+    if (mintRes) {
+      fetchMetadata()
+    }
+  }, [mintRes])
+  
   const [minted, setMinted] = useState(false);
   const showPopUp = () => {
     setPopup(true);
@@ -99,7 +116,7 @@ export default function Mint() {
                         </span>
                       </div>
                     </motion.div>
-                    <MintButton showPopup={showPopUp} closePopup={showResult} />
+                    <MintButton showPopup={showPopUp} closePopup={showResult} reload={() => setReload(p => p + 1)} setRes={(r: any) => setMintRes(r) } />
                     {/* {wallet && (
                       <p>SOL Balance: {(balance || 0).toLocaleString()}</p>
                     )} */}
@@ -127,8 +144,14 @@ export default function Mint() {
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.2, delay: 0 }}
                 >
+                  <div>
+
+                  </div>
                   <div className="mint-result-text">
-                    Car minted successfully!
+                    {mintRes ? `${mintRes.name} minted successfully!` : "Minting failed"}
+                  </div>
+                  <div>
+                    <img src={metadata && metadata.image} />
                   </div>
                   <div className="mint-result-button">
                     <button

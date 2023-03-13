@@ -9,14 +9,20 @@ import { useWallet } from "../hooks/useWallet";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { toDate } from "../utils";
+import { useCandyMachine } from "../hooks/useCandyMachine";
 
 export const MintButton = (props: {
   showPopup: Function;
   closePopup: Function;
+  reload: Function;
+  setRes: Function
 }) => {
   const [loading, setLoading] = useState(false);
+  const [reload, setReload] = useState(0);
   const { connection } = useConnection();
   const wallet = useWallet();
+
+  const cm = useCandyMachine(reload)
 
   const onClick = async () => {
     // const allowList = await (await fetch("/allowList.json")).json()
@@ -72,9 +78,15 @@ export const MintButton = (props: {
           ),
           group: phase,
         })
-        .then(() => props.closePopup());
+        .then((res) => {          
+          props.closePopup()
+          props.reload()
+          props.setRes(res.nft)
+        });
     } catch (error) {
       console.log(error);
+      props.reload()
+      props.closePopup()
       setLoading(false);
       return;
     }
