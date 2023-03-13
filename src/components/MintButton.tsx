@@ -10,10 +10,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { toDate } from "../utils";
 
-export const MintButton = () => {
+export const MintButton = (props: {
+  showPopup: Function;
+  closePopup: Function;
+}) => {
   const [loading, setLoading] = useState(false);
   const { connection } = useConnection();
-  const wallet = useWallet();  
+  const wallet = useWallet();
 
   const onClick = async () => {
     // const allowList = await (await fetch("/allowList.json")).json()
@@ -33,16 +36,18 @@ export const MintButton = () => {
     const metaplex = Metaplex.make(connection).use(
       walletAdapterIdentity(wallet)
     );
-    const candyMachineAddress = new PublicKey(
-      import.meta.env.VITE_CM
-    );
-    
+    const candyMachineAddress = new PublicKey(import.meta.env.VITE_CM);
+
     const cm = await metaplex
       .candyMachines()
       .findByAddress({ address: candyMachineAddress });
 
     // @ts-ignore
-    const phase = toDate(cm.candyGuard?.groups[1].guards.startDate?.date) > new Date() ? "wl" : "pub";
+    const phase =
+      // @ts-ignore
+      toDate(cm.candyGuard?.groups[1].guards.startDate?.date) > new Date()
+        ? "wl"
+        : "pub";
     console.log(phase);
 
     let res;
@@ -57,13 +62,17 @@ export const MintButton = () => {
       //     }
       // })
 
-      res = await metaplex.candyMachines().mint({
-        candyMachine: cm,
-        collectionUpdateAuthority: new PublicKey(
-          "37zhnSs3SRavzQ8GDAHHfJ65Fb6gZH7XvrCesqBHEhNw"
-        ),
-        group: phase
-      });
+      props.showPopup();
+      res = await metaplex
+        .candyMachines()
+        .mint({
+          candyMachine: cm,
+          collectionUpdateAuthority: new PublicKey(
+            "37zhnSs3SRavzQ8GDAHHfJ65Fb6gZH7XvrCesqBHEhNw"
+          ),
+          group: phase,
+        })
+        .then(() => props.closePopup());
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -78,7 +87,7 @@ export const MintButton = () => {
   return (
     <div className="mint-button">
       <motion.button
-        className={(loading ? "loading" : "loading")}
+        className={loading ? "loading" : "loading"}
         onClick={() => onClick()}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
