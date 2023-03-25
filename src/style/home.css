@@ -1,84 +1,84 @@
 .home {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
 .home-section-1,
 .home-section-2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  height: 50vh;
 }
 
 .home-title img {
-    width: 60vw;
+  width: 60vw;
 }
 
 .home-tabs {
-    width: calc(100vw - 40px);
-    height: calc(50vh - 40px);
-    margin: 0;
-    text-align: center;
-    border-radius: 10px;
-    overflow-y: scroll;
+  width: calc(100vw - 40px);
+  height: calc(50vh - 40px);
+  margin: 0;
+  text-align: center;
+  border-radius: 10px;
+  overflow-y: scroll;
 }
 
 .home-tab {
-    position: relative;
-    margin-top: 0px;
-    margin-bottom: 10px;
-    width: calc(100vw - 40px);
-    height: 15vh;
-    background-color: var(--white-faded);
-    border-radius: 10px;
-    border: 0px solid var(--black);
-    cursor: pointer;
+  position: relative;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  width: calc(100vw - 40px);
+  height: 15vh;
+  background-color: var(--white-faded);
+  border-radius: 10px;
+  border: 0px solid var(--black);
+  cursor: pointer;
 }
 
 .home-tab:disabled {
-    opacity: 0.2;
-    cursor: not-allowed;
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 .home-tab:not(:disabled):hover {
-    background-color: var(--black-faded);
-    color: white;
-    transition-duration: 0.2s;
+  background-color: var(--black-faded);
+  color: white;
+  transition-duration: 0.2s;
 }
 
 .home-tab:not(:disabled):not(:hover) {
-    background-color: var(--white-faded);
-    color: white;
-    transition-duration: 0.2s;
+  background-color: var(--white-faded);
+  color: white;
+  transition-duration: 0.2s;
 }
 
 .home-tab-text {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    text-align: left;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  text-align: left;
 }
 
 .home-tab-title {
-    font-family: "sonara-rounded";
-    font-size: 24px;
-    color: var(--signature);
-    margin: 0;
-    padding: 0;
+  font-family: "sonara-rounded";
+  font-size: 24px;
+  color: var(--signature);
+  margin: 0;
+  padding: 0;
 }
 
 .home-tab-description {
-    font-family: "jetbrains-light";
-    font-size: 14px;
-    color: var(--white);
-    margin: 0;
-    padding: 0;
+  font-family: "jetbrains-light";
+  font-size: 14px;
+  color: var(--white);
+  margin: 0;
+  padding: 0;
 }
