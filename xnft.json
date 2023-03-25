@@ -1,13 +1,17 @@
 {
-  "name": "xNFT Quickstart",
+  "name": "Sporting F1",
   "version": "0.0.1",
-  "description": "React Native Example",
-  "website": "https://dual.finance",
+  "description": "Sporting F1 is an F1 Fantasy League consisting of 2,000 cars. NFT traits make race prediction and earn points. The top 100 players of the 2023 season will receive prizes.",
+  "website": "sporting.gg",
   "kind": "app",
   "icon": {
     "md": "./assets/icon.png"
   },
-  "screenshots": ["./assets/screenShot.png"],
+  "screenshots": [
+    "./assets/screenshot1.png",
+    "./assets/screenshot2.png",
+    "./assets/screenshot3.png"
+  ],
   "entrypoints": {
     "default": {
       "web": "./dist/index.html"
