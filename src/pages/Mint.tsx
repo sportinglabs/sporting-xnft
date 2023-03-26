@@ -11,6 +11,8 @@ import icon from "../assets/icon.png";
 
 import { isButtonElement } from "react-router-dom/dist/dom";
 import axios from "axios";
+import { Metaplex } from "@metaplex-foundation/js";
+import { useConnection } from "@solana/wallet-adapter-react";
 
 export default function Mint() {
   const [reload, setReload] = useState(0);
@@ -19,13 +21,17 @@ export default function Mint() {
   const [popup, setPopup] = useState(false);
   const [mintRes, setMintRes] = useState<any>();
   const [metadata, setMetadata] = useState<any>();
+
+  const { connection } = useConnection()
+  const metaplex = new Metaplex(connection)
   
   useEffect(() => {
     const fetchMetadata = async() => {
-      const { data } = await axios.get(mintRes.uri)
-
-      setMetadata(data)
+      const nft = await metaplex.nfts().findByToken({ token: mintRes })
+      const { data } = await axios.get(nft.uri)
+      console.log(data);
       
+      setMetadata(data)
     }
     if (mintRes) {
       fetchMetadata()
@@ -148,7 +154,7 @@ export default function Mint() {
 
                   </div>
                   <div className="mint-result-text">
-                    {mintRes ? `${mintRes.name} minted successfully!` : "Minting failed"}
+                    {metadata ? `${metadata.name} minted successfully!` : "Minting failed"}
                   </div>
                   <div>
                     <img src={metadata && metadata.image} />

@@ -57,33 +57,63 @@ export const MintButton = (props: {
         : "pub";
     console.log(phase);
 
-    let res;
+    // let res;
 
     try {
-      // await metaplex.candyMachines().callGuardRoute({
-      //     candyMachine: cm,
-      //     guard: "allowList",
-      //     settings: {
-      //         path: "proof",
-      //         merkleProof: getMerkleProof(allowList, metaplex.identity().publicKey.toBase58())
-      //     }
-      // })
-
       props.showPopup();
-      res = await metaplex
-        .candyMachines()
-        .mint({
+
+      const transactionBuilder = metaplex.candyMachines().builders().callGuardRoute({
           candyMachine: cm,
-          collectionUpdateAuthority: new PublicKey(
-            "37zhnSs3SRavzQ8GDAHHfJ65Fb6gZH7XvrCesqBHEhNw"
-          ),
-          group: phase,
-        })
-        .then((res) => {          
-          props.closePopup()
-          props.reload()
-          props.setRes(res.nft)
-        });
+          guard: "allowList",
+          settings: {
+              path: "proof",
+              merkleProof: getMerkleProof(allowList, metaplex.identity().publicKey.toBase58())
+          },
+          group: phase
+      })
+
+      const mintBuilder = await metaplex.candyMachines().builders().mint({
+        candyMachine: cm,
+        collectionUpdateAuthority: new PublicKey(
+          "37zhnSs3SRavzQ8GDAHHfJ65Fb6gZH7XvrCesqBHEhNw"
+        ),
+        group: phase,
+      })
+      
+      mintBuilder.prepend(transactionBuilder)
+
+      await mintBuilder.sendAndConfirm(metaplex).then((res) => {
+        console.log(res);
+        props.closePopup();
+        props.reload();
+        props.setRes(res.tokenAddress);
+      });
+
+      // transactionBuilder.add(mintBuilder.getInstructionsWithSigners())
+
+      // const res = await transactionBuilder.sendAndConfirm(metaplex).then((res) => {
+      //   console.log(res);
+        
+      //   props.closePopup()
+      //   props.reload()
+      //   // props.setRes(res.nft)
+      // })      
+
+      // res = await metaplex
+      //   .candyMachines()
+      //   .mint({
+      //     candyMachine: cm,
+      //     collectionUpdateAuthority: new PublicKey(
+      //       "37zhnSs3SRavzQ8GDAHHfJ65Fb6gZH7XvrCesqBHEhNw"
+      //     ),
+      //     group: phase,
+      //   })
+      //   .then((res) => {          
+      //     props.closePopup()
+      //     props.reload()
+      //     props.setRes(res.nft)
+      //   });
+      
     } catch (error) {
       console.log(error);
       props.reload()
@@ -91,9 +121,6 @@ export const MintButton = (props: {
       setLoading(false);
       return;
     }
-
-    console.log(res);
-
     setLoading(false);
   };
 
@@ -106,7 +133,7 @@ export const MintButton = (props: {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.2, delay: 0.6 }}
       >
-        <span>Mint for 10 SOL</span>
+        <span>Mint for 2 SOL</span>
       </motion.button>
     </div>
   );
