@@ -1,6 +1,8 @@
-# dual-xnft
+# Sporting F1
 
-Compact version of the main app from Dual Finance, built specifically for the xNFT context.
+Sporting F1 is an F1 Fantasy League consisting of 2,000 cars. NFT traits make race prediction and earn points. The top 100 players of the 2023 season will receive prizes.
+
+This is the repository for the xNFT running in your Backpack wallet
 
 ## Requirements
 
