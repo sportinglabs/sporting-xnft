@@ -10,6 +10,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { toDate } from "../utils";
 import { useCandyMachine } from "../hooks/useCandyMachine";
+import { toast } from "react-toastify";
 
 export const MintButton = (props: {
   showPopup: Function;
@@ -25,17 +26,17 @@ export const MintButton = (props: {
   const cm = useCandyMachine(reload)
 
   const onClick = async () => {
-    // const allowList = await (await fetch("/allowList.json")).json()
+    const allowList = await (await fetch("/allowList.json")).json()
 
     if (!wallet.publicKey) {
       console.log("error", "Wallet not connected!");
       return;
     }
 
-    // if (!allowList.includes(wallet.publicKey.toBase58())) {
-    //     toast.error("You're not on the allowlist");
-    //     return;
-    // }
+    if (!allowList.includes(wallet.publicKey.toBase58())) {
+      toast.error("You are not in the allowlist");
+      return;
+    }
 
     setLoading(true);
 
