@@ -156,7 +156,7 @@ export default function Mint() {
                   <div className="mint-result-text">
                     {metadata ? `${metadata.name} minted successfully!` : "Minting failed"}
                   </div>
-                  <div>
+                  <div className="mint-result-item">
                     <img src={metadata && metadata.image} />
                   </div>
                   <div className="mint-result-button">
