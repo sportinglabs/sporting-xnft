@@ -93,7 +93,7 @@ export default function Mint() {
                     {/* @ts-ignore */}
                     <Countdown
                       date={toDate(
-                        cm.candyGuard.groups[0].guards.startDate?.date
+                        cm.candyGuard.groups[0].guards.startDate!.date
                       )}
                       onComplete={() => {
                         setIsActive(true);

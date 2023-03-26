@@ -30,10 +30,6 @@ export function msToTimeLeft(duration: number) {
   return `${days}d ${hours}h ${minutes}m`;
 }
 
-export const toDate = (value?: DateTime) => {
-  if (!value) {
-    return;
-  }
-
+export const toDate = (value: DateTime) => {
   return new Date(value.toNumber() * 1000);
 };

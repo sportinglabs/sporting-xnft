@@ -49,15 +49,23 @@ export const MintButton = (props: {
       .candyMachines()
       .findByAddress({ address: candyMachineAddress });
 
-    // @ts-ignore
-    const phase =
-      // @ts-ignore
-      toDate(cm.candyGuard?.groups[1].guards.startDate?.date) > new Date()
-        ? "wl"
-        : "pub";
-    console.log(phase);
+    const groups = cm.candyGuard!.groups;
+    const startTimes = groups.map((group) => ({
+      time: toDate(group.guards.startDate!.date).getTime(),
+      group: group.label,
+    }));
 
-    // let res;
+    startTimes.sort((a, b) => b.time - a.time);
+
+    let phase;
+    for (const startTime of startTimes) {
+      if (startTime.time <= new Date().getTime()) {        
+        phase = startTime.group;
+        break;
+      }
+    }
+
+    console.log(phase);
 
     try {
       props.showPopup();
