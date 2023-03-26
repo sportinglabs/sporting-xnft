@@ -9,35 +9,42 @@ import { Loading } from "../components/Loading";
 import nft_unrevealed from "../assets/nft-unrevealed.png";
 import icon from "../assets/icon.png";
 
-import { isButtonElement } from "react-router-dom/dist/dom";
 import axios from "axios";
 import { Metaplex } from "@metaplex-foundation/js";
 import { useConnection } from "@solana/wallet-adapter-react";
 
 export default function Mint() {
   const [reload, setReload] = useState(0);
-  const { cm, loading, error } = useCandyMachine(reload);
+  const { cm, loading } = useCandyMachine(reload);
   const [isActive, setIsActive] = useState(false);
   const [popup, setPopup] = useState(false);
+
+  const [mintLoading, setMintLoading] = useState(false);
+  const [mintError, setMintError] = useState(false);
   const [mintRes, setMintRes] = useState<any>();
   const [metadata, setMetadata] = useState<any>();
 
-  const { connection } = useConnection()
-  const metaplex = new Metaplex(connection)
-  
+  const { connection } = useConnection();
+  const metaplex = new Metaplex(connection);
+
   useEffect(() => {
-    const fetchMetadata = async() => {
-      const nft = await metaplex.nfts().findByToken({ token: mintRes })
-      const { data } = await axios.get(nft.uri)
-      console.log(data);
-      
-      setMetadata(data)
-    }
+    const fetchMetadata = async () => {
+      setMintLoading(true);
+      try {
+        const nft = await metaplex.nfts().findByToken({ token: mintRes });
+        const { data } = await axios.get(nft.uri);
+        setMetadata(data);
+      } catch (error) {
+        console.log(error);
+        setMintError(true);
+      }
+      setMintLoading(false);
+    };
     if (mintRes) {
-      fetchMetadata()
+      fetchMetadata();
     }
-  }, [mintRes])
-  
+  }, [mintRes]);
+
   const [minted, setMinted] = useState(false);
   const showPopUp = () => {
     setPopup(true);
@@ -122,10 +129,12 @@ export default function Mint() {
                         </span>
                       </div>
                     </motion.div>
-                    <MintButton showPopup={showPopUp} closePopup={showResult} reload={() => setReload(p => p + 1)} setRes={(r: any) => setMintRes(r) } />
-                    {/* {wallet && (
-                      <p>SOL Balance: {(balance || 0).toLocaleString()}</p>
-                    )} */}
+                    <MintButton
+                      showPopup={showPopUp}
+                      closePopup={showResult}
+                      reload={() => setReload((p) => p + 1)}
+                      setRes={(r: any) => setMintRes(r)}
+                    />
                   </>
                 )}
               </>
@@ -150,15 +159,20 @@ export default function Mint() {
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.2, delay: 0 }}
                 >
-                  <div>
-
-                  </div>
-                  <div className="mint-result-text">
-                    {metadata ? `${metadata.name} minted successfully!` : "Minting failed"}
-                  </div>
-                  <div className="mint-result-item">
-                    <img src={metadata && metadata.image} />
-                  </div>
+                  {mintLoading && <Loading />}
+                  {mintError && (
+                    <div className="mint-result-text">Minting failed</div>
+                  )}
+                  {metadata && (
+                    <>
+                      <div className="mint-result-text">
+                        {`${metadata.name} minted successfully!`}
+                      </div>
+                      <div className="mint-result-item">
+                        <img src={metadata && metadata.image} />
+                      </div>
+                    </>
+                  )}
                   <div className="mint-result-button">
                     <button
                       onClick={() => {
