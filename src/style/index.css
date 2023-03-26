@@ -40,10 +40,10 @@
 }
 
 :root {
-  --black: rgb(32, 32, 32);
+  --black: rgb(10, 10, 10);
   --black-faded: rgba(0, 0, 0, 0.5);
   --white: rgb(255, 255, 255);
-  --white-faded: rgba(255, 255, 255, 0.1);
+  --white-faded: rgba(255, 255, 255, 0.075);
   --signature: rgb(36, 220, 162);
   --signature-faded: rgba(36, 220, 162, 0.2);
 }
