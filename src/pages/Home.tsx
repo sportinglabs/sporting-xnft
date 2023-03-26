@@ -32,7 +32,7 @@ export default function Home() {
               </button>
             </Link>
             <Link to={"/stake"}>
-              <button className="home-tab stake-tab" >
+              <button className="home-tab stake-tab" disabled>
                 <div className="home-tab-text">
                   <div className="home-tab-title">Stake</div>
                   <div className="home-tab-description">Coming soon!</div>{" "}
@@ -42,7 +42,7 @@ export default function Home() {
               </button>
             </Link>
             <Link to={"/leaderboard"}>
-              <button className="home-tab leaderboard-tab" >
+              <button className="home-tab leaderboard-tab" disabled>
                 <div className="home-tab-text">
                   <div className="home-tab-title">Leaderboard</div>
                   <div className="home-tab-description">
