@@ -9,7 +9,6 @@ import { useWallet } from "../hooks/useWallet";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { toDate } from "../utils";
-import { useCandyMachine } from "../hooks/useCandyMachine";
 import { toast } from "react-toastify";
 
 export const MintButton = (props: {
@@ -23,22 +22,26 @@ export const MintButton = (props: {
   const { connection } = useConnection();
   const wallet = useWallet();
 
-  const cm = useCandyMachine(reload);
-
   const onClick = async () => {
-    const allowList = await (await fetch("/allowList.json")).json();
-
     if (!wallet.publicKey) {
+      toast.error("Wallet is not connected");
       console.log("error", "Wallet not connected!");
       return;
     }
 
-    if (!allowList.includes(wallet.publicKey.toBase58())) {
-      toast.error("You are not in the allowlist");
+    setLoading(true);
+
+    let discordWallets;
+    let madlistWallets;
+
+    try {
+      discordWallets = await (await fetch("/discord_wallets.json")).json();
+      madlistWallets = await (await fetch("/madlist_wallets.json")).json();
+    } catch (error) {
+      toast.error("Failed to check permissions, please try again");
+      console.log("error", "Failed to fetch allowlists!");
       return;
     }
-
-    setLoading(true);
 
     const metaplex = Metaplex.make(connection).use(
       walletAdapterIdentity(wallet)
@@ -67,6 +70,20 @@ export const MintButton = (props: {
 
     console.log(phase);
 
+    if (phase === "wl") {
+      if (!discordWallets.includes(wallet.publicKey.toBase58())) {
+        toast.error("You are not on the allowlist for phase 1");
+        console.log("error", "You are not in the discord allowlist!");
+        return;
+      }
+    } else if (phase === "mad") {
+      if (!madlistWallets.includes(wallet.publicKey.toBase58())) {
+        toast.error("You are not on the allowlist for phase 2");
+        console.log("error", "You are not in the madlist allowlist!");
+        return;
+      }
+    }
+
     try {
       props.showPopup();
 
@@ -82,23 +99,32 @@ export const MintButton = (props: {
         });
 
       if (phase === "wl") {
-        const transactionBuilder = metaplex
-          .candyMachines()
-          .builders()
-          .callGuardRoute({
-            candyMachine: cm,
-            guard: "allowList",
-            settings: {
-              path: "proof",
-              merkleProof: getMerkleProof(
-                allowList,
-                metaplex.identity().publicKey.toBase58()
-              ),
-            },
-            group: phase,
-          });
+        await metaplex.candyMachines().callGuardRoute({
+          candyMachine: cm,
+          guard: "allowList",
+          settings: {
+            path: "proof",
+            merkleProof: getMerkleProof(
+              discordWallets,
+              metaplex.identity().publicKey.toBase58()
+            ),
+          },
+          group: phase,
+        })
 
-        mintBuilder.prepend(transactionBuilder);
+      } else if (phase === "mad") {
+        await metaplex.candyMachines().callGuardRoute({
+          candyMachine: cm,
+          guard: "allowList",
+          settings: {
+            path: "proof",
+            merkleProof: getMerkleProof(
+              madlistWallets,
+              metaplex.identity().publicKey.toBase58()
+            ),
+          },
+          group: phase,
+        })
       }
 
       await mintBuilder.sendAndConfirm(metaplex).then((res) => {
@@ -108,34 +134,12 @@ export const MintButton = (props: {
         props.setRes(res.tokenAddress);
       });
 
-      // transactionBuilder.add(mintBuilder.getInstructionsWithSigners())
-
-      // const res = await transactionBuilder.sendAndConfirm(metaplex).then((res) => {
-      //   console.log(res);
-
-      //   props.closePopup()
-      //   props.reload()
-      //   // props.setRes(res.nft)
-      // })
-
-      // res = await metaplex
-      //   .candyMachines()
-      //   .mint({
-      //     candyMachine: cm,
-      //     collectionUpdateAuthority: new PublicKey(
-      //       "37zhnSs3SRavzQ8GDAHHfJ65Fb6gZH7XvrCesqBHEhNw"
-      //     ),
-      //     group: phase,
-      //   })
-      //   .then((res) => {
-      //     props.closePopup()
-      //     props.reload()
-      //     props.setRes(res.nft)
-      //   });
     } catch (error) {
       console.log(error);
+      toast.error("Failed to mint, please try again");
       props.reload();
       props.closePopup();
+      props.setRes(null)
       setLoading(false);
       return;
     }

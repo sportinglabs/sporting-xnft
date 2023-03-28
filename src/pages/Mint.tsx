@@ -55,6 +55,8 @@ export default function Mint() {
   const closeResult = () => {
     setPopup(false);
     setMinted(false);
+    setMintRes(null);
+    setMetadata(null);
   };
 
   if (loading) {
