@@ -1,0 +1,29 @@
+[
+  {
+    "race_id": "SLR-0001",
+    "poolAddress": "9NNuZWFYHwVqP1BBcoe2FBvwo6vdYFwfKhwAEmE1w6hN",
+    "country": "saudi-arabia",
+    "name": "Formula 1 STC Saudi Arabian Grand Prix 2023",
+    "month_date": "MAR",
+    "day_date": "17-18",
+    "racetrack": "saudia-arabia"
+  },
+  {
+    "race_id": "SLR-0002",
+    "country": "australia",
+    "name": "Formula 1 Rolex Australian Grand Prix 2023",
+    "month_date": "MAR-APR",
+    "day_date": "31-02",
+    "status": "upcoming",
+    "racetrack": "australia"
+  },
+  {
+    "race_id": "SLR-0003",
+    "country": "azerbaijan",
+    "name": "Formula 1 Azerbaijan Grand Prix 2023",
+    "month_date": "APR",
+    "day_date": "28-30",
+    "status": "upcoming",
+    "racetrack": "azerbaijan"
+  }
+]

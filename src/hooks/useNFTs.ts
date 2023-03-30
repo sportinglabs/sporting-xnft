@@ -1,6 +1,6 @@
 import { useConnection } from "@solana/wallet-adapter-react";
 import { useEffect, useState } from "react";
-import { getNFTsByOwner } from "../utils/nfts";
+import { getNfts } from "../utils/nfts";
 import { useWallet } from "./useWallet";
 
 export const useNFTs = () => {
@@ -9,7 +9,6 @@ export const useNFTs = () => {
   const [error, setError] = useState(false);
 
   const { publicKey } = useWallet();
-
   const connection = useConnection();
 
   useEffect(() => {
@@ -18,7 +17,9 @@ export const useNFTs = () => {
       setError(false);
 
       try {
-        const nfts = await getNFTsByOwner(publicKey);
+        const nfts = await getNfts(publicKey);
+        console.log(nfts);
+
         setNfts(nfts);
         setLoading(false);
       } catch (error) {
@@ -28,8 +29,8 @@ export const useNFTs = () => {
       }
     };
 
-    console.log("fetching nfts");
     if (publicKey) {
+      console.log("fetching nfts");
       fetchNFTs();
     }
   }, [connection, publicKey]);

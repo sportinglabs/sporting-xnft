@@ -1,41 +1,12 @@
 import { useNFTs } from "../hooks/useNFTs";
 import RaceSelection from "../components/stake/RaceSelection";
 import { CarSelection } from "../components/stake/CarSelection";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import { useConfig } from "../hooks/useConfig";
+import { Loading } from "../components/Loading";
+import { usePools } from "../hooks/usePools";
 
-const races = [
-  {
-    race_id: "SLR-0001",
-    country: "saudi-arabia",
-    name: "Formula 1 STC Saudi Arabian Grand Prix 2023",
-    month_date: "MAR",
-    day_date: "17-18",
-    status: "live",
-    staked: 89,
-    racetrack: "saudia-arabia",
-  },
-  {
-    race_id: "SLR-0002",
-    country: "australia",
-    name: "Formula 1 Rolex Australian Grand Prix 2023",
-    month_date: "MAR-APR",
-    day_date: "31-02",
-    status: "upcoming",
-    staked: 15,
-    racetrack: "australia",
-  },
-  {
-    race_id: "SLR-0003",
-    country: "azerbaijan",
-    name: "Formula 1 Azerbaijan Grand Prix 2023",
-    month_date: "APR",
-    day_date: "28-30",
-    status: "upcoming",
-    staked: 9,
-    racetrack: "azerbaijan",
-  },
-];
 export default function Stake() {
   const [raceID, setRaceID] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
@@ -44,7 +15,17 @@ export default function Stake() {
   const controlModal = () => (modalOpen ? close() : open());
 
   const nfts = useNFTs();
-  // const pools = usePools();
+  const pools = usePools();
+  console.log(pools);
+  
+
+  const config = useConfig();
+  console.log(config);
+  
+
+  config.loading && <Loading />
+
+  config.error && <div>error</div>
 
   return (
     <>
@@ -55,7 +36,7 @@ export default function Stake() {
             <div className="stake-items-container">
               <div className="stake-items">
                 <div className="stake-items-content">
-                  {races.map((r) => (
+                  {config?.config?.map((r: any) => (
                     <RaceSelection
                       race_id={r.race_id}
                       country={r.country}

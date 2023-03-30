@@ -11,6 +11,7 @@
     "bundle": "yarn build && npx xnft bundle"
   },
   "dependencies": {
+    "@builderz/sporting-f1-sdk": "^0.0.1",
     "@coral-xyz/common-public": "latest",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -29,7 +30,6 @@
     "react-lazyload": "^3.2.0",
     "react-router-dom": "^6.8.1",
     "react-toastify": "^9.1.2",
-    "sporting-f1-sdk": "^1.0.0",
     "stream-browserify": "^3.0.0",
     "tw-elements": "^1.0.0-alpha13"
   },

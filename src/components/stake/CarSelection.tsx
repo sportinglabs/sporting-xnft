@@ -1,7 +1,6 @@
-import car from "../assets/car.png";
 import { motion } from "framer-motion";
 import { useNFTs } from "../../hooks/useNFTs";
-import { useState } from "react";
+import { Loading } from "../Loading";
 
 const dropIn = {
   hidden: {
@@ -23,7 +22,14 @@ export function CarSelection(props: {
   controlModal: Function;
   race_id: string;
 }) {
-  const nfts = useNFTs().nfts;
+  const nfts = useNFTs();
+
+  const handleClick = (e: any) => {
+    // TODO
+  }
+
+  nfts.loading && <Loading />;
+  nfts.error && <div>error</div>;
 
   return (
     <motion.div
@@ -41,8 +47,9 @@ export function CarSelection(props: {
         <div className="car-selection-title">Choose your cars</div>
         <div className="car-selection-list">
           <div className="car-selection-list-content">
-            {nfts.map((i) => (
+            {nfts.nfts.map((i) => (
               <motion.div
+                key={i.tokenAddress}
                 className="car-selection-item"
                 variants={dropIn}
                 initial="hidden"
@@ -50,13 +57,13 @@ export function CarSelection(props: {
                 exit="exit"
                 whileHover={{ scale: 0.95 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={() => {
-                  console.log(nfts);
-                  //TODO: STAKING FUNKTION EINFÜGEN
-                }}
+                onClick={handleClick}
                 transition={{ duration: 0.2 }}
               >
                 <div className="car-selection-item-content">
+                  <img
+                    src={i.imageUrl}
+                  />
                   <div className="car-selection-name">{i.name}</div>
                   <div className="car-selection-metadata">
                     {i.traits.length > 1 &&

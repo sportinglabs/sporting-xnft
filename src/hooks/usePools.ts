@@ -1,6 +1,6 @@
 import { useConnection } from "@solana/wallet-adapter-react";
 import { useEffect, useState } from "react";
-import { getAllPools } from "sporting-f1-sdk";
+import { getAllPools } from "@builderz/sporting-f1-sdk";
 import { useWallet } from "./useWallet";
 
 export const usePools = () => {
@@ -19,7 +19,7 @@ export const usePools = () => {
       setError(false);
 
       try {
-        const pools = await getAllPools(connection);
+        // const pools = await getAllPools(connection);
         setPools(pools);
         setLoading(false);
       } catch (error) {
