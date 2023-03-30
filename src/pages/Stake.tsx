@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useConfig } from "../hooks/useConfig";
 import { Loading } from "../components/Loading";
-import { usePools } from "../hooks/usePools";
 
 export default function Stake() {
   const [raceID, setRaceID] = useState("");
@@ -13,16 +12,10 @@ export default function Stake() {
   const close = () => setModalOpen(false);
   const open = () => setModalOpen(true);
   const controlModal = () => (modalOpen ? close() : open());
-
-  const nfts = useNFTs();
-  const pools = usePools();
-  console.log(pools);
   
-
   const config = useConfig();
   console.log(config);
   
-
   config.loading && <Loading />
 
   config.error && <div>error</div>

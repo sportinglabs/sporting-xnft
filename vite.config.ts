@@ -47,6 +47,10 @@ export default defineConfig(({ command, mode }) => {
           find: "stream",
           replacement: `stream-browserify`,
         },
+        {
+          find: "@coral-xyz/anchor",
+          replacement: "@coral-xyz/anchor/dist/cjs/index.js",
+        },
       ],
     },
     server: {
