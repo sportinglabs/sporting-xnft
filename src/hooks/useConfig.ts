@@ -1,10 +1,11 @@
-import { StakePool } from "@builderz/sporting-f1-sdk";
+import { StakePool, PoolStateEnum } from "@builderz/sporting-f1-sdk";
 import { useConnection } from "@solana/wallet-adapter-react";
 import { useEffect, useState } from "react";
 import { PublicKey } from "@solana/web3.js";
+import { Config } from "../types/types";
 
 export const useConfig = () => {
-  const [config, setConfig] = useState<any>();
+  const [config, setConfig] = useState<Config>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -14,17 +15,17 @@ export const useConfig = () => {
     const fetchConfig = async () => {
       setLoading(true);
       try {
-        let config = await (await fetch("/config.json")).json();
+        let config: Config = await (await fetch("/config.json")).json();
         const updatedConfig = await Promise.all(
-          config.map(async (race: any) => {
+          config.map(async (race) => {
             if (race.poolAddress) {
               const stakePool = await StakePool.fromAccountAddress(
                 connection,
                 new PublicKey(race.poolAddress)
               );
               // Add new properties to the race object
-              race.totalStaked = Number(stakePool.totalStaked);
-              race.state = stakePool.poolState;
+              race.staked = Number(stakePool.totalStaked);
+              race.status = PoolStateEnum[stakePool.poolState];
             }
             return race;
           })

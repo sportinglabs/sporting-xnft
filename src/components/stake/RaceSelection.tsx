@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 export default function RaceSelection(props: {
-  race_id: string;
   country: string;
+  poolAddress: string;
   name: string;
   month_date: string;
   day_date: string;
-  status: string;
-  staked: number;
+  status?: string;
+  staked?: number;
   racetrack: string;
   isModalOpen: boolean;
   controlModal: Function;
@@ -19,7 +19,7 @@ export default function RaceSelection(props: {
       whileHover={{ scale: 0.95 }}
       whileTap={{ scale: 0.9 }}
       onClick={() => {
-        props.setRaceID(props.race_id);
+        props.setRaceID(props.poolAddress);
         props.controlModal();
       }}
       transition={{ duration: 0.2 }}
@@ -55,7 +55,7 @@ export default function RaceSelection(props: {
           <button className={"race-live-status " + props.status}>
             {props.status}
           </button>
-          <button className="race-staked-amount">{props.staked} staked</button>
+          <button className="race-staked-amount">{props.staked || 0} staked</button>
         </div>
       </div>
     </motion.div>

@@ -29,17 +29,17 @@ export default function Stake() {
             <div className="stake-items-container">
               <div className="stake-items">
                 <div className="stake-items-content">
-                  {config?.config?.map((r: any) => (
+                  {config?.config?.map((pool) => (
                     <RaceSelection
-                      race_id={r.race_id}
-                      country={r.country}
-                      name={r.name}
-                      month_date={r.month_date}
-                      day_date={r.day_date}
-                      status={r.status}
-                      staked={r.staked}
-                      racetrack={r.racetrack}
-                      key={r.race_id}
+                      key={pool.name}
+                      poolAddress={pool.poolAddress!}
+                      country={pool.country}
+                      name={pool.name}
+                      month_date={pool.month_date}
+                      day_date={pool.day_date}
+                      status={pool.status}
+                      staked={pool.staked}
+                      racetrack={pool.racetrack}
                       isModalOpen={modalOpen}
                       controlModal={controlModal}
                       setRaceID={setRaceID}
