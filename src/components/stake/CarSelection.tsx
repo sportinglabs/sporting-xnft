@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useNFTs } from "../../hooks/useNFTs";
 import { Loading } from "../Loading";
+import { PublicKey } from "@solana/web3.js";
+import { StakeEntry, PROGRAM_ID } from "@builderz/sporting-f1-sdk";
+import { useWallet } from "../../hooks/useWallet";
+import { useConnection } from "@solana/wallet-adapter-react";
 
 const dropIn = {
   hidden: {
@@ -20,9 +25,49 @@ const dropIn = {
 
 export function CarSelection(props: {
   controlModal: Function;
-  race_id: string;
+  poolAddress: string;
 }) {
   const nfts = useNFTs();
+  const wallet = useWallet();
+  const { connection } = useConnection()
+
+  const [nftsStaking, setNftsStaking] = useState<any>(null)
+
+  useEffect(() => {
+    const fetchStakeEntries = async () => {
+      const withStakingData = await Promise.all(
+        nfts.nfts.map(async (nft) => {
+          console.log(nft);
+
+          const [stakeEntryPda] = PublicKey.findProgramAddressSync(
+            [
+              Buffer.from("stake-entry"),
+              new PublicKey(props.poolAddress).toBuffer(),
+              new PublicKey(nft.tokenAddress).toBuffer(),
+              wallet.publicKey.toBuffer(),
+            ],
+            PROGRAM_ID
+          );
+          
+          try {
+            const stakeEntry = await StakeEntry.fromAccountAddress(connection, stakeEntryPda);
+            return { ...nft, stakeEntry };
+
+          } catch (error) {
+            
+          }          
+        })
+      );
+
+      console.log(withStakingData);
+    }
+
+    if (nfts.nfts.length > 0) {
+      console.log("Fetching stake entries");
+      
+      fetchStakeEntries();
+    }
+  }, [nfts])
 
   const handleClick = (e: any) => {
     // TODO

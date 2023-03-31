@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 export default function RaceSelection(props: {
   country: string;
   poolAddress: string;
@@ -10,7 +11,7 @@ export default function RaceSelection(props: {
   racetrack: string;
   isModalOpen: boolean;
   controlModal: Function;
-  setRaceID: Function;
+  setPoolAddress: Function;
 }) {
   return (
     <motion.div
@@ -19,7 +20,7 @@ export default function RaceSelection(props: {
       whileHover={{ scale: 0.95 }}
       whileTap={{ scale: 0.9 }}
       onClick={() => {
-        props.setRaceID(props.poolAddress);
+        props.setPoolAddress(props.poolAddress);
         props.controlModal();
       }}
       transition={{ duration: 0.2 }}

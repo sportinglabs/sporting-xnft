@@ -28,6 +28,7 @@ export const useNFTs = () => {
             filtered.push(nfts[i]);
           }
         }
+
         console.log(filtered);
 
         setNfts(filtered);
