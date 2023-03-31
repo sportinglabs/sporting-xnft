@@ -18,9 +18,19 @@ export const useNFTs = () => {
 
       try {
         const nfts = await getNfts(publicKey);
-        console.log(nfts);
+        //filtering NFT's to only load items from the sporting collection
+        const filtered = [];
+        for (let i = 0; i < nfts.length; i++) {
+          if (
+            nfts[i].collectionAddress ==
+            "Et9ckpQCXFN5PsiYN781AczSVuQYyGEdDEPDJ7jrxz4c"
+          ) {
+            filtered.push(nfts[i]);
+          }
+        }
+        console.log(filtered);
 
-        setNfts(nfts);
+        setNfts(filtered);
         setLoading(false);
       } catch (error) {
         console.error(error);

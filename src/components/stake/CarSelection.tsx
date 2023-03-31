@@ -26,7 +26,7 @@ export function CarSelection(props: {
 
   const handleClick = (e: any) => {
     // TODO
-  }
+  };
 
   nfts.loading && <Loading />;
   nfts.error && <div>error</div>;
@@ -44,7 +44,7 @@ export function CarSelection(props: {
         className="car-selection-content"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="car-selection-title">Choose your cars</div>
+        <div className="car-selection-title">Choose your car</div>
         <div className="car-selection-list">
           <div className="car-selection-list-content">
             {nfts.nfts.map((i) => (
@@ -61,9 +61,9 @@ export function CarSelection(props: {
                 transition={{ duration: 0.2 }}
               >
                 <div className="car-selection-item-content">
-                  <img
-                    src={i.imageUrl}
-                  />
+                  <div className="car-selection-cover">
+                    <img src={i.imageUrl} />
+                  </div>
                   <div className="car-selection-name">{i.name}</div>
                   <div className="car-selection-metadata">
                     {i.traits.length > 1 &&

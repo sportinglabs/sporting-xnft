@@ -1,278 +1,286 @@
 .stake {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    min-height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .stake-title {
-    width: 100vw;
-    height: 15vh;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    color: var(--white);
-    font-family: "sonara-rounded";
-    font-size: 24px;
+  width: 100vw;
+  height: 15vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: var(--white);
+  font-family: "sonara-rounded";
+  font-size: 24px;
 }
 
 .stake-items-container {
-    width: 100vw;
-    height: 85vh;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100vw;
+  height: 85vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .stake-items {
-    width: calc(100vw - 40px);
-    height: calc(85vh - 40px);
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    border-radius: 10px;
-    overflow-y: scroll;
+  width: calc(100vw - 40px);
+  height: calc(85vh - 40px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 10px;
+  overflow-y: scroll;
 }
-
 
 /*staking item*/
 
 .race-selection {
-    width: calc(100vw - 80px);
-    height: 50vh;
-    margin: 0;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 20px;
-    border-radius: 10px;
-    font-family: "jetbrains-light";
-    font-size: 12px;
-    position: relative;
-    width: calc(100vw- 120px);
-    background: url("../assets/backgrounds/australia.png") no-repeat;
-    background-size: calc(100vw - 20px);
-    cursor: pointer;
-    opacity: 0;
+  width: calc(100vw - 80px);
+  height: 50vh;
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: "jetbrains-light";
+  font-size: 12px;
+  position: relative;
+  width: calc(100vw- 120px);
+  background: url("../assets/backgrounds/australia.png") no-repeat;
+  background-size: calc(100vw - 20px);
+  cursor: pointer;
+  opacity: 0;
 }
 
 .australia {
-    background: url("../assets/backgrounds/australia.png") no-repeat;
-    background-size: calc(100vw - 20px);
+  background: url("../assets/backgrounds/australia.png") no-repeat;
+  background-size: calc(100vw - 20px);
 }
 
 .saudi-arabia {
-    background: url("../assets/backgrounds/saudi-arabia.png") no-repeat;
-    background-size: calc(100vw - 20px);
+  background: url("../assets/backgrounds/saudi-arabia.png") no-repeat;
+  background-size: calc(100vw - 20px);
 }
 
 .azerbaijan {
-    background: url("../assets/backgrounds/azerbaijan.png") no-repeat;
-    background-size: calc(100vw - 20px);
+  background: url("../assets/backgrounds/azerbaijan.png") no-repeat;
+  background-size: calc(100vw - 20px);
 }
 
 .race-date {
-    font-family: "jetbrains-light";
-    color: var(--white);
-    height: 10vh;
+  font-family: "jetbrains-light";
+  color: var(--white);
+  height: 10vh;
 }
 
 .race-selection-trackmap {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    max-width: 39vw;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  max-width: 39vw;
 }
 
 .race-info {
-    font-family: "jetbrains-light";
-    color: var(--white);
-    height: 20vh;
-    display: flex;
-    align-items: center;
-    justify-content: left;
+  font-family: "jetbrains-light";
+  color: var(--white);
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
 
 .race-selection-name {
-    margin-bottom: 10px;
-    font-family: "sonara-rounded";
-    font-size: 18px;
-    color: var(--signature);
+  margin-bottom: 10px;
+  font-family: "sonara-rounded";
+  font-size: 18px;
+  color: var(--signature);
 }
 
 .race-status {
-    font-family: "jetbrains-light";
-    color: var(--white);
-    height: 10vh;
-    display: flex;
-    align-items: flex-end;
-    justify-content: left;
+  font-family: "jetbrains-light";
+  color: var(--white);
+  height: 10vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: left;
 }
 
 .race-selection-buttons button {
-    margin-right: 5px;
-    padding: 10px;
-    background-color: var(--white-faded);
-    border: 0px solid var(--white-faded);
-    border-radius: 10px;
-    font-family: "jetbrains-bold";
-    color: white;
+  margin-right: 5px;
+  padding: 10px;
+  background-color: var(--white-faded);
+  border: 0px solid var(--white-faded);
+  border-radius: 10px;
+  font-family: "jetbrains-bold";
+  color: white;
 }
 
 button.race-live-status {
-    background-color: rgba(138, 43, 226, 0.2);
+  background-color: rgba(138, 43, 226, 0.2);
 }
 
 button.expired {
-    background-color: rgba(55, 0, 255, 0.2);
+  background-color: rgba(55, 0, 255, 0.2);
 }
 
 button.live {
-    background-color: var(--signature);
-    color: black;
+  background-color: var(--signature);
+  color: black;
 }
 
 button.upcoming {
-    background-color: rgba(255, 32, 181, 0.4);
+  background-color: rgba(255, 32, 181, 0.4);
 }
 
 button.race-staked-amount {
-    background-color: var(--signature-faded);
+  background-color: var(--signature-faded);
 }
 
 .car-selection {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1000;
-    background-color: var(--black);
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    color: var(--signature);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: var(--black);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: var(--signature);
 }
 
 .car-selection-content {
-    width: calc(100vw - 20px);
-    height: 85vh;
-    background-color: var(--black);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+  width: calc(100vw - 20px);
+  height: 85vh;
+  background-color: var(--black);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .car-selection-title {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    height: calc(15vh);
-    font-family: "sonara-rounded";
-    font-size: 18px;
-    color: var(--signature);
-    text-align: center;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: calc(15vh);
+  font-family: "sonara-rounded";
+  font-size: 18px;
+  color: var(--signature);
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .car-selection-list {
-    width: calc(100vw - 20px);
-    height: calc(85vh - 70px);
-    margin: 0;
-    border-radius: 10px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    text-align: center;
-    overflow-y: scroll;
+  width: calc(100vw - 20px);
+  height: calc(85vh - 20px);
+  margin: 0;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  overflow-y: scroll;
 }
 
 .car-selection-list-content {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .car-selection-item {
-    width: calc(100vw - 20px);
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: var(--black-faded);
-    border-radius: 10px;
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+  width: calc(100vw - 20px);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: var(--white-faded);
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
-
+.car-selection-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.car-selection-cover img {
+  width: calc(100vw - 60px);
+  border-radius: 10px;
+}
 .car-selection-name {
-    color: var(--white);
-    font-family: "jetbrains-bold";
-    margin-top: 10px;
-    margin-bottom: 40px;
+  color: var(--white);
+  font-family: "jetbrains-bold";
+  margin-top: 10px;
+  margin-bottom: 40px;
 }
 
 .car-selection-metadata {
-    width: calc(100vw - 40px);
-    min-height: 10vh;
-    border-radius: 10px;
-    text-align: center;
-    margin-bottom: 10px;
+  width: calc(100vw - 40px);
+  min-height: 10vh;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .car-selection-attribute {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
 }
 
 .car-selection-attribute-name {
-    font-family: "jetbrains-medium";
-    color: var(--signature);
+  font-family: "jetbrains-medium";
+  color: var(--signature);
 }
 
 .car-selection-attribute-value {
-    font-family: "jetbrains-light";
-    color: var(--white);
+  font-family: "jetbrains-light";
+  color: var(--white);
 }
 
 .car-selection-button {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 .car-selection-button button {
-    margin-right: 5px;
-    padding: 10px;
-    background-color: var(--white-faded);
-    border: 0px solid var(--white-faded);
-    border-radius: 10px;
-    font-family: "jetbrains-bold";
-    color: white;
-    cursor: pointer;
-    width: 30vw;
+  margin-right: 5px;
+  padding: 10px;
+  background-color: var(--white-faded);
+  border: 0px solid var(--white-faded);
+  border-radius: 10px;
+  font-family: "jetbrains-bold";
+  color: white;
+  cursor: pointer;
+  width: 30vw;
 }
 
 .car-selection-button button:hover {
-    color: var(--signature);
-    background-color: var(--black-faded);
-    transition-duration: 0.2s;
+  color: var(--signature);
+  background-color: var(--black-faded);
+  transition-duration: 0.2s;
 }
 
 .car-selection-button button:not(:hover) {
-    transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 
 .car-selection-button button:active {
-    color: var(--signature);
-    background-color: var(--white);
+  color: var(--signature);
+  background-color: var(--white);
 }
