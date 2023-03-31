@@ -27,6 +27,9 @@ export default function Mint() {
   const { connection } = useConnection();
   const metaplex = new Metaplex(connection);
 
+  console.log(cm?.candyGuard?.guards.startDate?.date);
+  
+
   useEffect(() => {
     const fetchMetadata = async () => {
       setMintLoading(true);
@@ -95,7 +98,7 @@ export default function Mint() {
                     {/* @ts-ignore */}
                     <Countdown
                       date={toDate(
-                        cm.candyGuard.groups[0].guards.startDate!.date
+                        cm?.candyGuard?.guards.startDate!.date
                       )}
                       onComplete={() => {
                         setIsActive(true);
@@ -106,7 +109,7 @@ export default function Mint() {
                           // @ts-ignore
                           toDate(
                             // @ts-ignore
-                            cm?.candyGuard.groups[0].guards.startDate?.date
+                            cm?.candyGuard?.guards.startDate.date
                           ) > new Date()
                         ) {
                           setIsActive(false);
