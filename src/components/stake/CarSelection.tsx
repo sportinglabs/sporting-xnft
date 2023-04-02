@@ -6,6 +6,7 @@ import { PublicKey } from "@solana/web3.js";
 import { StakeEntry, PROGRAM_ID } from "@builderz/sporting-f1-sdk";
 import { useWallet } from "../../hooks/useWallet";
 import { useConnection } from "@solana/wallet-adapter-react";
+import { StakingConfirmation } from "./Confirmation";
 
 const dropIn = {
   hidden: {
@@ -29,9 +30,15 @@ export function CarSelection(props: {
 }) {
   const nfts = useNFTs();
   const wallet = useWallet();
-  const { connection } = useConnection()
+  const { connection } = useConnection();
 
-  const [nftsStaking, setNftsStaking] = useState<any>(null)
+  const [nftsStaking, setNftsStaking] = useState<any>(null);
+  const [popup, setPopup] = useState<boolean>(false);
+  const [currentNft, setCurrentNft] = useState<any>(null);
+
+  const closeConfirmScreen = () => {
+    setPopup(false);
+  };
 
   useEffect(() => {
     const fetchStakeEntries = async () => {
@@ -48,29 +55,31 @@ export function CarSelection(props: {
             ],
             PROGRAM_ID
           );
-          
-          try {
-            const stakeEntry = await StakeEntry.fromAccountAddress(connection, stakeEntryPda);
-            return { ...nft, stakeEntry };
 
-          } catch (error) {
-            
-          }          
+          try {
+            const stakeEntry = await StakeEntry.fromAccountAddress(
+              connection,
+              stakeEntryPda
+            );
+            return { ...nft, stakeEntry };
+          } catch (error) {}
         })
       );
 
-      console.log(withStakingData);
-    }
+      setNftsStaking(withStakingData);
+    };
 
     if (nfts.nfts.length > 0) {
       console.log("Fetching stake entries");
-      
+
       fetchStakeEntries();
     }
-  }, [nfts])
+  }, [nfts]);
 
-  const handleClick = (e: any) => {
+  const handleClick = (nft: any) => {
     // TODO
+    setPopup(true);
+    setCurrentNft(nft);
   };
 
   nfts.loading && <Loading />;
@@ -92,9 +101,9 @@ export function CarSelection(props: {
         <div className="car-selection-title">Choose your car</div>
         <div className="car-selection-list">
           <div className="car-selection-list-content">
-            {nfts.nfts.map((i) => (
+            {nfts.nfts.map((nft) => (
               <motion.div
-                key={i.tokenAddress}
+                key={nft.tokenAddress}
                 className="car-selection-item"
                 variants={dropIn}
                 initial="hidden"
@@ -102,17 +111,17 @@ export function CarSelection(props: {
                 exit="exit"
                 whileHover={{ scale: 0.95 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={handleClick}
+                onClick={() => handleClick(nft)}
                 transition={{ duration: 0.2 }}
               >
                 <div className="car-selection-item-content">
                   <div className="car-selection-cover">
-                    <img src={i.imageUrl} />
+                    <img src={nft.imageUrl} />
                   </div>
-                  <div className="car-selection-name">{i.name}</div>
+                  <div className="car-selection-name">{nft.name}</div>
                   <div className="car-selection-metadata">
-                    {i.traits.length > 1 &&
-                      i.traits.map((m: any) => (
+                    {nft.traits.length > 1 &&
+                      nft.traits.map((m: any) => (
                         <div className="car-selection-attribute">
                           <div className="car-selection-attribute-name">
                             {m.trait_type}
@@ -131,6 +140,9 @@ export function CarSelection(props: {
         <div className="car-selection-button">
           <button onClick={() => props.controlModal()}>Back</button>
         </div>
+        {popup && (
+          <StakingConfirmation nft={currentNft} closeConfirmScreen={() => setPopup(false)} />
+        )}
       </div>
     </motion.div>
   );
