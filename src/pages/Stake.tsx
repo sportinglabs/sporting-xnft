@@ -1,7 +1,6 @@
-import { useNFTs } from "../hooks/useNFTs";
 import RaceSelection from "../components/stake/RaceSelection";
 import { CarSelection } from "../components/stake/CarSelection";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useConfig } from "../hooks/useConfig";
 import { Loading } from "../components/Loading";
