@@ -1,11 +1,36 @@
+import { stake, unstake } from "@builderz/sporting-f1-sdk";
+import { useConnection } from "@solana/wallet-adapter-react";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { useWallet } from "../../hooks/useWallet";
+import { toast } from "react-toastify";
 
 export const StakingConfirmation = ({ nft, closeConfirmScreen }: any) => {
-  console.log(nft);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleEvent = async() => {
-    // TODO
-  }
+  const { connection } = useConnection();
+  const wallet = useWallet()
+
+  const handleEvent = async () => {
+    setLoading(true);
+
+    toast.loading(`${nft.stakeEntry ? 'Unstaking' : 'Staking'}`)
+
+    try {
+      if (nft.stakeEntry) {
+        const res = await unstake(connection, wallet, nft.tokenAddress)
+        toast.success('Unstaked')
+      } else {
+        const res = await stake(connection, wallet, nft.tokenAddress)
+        toast.success('Staked')
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Error, something went wrong")
+    }
+
+    setLoading(false);
+  };
 
   return (
     <>
@@ -40,10 +65,17 @@ export const StakingConfirmation = ({ nft, closeConfirmScreen }: any) => {
                 ))}
             </div>
           </div>
-          <div className="mint-result-text">Ready to Stake/Unstake?</div>
+          <div className="mint-result-text">
+            Ready to {nft.stakeEntry ? "Unstake" : "Stake"}?
+          </div>
           {/* TODO */}
           <div className="mint-result-button">
-            <button onClick={handleEvent}>Stake/Unstake</button>
+            <button
+              className={loading ? " btn loading" : ""}
+              onClick={handleEvent}
+            >
+              {nft.stakeEntry ? "Unstake" : "Stake"}
+            </button>
           </div>
         </motion.div>
       </motion.div>

@@ -169,7 +169,6 @@ export const MintButton = (props: {
   return (
     <div className="mint-button">
       <motion.button
-        className={loading ? "loading" : "loading"}
         onClick={() => onClick()}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

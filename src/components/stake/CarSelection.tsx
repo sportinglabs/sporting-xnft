@@ -28,7 +28,7 @@ export function CarSelection(props: {
   controlModal: Function;
   poolAddress: string;
 }) {
-  const nfts = useNFTs();
+  const nfts = useNFTs(props.poolAddress);
   const wallet = useWallet();
   const { connection } = useConnection();
 
@@ -36,45 +36,7 @@ export function CarSelection(props: {
   const [popup, setPopup] = useState<boolean>(false);
   const [currentNft, setCurrentNft] = useState<any>(null);
 
-  const closeConfirmScreen = () => {
-    setPopup(false);
-  };
-
-  useEffect(() => {
-    const fetchStakeEntries = async () => {
-      const withStakingData = await Promise.all(
-        nfts.nfts.map(async (nft) => {
-          console.log(nft);
-
-          const [stakeEntryPda] = PublicKey.findProgramAddressSync(
-            [
-              Buffer.from("stake-entry"),
-              new PublicKey(props.poolAddress).toBuffer(),
-              new PublicKey(nft.tokenAddress).toBuffer(),
-              wallet.publicKey.toBuffer(),
-            ],
-            PROGRAM_ID
-          );
-
-          try {
-            const stakeEntry = await StakeEntry.fromAccountAddress(
-              connection,
-              stakeEntryPda
-            );
-            return { ...nft, stakeEntry };
-          } catch (error) {}
-        })
-      );
-
-      setNftsStaking(withStakingData);
-    };
-
-    if (nfts.nfts.length > 0) {
-      console.log("Fetching stake entries");
-
-      fetchStakeEntries();
-    }
-  }, [nfts]);
+  console.log(nftsStaking);
 
   const handleClick = (nft: any) => {
     // TODO
@@ -101,7 +63,7 @@ export function CarSelection(props: {
         <div className="car-selection-title">Choose your car</div>
         <div className="car-selection-list">
           <div className="car-selection-list-content">
-            {nfts.nfts.map((nft) => (
+            {nfts.nfts.map((nft: any) => (
               <motion.div
                 key={nft.tokenAddress}
                 className="car-selection-item"
