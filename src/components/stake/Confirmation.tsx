@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useWallet } from "../../hooks/useWallet";
 import { toast } from "react-toastify";
+import { PublicKey } from "@solana/web3.js";
 
 export const StakingConfirmation = ({ nft, closeConfirmScreen }: any) => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -14,19 +15,19 @@ export const StakingConfirmation = ({ nft, closeConfirmScreen }: any) => {
   const handleEvent = async () => {
     setLoading(true);
 
-    toast.loading(`${nft.stakeEntry ? 'Unstaking' : 'Staking'}`)
+    let toastId = toast.loading(`${nft.stakeEntry ? 'Unstaking' : 'Staking'}`)
 
     try {
       if (nft.stakeEntry) {
-        const res = await unstake(connection, wallet, nft.tokenAddress)
-        toast.success('Unstaked')
+        const res = await unstake(connection, wallet, new PublicKey(nft.tokenAddress))
+        toast.update(toastId, { render: 'Unstaked', type: toast.TYPE.SUCCESS })
       } else {
-        const res = await stake(connection, wallet, nft.tokenAddress)
-        toast.success('Staked')
+        const res = await stake(connection, wallet, new PublicKey(nft.tokenAddress))
+        toast.update(toastId, { render: 'Staked', type: toast.TYPE.SUCCESS })
       }
     } catch (error) {
       console.log(error);
-      toast.error("Error, something went wrong")
+      toast.update(toastId, { render: 'Error', type: toast.TYPE.ERROR })
     }
 
     setLoading(false);
