@@ -169,13 +169,12 @@ export const MintButton = (props: {
   return (
     <div className="mint-button">
       <motion.button
-        className={loading ? "loading" : "loading"}
         onClick={() => onClick()}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.2, delay: 0.6 }}
       >
-        <span>Mint for 2 SOL</span>
+        <span>Mint for free</span>
       </motion.button>
     </div>
   );
