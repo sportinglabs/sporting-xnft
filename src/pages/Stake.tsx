@@ -15,9 +15,9 @@ export default function Stake() {
   const config = useConfig();
   console.log(config);
   
-  config.loading && <Loading />
+  if (config.loading) return <Loading />
 
-  config.error && <div>error</div>
+  if (config.error) return <div>error</div>
 
   return (
     <>
