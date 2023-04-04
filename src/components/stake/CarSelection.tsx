@@ -63,7 +63,7 @@ export function CarSelection(props: {
         )}
         {!nfts.loading && !nfts.error && nfts.nfts.length > 0 && (
           <>
-            <div>{nfts.nfts.filter(nft => nft.stakeEntry !== null).length} Cars Staked</div>
+            <div>{nfts.nfts.filter(nft => nft.stakeEntry !== null).length} Car{nfts.nfts.filter(nft => nft.stakeEntry !== null).length > 1 && "s"} Staked</div>
             <div className="car-selection-list">
               <div className="car-selection-list-content">
                 {nfts.nfts.map((nft: any) => (

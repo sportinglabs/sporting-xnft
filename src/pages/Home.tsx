@@ -27,7 +27,7 @@ export default function Home() {
               </button>
             </Link>
             <Link to={"/stake"}>
-              <button className="home-tab stake-tab">
+              <button className="home-tab stake-tab" disabled>
                 <div className="home-tab-text">
                   <div className="home-tab-title">Stake</div>
                   <div className="home-tab-description">Coming soon!</div>{" "}
