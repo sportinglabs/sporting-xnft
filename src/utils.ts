@@ -33,3 +33,9 @@ export function msToTimeLeft(duration: number) {
 export const toDate = (value: DateTime) => {
   return new Date(value.toNumber() * 1000);
 };
+
+export const truncate = (wallet: string, startChars: any, endChars: number) => {
+  var start = wallet.substring(0, startChars);
+  var end = wallet.substring(wallet.length - endChars, wallet.length);
+  return start + "..." + end;
+};

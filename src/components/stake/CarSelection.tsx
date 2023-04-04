@@ -29,23 +29,15 @@ export function CarSelection(props: {
   poolAddress: string;
 }) {
   const nfts = useNFTs(props.poolAddress);
-  const wallet = useWallet();
-  const { connection } = useConnection();
 
-  const [nftsStaking, setNftsStaking] = useState<any>(null);
   const [popup, setPopup] = useState<boolean>(false);
   const [currentNft, setCurrentNft] = useState<any>(null);
-
-  console.log(nftsStaking);
 
   const handleClick = (nft: any) => {
     // TODO
     setPopup(true);
     setCurrentNft(nft);
   };
-
-  nfts.loading && <Loading />;
-  nfts.error && <div>error</div>;
 
   return (
     <motion.div
@@ -61,49 +53,63 @@ export function CarSelection(props: {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="car-selection-title">Choose your car</div>
-        <div className="car-selection-list">
-          <div className="car-selection-list-content">
-            {nfts.nfts.map((nft: any) => (
-              <motion.div
-                key={nft.tokenAddress}
-                className="car-selection-item"
-                variants={dropIn}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                whileHover={{ scale: 0.95 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => handleClick(nft)}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="car-selection-item-content">
-                  <div className="car-selection-cover">
-                    <img src={nft.imageUrl} />
-                  </div>
-                  <div className="car-selection-name">{nft.name}</div>
-                  <div className="car-selection-metadata">
-                    {nft.traits.length > 1 &&
-                      nft.traits.map((m: any) => (
-                        <div className="car-selection-attribute">
-                          <div className="car-selection-attribute-name">
-                            {m.trait_type}
-                          </div>
-                          <div className="car-selection-attribute-value">
-                            {m.value}
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+        {nfts.loading && <Loading />}
+        {nfts.error && <div>error</div>}
+        {nfts.nfts.length === 0 && (
+          <div className="car-selection-empty">
+            You don't have any NFTs in this pool
           </div>
-        </div>
+        )}
+        {!nfts.loading && !nfts.error && nfts.nfts.length > 0 && (
+          <>
+            <div className="car-selection-list">
+              <div className="car-selection-list-content">
+                {nfts.nfts.map((nft: any) => (
+                  <motion.div
+                    key={nft.tokenAddress}
+                    className="car-selection-item"
+                    variants={dropIn}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    whileHover={{ scale: 0.95 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => handleClick(nft)}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="car-selection-item-content">
+                      <div className="car-selection-cover">
+                        <img src={nft.imageUrl} />
+                      </div>
+                      <div className="car-selection-name">{nft.name}</div>
+                      <div className="car-selection-metadata">
+                        {nft.traits.length > 1 &&
+                          nft.traits.map((m: any) => (
+                            <div className="car-selection-attribute">
+                              <div className="car-selection-attribute-name">
+                                {m.trait_type}
+                              </div>
+                              <div className="car-selection-attribute-value">
+                                {m.value}
+                              </div>
+                            </div>
+                          ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
         <div className="car-selection-button">
           <button onClick={() => props.controlModal()}>Back</button>
         </div>
         {popup && (
-          <StakingConfirmation nft={currentNft} closeConfirmScreen={() => setPopup(false)} />
+          <StakingConfirmation
+            nft={currentNft}
+            closeConfirmScreen={() => setPopup(false)}
+          />
         )}
       </div>
     </motion.div>
