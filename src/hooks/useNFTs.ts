@@ -5,7 +5,7 @@ import { useWallet } from "./useWallet";
 import { PublicKey } from "@solana/web3.js";
 import { PROGRAM_ID, StakeEntry } from "@builderz/sporting-f1-sdk";
 
-export const useNFTs = (poolAddress: string) => {
+export const useNFTs = (poolAddress: string, reload: number) => {
   const [nfts, setNfts] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -50,7 +50,6 @@ export const useNFTs = (poolAddress: string) => {
               );
               return { ...nft, stakeEntry };
             } catch (error) {
-              console.log(error);
               return { ...nft, stakeEntry: null };
             }
           })
@@ -71,7 +70,7 @@ export const useNFTs = (poolAddress: string) => {
       console.log("fetching nfts");
       fetchNFTs();
     }
-  }, [connection, publicKey, poolAddress]);
+  }, [connection, publicKey, poolAddress, reload]);
 
   return { nfts, loading, error };
 };
