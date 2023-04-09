@@ -43,13 +43,16 @@ export default function Leaderboard() {
         <div className="leaderboard-items-container">
           <div className="leaderboard-items">
             {leaderboard?.leaderboard?.map((u: any, index: number) => {
-              console.log(u);
+              if (u === undefined) {
+                return
+              }              
 
               return (
                 <motion.div
                   className="leaderboard-item"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
+                  key={u.ownerWallet}
                 >
                   <div className="leaderboard-item-content">
                     <div className="leaderboard-cell leaderboard-cell-rank">

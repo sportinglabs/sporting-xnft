@@ -18,14 +18,6 @@ export default function Home() {
         </div>
         <div className="home-section-2">
           <div className="home-tabs">
-            <Link to={"/purchase"}>
-              <button className="home-tab mint-tab">
-                <div className="home-tab-text">
-                  <div className="home-tab-title">Mint</div>
-                  <div className="home-tab-description">Mint an NFT</div>
-                </div>
-              </button>
-            </Link>
             <Link to={"/stake"}>
               <button className="home-tab stake-tab" disabled>
                 <div className="home-tab-text">
@@ -37,12 +29,20 @@ export default function Home() {
               </button>
             </Link>
             <Link to={"/leaderboard"}>
-              <button className="home-tab leaderboard-tab" disabled>
+              <button className="home-tab leaderboard-tab">
                 <div className="home-tab-text">
                   <div className="home-tab-title">Leaderboard</div>
                   <div className="home-tab-description">
-                    Coming soon! {/* Winning is everything. */}
+                    Winning is everything.
                   </div>
+                </div>
+              </button>
+            </Link>
+            <Link to={"/purchase"}>
+              <button className="home-tab mint-tab" disabled>
+                <div className="home-tab-text">
+                  <div className="home-tab-title">Mint</div>
+                  <div className="home-tab-description">Sold Out!</div>
                 </div>
               </button>
             </Link>

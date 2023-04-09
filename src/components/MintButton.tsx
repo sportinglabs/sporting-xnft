@@ -173,8 +173,9 @@ export const MintButton = (props: {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.2, delay: 0.6 }}
+        disabled
       >
-        <span>Mint for free</span>
+        <span>Sold Out!</span>
       </motion.button>
     </div>
   );
