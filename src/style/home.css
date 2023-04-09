@@ -8,7 +8,16 @@
   padding: 0;
 }
 
-.home-section-1,
+.home-section-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 25vh;
+}
+
 .home-section-2 {
   display: flex;
   align-items: center;
@@ -16,9 +25,8 @@
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: 50vh;
+  height: 75vh;
 }
-
 
 .home-title img {
   width: 60vw;
@@ -26,7 +34,7 @@
 
 .home-tabs {
   width: calc(100vw - 40px);
-  height: calc(50vh - 40px);
+  height: calc(75vh - 40px);
   margin: 0;
   text-align: center;
   border-radius: 10px;

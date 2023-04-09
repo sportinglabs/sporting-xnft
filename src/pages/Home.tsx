@@ -28,6 +28,16 @@ export default function Home() {
                 <div className="home-tab-icon"></div>
               </button>
             </Link>
+            <Link to={"/garage"}>
+              <button className="home-tab stake-tab" disabled>
+                <div className="home-tab-text">
+                  <div className="home-tab-title">Garage</div>
+                  <div className="home-tab-description">Coming soon!</div>{" "}
+                  {/* Stake your cars! */}
+                </div>
+                <div className="home-tab-icon"></div>
+              </button>
+            </Link>
             <Link to={"/leaderboard"}>
               <button className="home-tab leaderboard-tab">
                 <div className="home-tab-text">

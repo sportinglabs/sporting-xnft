@@ -8,6 +8,7 @@ import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import Stake from "./pages/Stake";
 import Leaderboard from "./pages/Leaderboard";
+import Garage from "./pages/Garage";
 import { ConnectionProvider } from "@solana/wallet-adapter-react";
 import Mint from "./pages/Mint";
 import { ToastContainer } from "react-toastify";
@@ -29,6 +30,12 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [{ index: true, element: <Stake /> }],
+  },
+  {
+    path: "/garage",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [{ index: true, element: <Garage /> }],
   },
   {
     path: "/leaderboard",

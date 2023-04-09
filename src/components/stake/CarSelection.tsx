@@ -1,12 +1,9 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNFTs } from "../../hooks/useNFTs";
 import { Loading } from "../Loading";
-import { PublicKey } from "@solana/web3.js";
-import { StakeEntry, PROGRAM_ID } from "@builderz/sporting-f1-sdk";
-import { useWallet } from "../../hooks/useWallet";
-import { useConnection } from "@solana/wallet-adapter-react";
 import { StakingConfirmation } from "./Confirmation";
+import { NftItem } from "../NftItem";
 
 const dropIn = {
   hidden: {
@@ -29,7 +26,7 @@ export function CarSelection(props: {
   poolAddress: string;
 }) {
   const [reload, setReload] = useState<number>(0);
-  const nfts = useNFTs(props.poolAddress, reload);
+  const nfts = useNFTs(reload, props.poolAddress);
 
   const [popup, setPopup] = useState<boolean>(false);
   const [currentNft, setCurrentNft] = useState<any>(null);
@@ -67,38 +64,7 @@ export function CarSelection(props: {
             <div className="car-selection-list">
               <div className="car-selection-list-content">
                 {nfts.nfts.map((nft: any) => (
-                  <motion.div
-                    key={nft.tokenAddress}
-                    className="car-selection-item"
-                    variants={dropIn}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    whileHover={{ scale: 0.95 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => handleClick(nft)}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="car-selection-item-content">
-                      <div className="car-selection-cover">
-                        <img src={nft.imageUrl} />
-                      </div>
-                      <div className="car-selection-name">{nft.name + (nft.stakeEntry ? " (staked)" : "") }</div>
-                      <div className="car-selection-metadata">
-                        {nft.traits.length > 1 &&
-                          nft.traits.map((m: any) => (
-                            <div className="car-selection-attribute">
-                              <div className="car-selection-attribute-name">
-                                {m.trait_type}
-                              </div>
-                              <div className="car-selection-attribute-value">
-                                {m.value}
-                              </div>
-                            </div>
-                          ))}
-                      </div>
-                    </div>
-                  </motion.div>
+                  <NftItem nft={nft} handleClick={handleClick} />
                 ))}
               </div>
             </div>
