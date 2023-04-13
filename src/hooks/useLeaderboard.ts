@@ -35,7 +35,7 @@ export const useLeaderboard = () => {
               ).parsed.info.owner;
 
               const backpackUsername = await axios.get(
-                `https://xnft-api-server.xnfts.dev/v1/users/fromPubkey?pubkey=${ownerWallet}&blockchain=solana`
+                `https://xnft-api-server.xnfts.dev/v1/users/fromPubkey?publicKey=${ownerWallet}&blockchain=solana`
               );
 
               return {
