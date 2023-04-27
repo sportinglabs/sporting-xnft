@@ -103,7 +103,7 @@ export const StakingConfirmation = ({
           <motion.div className="stake-confirm-metadata-content">
             {nft.traits.length > 1 &&
               nft.traits.map((m: any) => (
-                <div className="stake-confirm-attribute">
+                <div key={m.trait_type} className="stake-confirm-attribute">
                   <div className="stake-confirm-attribute-name">
                     {m.trait_type}
                   </div>

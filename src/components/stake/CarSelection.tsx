@@ -28,7 +28,7 @@ export function CarSelection(props: {
   const [reload, setReload] = useState<number>(0);
   const nfts = useNFTs(reload, props.race.poolAddress);
 
-  console.log(props.race);
+  console.log(props.race.poolAddress);
   
 
   const [popup, setPopup] = useState<boolean>(false);
@@ -70,7 +70,7 @@ export function CarSelection(props: {
             <div className="car-selection-list">
               <div className="car-selection-list-content">
                 {nfts.nfts.map((nft: any) => (
-                  <NftItem nft={nft} handleClick={handleClick} />
+                  <NftItem key={nft.tokenAddress} nft={nft} handleClick={handleClick} />
                 ))}
               </div>
             </div>

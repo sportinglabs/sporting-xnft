@@ -45,7 +45,7 @@ export const NftItem = ({ nft, handleClick, withPoints }: any) => {
         <div className="car-selection-metadata">
           {nft.traits.length > 1 &&
             nft.traits.map((m: any) => (
-              <div className="car-selection-attribute">
+              <div key={m.trait_type} className="car-selection-attribute">
                 <div className="car-selection-attribute-name">
                   {m.trait_type}
                 </div>
