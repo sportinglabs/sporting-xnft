@@ -23,10 +23,13 @@ const dropIn = {
 
 export function CarSelection(props: {
   controlModal: Function;
-  poolAddress: string;
+  race: any;
 }) {
   const [reload, setReload] = useState<number>(0);
-  const nfts = useNFTs(reload, props.poolAddress);
+  const nfts = useNFTs(reload, props.race.poolAddress);
+
+  console.log(props.race);
+  
 
   const [popup, setPopup] = useState<boolean>(false);
   const [currentNft, setCurrentNft] = useState<any>(null);
@@ -50,6 +53,8 @@ export function CarSelection(props: {
         className="car-selection-content"
         onClick={(e) => e.stopPropagation()}
       >
+        {/* TODO: Style title */}
+        {/* <div className="car-selection-title">{props.race.name}</div>  */}
         <div className="car-selection-title">Choose your car</div>
         {nfts.loading && <Loading />}
         {nfts.error && <div>error</div>}
@@ -60,6 +65,7 @@ export function CarSelection(props: {
         )}
         {!nfts.loading && !nfts.error && nfts.nfts.length > 0 && (
           <>
+          {/* TODO: Style Staked + Add total staked with props.race.staked */}
             <div>{nfts.nfts.filter(nft => nft.stakeEntry !== null).length} Car{nfts.nfts.filter(nft => nft.stakeEntry !== null).length > 1 && "s"} Staked</div>
             <div className="car-selection-list">
               <div className="car-selection-list-content">
@@ -78,6 +84,7 @@ export function CarSelection(props: {
             nft={currentNft}
             closeConfirmScreen={() => setPopup(false)}
             reload={() => setReload(prev => prev + 1)}
+            race={props.race}
           />
         )}
       </div>

@@ -298,18 +298,17 @@ button.race-staked-amount {
   margin: 0;
   padding: 0;
   background-color: var(--black);
-
 }
 
-.stake-confirm-image{
+.stake-confirm-image {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.stake-confirm-image img{
+.stake-confirm-image img {
   width: 60vw;
 }
-.stake-confirm-name{
+.stake-confirm-name {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -343,13 +342,13 @@ button.race-staked-amount {
   font-family: "jetbrains-light";
   color: var(--white);
 }
-.stake-confirm-button{
+.stake-confirm-button {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.stake-confirm-button button{
+.stake-confirm-button button {
   width: 80vw;
   margin: 0;
   padding: 5px;
@@ -359,18 +358,23 @@ button.race-staked-amount {
   font-family: "jetbrains-bold";
   font-size: 18px;
 }
-.stake-confirm-back-button button{
+.stake-confirm-back-button button {
   background-color: var(--white-faded);
   color: var(--white);
   margin-top: 5px;
-  
 }
 
-.stake-confirm-button button:hover{
+.stake-confirm-button button:hover {
   background-color: var(--white);
   color: var(--black);
   transition-duration: 0.2s;
 }
-.stake-confirm-button button:not(:hover){
+.stake-confirm-button button:not(:hover) {
   transition-duration: 0.2s;
+}
+
+.stake-confirm-button button:disabled {
+  background-color: var(--gray);
+  color: var(--gray-light);
+  cursor: not-allowed;
 }

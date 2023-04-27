@@ -25,7 +25,7 @@ const dropIn = {
 export const StakingConfirmation = ({
   nft,
   closeConfirmScreen,
-  race_track,
+  race,
   reload,
 }: any) => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -113,9 +113,21 @@ export const StakingConfirmation = ({
           </motion.div>
         </motion.div>
         <div className="stake-confirm-button">
-          <button onClick={handleEvent} className={loading ? "btn loading" : ""}>
+          {race.status === "Upcoming" && (
+            <button onClick={handleEvent} className={loading ? "btn loading" : ""}>
             {nft.stakeEntry ? "Unstake" : "Stake"}
           </button>
+          )}
+          {race.status === "Active" && (
+            <button disabled onClick={handleEvent} className={loading ? "btn loading" : ""}>
+            {nft.stakeEntry ? "Unstake" : "Stake"}
+          </button>
+          )}
+          {race.status === "Finished" && (
+            <button disabled={!nft.stakeEntry} onClick={handleEvent} className={loading ? "btn loading" : ""}>
+            {nft.stakeEntry ? "Unstake" : "Stake"}
+          </button>
+          )}
         </div>
         <div className="stake-confirm-button stake-confirm-back-button">
           <button onClick={closeConfirmScreen}>back</button>
