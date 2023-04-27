@@ -7,6 +7,7 @@ import { Loading } from "../components/Loading";
 
 export default function Stake() {
   const [poolAddress, setPoolAddress] = useState("");
+  const [race, setRace] = useState<any>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const close = () => setModalOpen(false);
   const open = () => setModalOpen(true);
@@ -41,7 +42,8 @@ export default function Stake() {
                       racetrack={pool.racetrack}
                       isModalOpen={modalOpen}
                       controlModal={controlModal}
-                      setPoolAddress={setPoolAddress}
+                      // setPoolAddress={setPoolAddress}
+                      setRace={setRace}
                     />
                   ))}
                 </div>
@@ -50,7 +52,7 @@ export default function Stake() {
           </div>
         </div>
         {modalOpen && (
-          <CarSelection controlModal={controlModal} poolAddress={poolAddress} />
+          <CarSelection controlModal={controlModal} race={race} />
         )}
       </AnimatePresence>
     </>

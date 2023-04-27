@@ -18,31 +18,40 @@ export default function Home() {
         </div>
         <div className="home-section-2">
           <div className="home-tabs">
-            <Link to={"/purchase"}>
-              <button className="home-tab mint-tab">
-                <div className="home-tab-text">
-                  <div className="home-tab-title">Mint</div>
-                  <div className="home-tab-description">Mint an NFT</div>
-                </div>
-              </button>
-            </Link>
             <Link to={"/stake"}>
               <button className="home-tab stake-tab">
                 <div className="home-tab-text">
                   <div className="home-tab-title">Stake</div>
-                  <div className="home-tab-description">Coming soon!</div>{" "}
+                  <div className="home-tab-description">Time to get ready for the race!</div>{" "}
+                </div>
+                <div className="home-tab-icon"></div>
+              </button>
+            </Link>
+            <Link to={"/garage"}>
+              <button className="home-tab stake-tab">
+                <div className="home-tab-text">
+                  <div className="home-tab-title">Garage</div>
+                  <div className="home-tab-description">Check your cars and points!</div>{" "}
                   {/* Stake your cars! */}
                 </div>
                 <div className="home-tab-icon"></div>
               </button>
             </Link>
             <Link to={"/leaderboard"}>
-              <button className="home-tab leaderboard-tab" disabled>
+              <button className="home-tab leaderboard-tab">
                 <div className="home-tab-text">
                   <div className="home-tab-title">Leaderboard</div>
                   <div className="home-tab-description">
-                    Coming soon! {/* Winning is everything. */}
+                    Winning is everything!
                   </div>
+                </div>
+              </button>
+            </Link>
+            <Link to={"/purchase"}>
+              <button className="home-tab mint-tab" disabled>
+                <div className="home-tab-text">
+                  <div className="home-tab-title">Mint</div>
+                  <div className="home-tab-description">Sold Out!</div>
                 </div>
               </button>
             </Link>

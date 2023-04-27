@@ -18,31 +18,34 @@ export const useLeaderboard = () => {
 
       try {
         const leaderboard = await getAllPlayers(connection);
+
         const withUserNames = await Promise.all(
           leaderboard.splice(0, 10).map(async (player) => {
-            const holder = (
-              await connection.getTokenLargestAccounts(player.data.carMint)
-            ).value[0].address;
+            try {
+              const holder = (
+                await connection.getTokenLargestAccounts(player.data.carMint)
+              )?.value[0]?.address;
 
-            const largestAccountInfo = await connection.getParsedAccountInfo(
-              holder
-            );
+              const largestAccountInfo = await connection.getParsedAccountInfo(
+                holder
+              );
 
-            const ownerWallet = (
-              largestAccountInfo.value?.data as ParsedAccountData
-            ).parsed.info.owner;
+              const ownerWallet = (
+                largestAccountInfo.value?.data as ParsedAccountData
+              ).parsed.info.owner;
 
-            console.log(ownerWallet);
+              const backpackUsername = await axios.get(
+                `https://xnft-api-server.xnfts.dev/v1/users/fromPubkey?publicKey=${ownerWallet}&blockchain=solana`
+              );
 
-            const backpackUsername = await axios.get(
-              `https://xnft-api-server.xnfts.dev/v1/users/fromPubkey?pubkey=${ownerWallet}&blockchain=solana`
-            );
-
-            return {
-              ...player,
-              username: backpackUsername.data.username,
-              ownerWallet: ownerWallet,
-            };
+              return {
+                ...player,
+                username: backpackUsername.data.user.username,
+                ownerWallet: ownerWallet,
+              };
+            } catch (error) {
+              console.log(error);
+            }
           })
         );
 

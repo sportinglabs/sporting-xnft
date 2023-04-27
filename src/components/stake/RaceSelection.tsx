@@ -11,7 +11,8 @@ export default function RaceSelection(props: {
   racetrack: string;
   isModalOpen: boolean;
   controlModal: Function;
-  setPoolAddress: Function;
+  // setPoolAddress: Function;
+  setRace: Function;
 }) {
   return (
     <motion.div
@@ -20,7 +21,17 @@ export default function RaceSelection(props: {
       whileHover={{ scale: 0.95 }}
       whileTap={{ scale: 0.9 }}
       onClick={() => {
-        props.setPoolAddress(props.poolAddress);
+        // props.setPoolAddress(props.poolAddress);
+        props.setRace({
+          country: props.country,
+          poolAddress: props.poolAddress,
+          name: props.name,
+          month_date: props.month_date,
+          day_date: props.day_date,
+          status: props.status,
+          staked: props.staked,
+          racetrack: props.racetrack,
+        })
         props.controlModal();
       }}
       transition={{ duration: 0.2 }}
@@ -34,7 +45,7 @@ export default function RaceSelection(props: {
           <div className="race-selection-trackmap">
             <img
               src={
-                "https://raw.githubusercontent.com/sportinglabs/resources/main/racemaps/" +
+                "/racemaps/" +
                 props.racetrack +
                 ".svg"
               }

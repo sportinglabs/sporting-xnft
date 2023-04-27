@@ -15,7 +15,7 @@ export const useConfig = () => {
     const fetchConfig = async () => {
       setLoading(true);
       try {
-        let config: Config = await (await fetch("/config.json")).json();
+        let config: Config = await (await fetch("/race_list.json")).json();
         const updatedConfig = await Promise.all(
           config.map(async (race) => {
             if (race.poolAddress) {

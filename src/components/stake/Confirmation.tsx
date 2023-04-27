@@ -6,7 +6,6 @@ import { useWallet } from "../../hooks/useWallet";
 import { toast } from "react-toastify";
 import { PublicKey } from "@solana/web3.js";
 
-
 const dropIn = {
   hidden: {
     opacity: 0,
@@ -26,7 +25,8 @@ const dropIn = {
 export const StakingConfirmation = ({
   nft,
   closeConfirmScreen,
-  race_track,
+  race,
+  reload,
 }: any) => {
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -45,31 +45,54 @@ export const StakingConfirmation = ({
           wallet,
           new PublicKey(nft.tokenAddress)
         );
-        toast.update(toastId, { render: "Unstaked", type: toast.TYPE.SUCCESS });
+
+        console.log(res);
+
+        toast.update(toastId, {
+          render: "Unstaked",
+          type: toast.TYPE.SUCCESS,
+          isLoading: false,
+          autoClose: 5000,
+        });
+        reload();
+        closeConfirmScreen();
       } else {
         const res = await stake(
           connection,
           wallet,
           new PublicKey(nft.tokenAddress)
         );
-        toast.update(toastId, { render: "Staked", type: toast.TYPE.SUCCESS });
+
+        console.log(res);
+
+        toast.update(toastId, {
+          render: "Staked",
+          type: toast.TYPE.SUCCESS,
+          isLoading: false,
+          autoClose: 5000,
+        });
+        reload();
+        closeConfirmScreen();
       }
     } catch (error) {
       console.log(error);
-      toast.update(toastId, { render: "Error", type: toast.TYPE.ERROR });
+      toast.update(toastId, {
+        render: "Error",
+        type: toast.TYPE.ERROR,
+        isLoading: false,
+        autoClose: 5000,
+      });
     }
 
     setLoading(false);
   };
 
   return (
-    <motion.div className="stake-confirm"
-    initial={{opacity:0}}    
-    whileInView={{ opacity: 1 }}
-    transition={{ duration: 0.2 }}
-
-
-
+    <motion.div
+      className="stake-confirm"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.2 }}
     >
       <motion.div className="stake-confirm-container">
         <motion.div className="stake-confirm-image">
@@ -80,7 +103,7 @@ export const StakingConfirmation = ({
           <motion.div className="stake-confirm-metadata-content">
             {nft.traits.length > 1 &&
               nft.traits.map((m: any) => (
-                <div className="stake-confirm-attribute">
+                <div key={m.trait_type} className="stake-confirm-attribute">
                   <div className="stake-confirm-attribute-name">
                     {m.trait_type}
                   </div>
@@ -90,9 +113,21 @@ export const StakingConfirmation = ({
           </motion.div>
         </motion.div>
         <div className="stake-confirm-button">
-          <button onClick={handleEvent}>
+          {race.status === "Upcoming" && (
+            <button onClick={handleEvent} className={loading ? "btn loading" : ""}>
             {nft.stakeEntry ? "Unstake" : "Stake"}
           </button>
+          )}
+          {race.status === "Active" && (
+            <button disabled onClick={handleEvent} className={loading ? "btn loading" : ""}>
+            {nft.stakeEntry ? "Unstake" : "Stake"}
+          </button>
+          )}
+          {race.status === "Finished" && (
+            <button disabled={!nft.stakeEntry} onClick={handleEvent} className={loading ? "btn loading" : ""}>
+            {nft.stakeEntry ? "Unstake" : "Stake"}
+          </button>
+          )}
         </div>
         <div className="stake-confirm-button stake-confirm-back-button">
           <button onClick={closeConfirmScreen}>back</button>

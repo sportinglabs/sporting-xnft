@@ -4,8 +4,9 @@ import { getNfts } from "../utils/nfts";
 import { useWallet } from "./useWallet";
 import { PublicKey } from "@solana/web3.js";
 import { PROGRAM_ID, StakeEntry } from "@builderz/sporting-f1-sdk";
+import { getPlayersByNftMints } from "@builderz/sporting-f1-sdk";
 
-export const useNFTs = (poolAddress: string) => {
+export const useNFTs = (reload?: number, poolAddress?: string) => {
   const [nfts, setNfts] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -31,32 +32,51 @@ export const useNFTs = (poolAddress: string) => {
           }
         }
 
-        const withStakingData = await Promise.all(
-          filtered.map(async (nft) => {
-            const [stakeEntryPda] = PublicKey.findProgramAddressSync(
-              [
-                Buffer.from("stake-entry"),
-                new PublicKey(poolAddress).toBuffer(),
-                new PublicKey(nft.tokenAddress).toBuffer(),
-                publicKey.toBuffer(),
-              ],
-              PROGRAM_ID
-            );
-
-            try {
-              const stakeEntry = await StakeEntry.fromAccountAddress(
-                connection,
-                stakeEntryPda
-              );
-              return { ...nft, stakeEntry };
-            } catch (error) {
-              console.log(error);
-              return { ...nft, stakeEntry: null };
-            }
-          })
+        const playerAccounts = await getPlayersByNftMints(
+          connection,
+          filtered.map((nft) => new PublicKey(nft.tokenAddress))
         );
 
-        setNfts(withStakingData);
+        const withPoints = filtered.map((nft) => {
+          const playerAccount = playerAccounts.find(
+            (account) => account.carMint === nft.tokenAddress
+          );
+
+          return {
+            ...nft,
+            points: playerAccount?.data.points || 0,
+          };
+        });
+
+        if (poolAddress) {
+          const withStakingData = await Promise.all(
+            withPoints.map(async (nft) => {
+              const [stakeEntryPda] = PublicKey.findProgramAddressSync(
+                [
+                  Buffer.from("stake-entry"),
+                  new PublicKey(poolAddress).toBuffer(),
+                  new PublicKey(nft.tokenAddress).toBuffer(),
+                  publicKey.toBuffer(),
+                ],
+                PROGRAM_ID
+              );
+
+              try {
+                const stakeEntry = await StakeEntry.fromAccountAddress(
+                  connection,
+                  stakeEntryPda
+                );
+                return { ...nft, stakeEntry };
+              } catch (error) {
+                return { ...nft, stakeEntry: null };
+              }
+            })
+          );
+
+          setNfts(withStakingData);
+        } else {
+          setNfts(withPoints);
+        }
         setLoading(false);
       } catch (error) {
         console.error(error);
@@ -65,13 +85,11 @@ export const useNFTs = (poolAddress: string) => {
       }
     };
 
-    if (publicKey && poolAddress) {
-      console.log(poolAddress);
-
+    if (publicKey) {
       console.log("fetching nfts");
       fetchNFTs();
     }
-  }, [connection, publicKey, poolAddress]);
+  }, [connection, publicKey, poolAddress, reload]);
 
   return { nfts, loading, error };
 };
