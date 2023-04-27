@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useWallet } from "../../hooks/useWallet";
 import { toast } from "react-toastify";
 import { PublicKey } from "@solana/web3.js";
+import { fetchPool } from "../../utils/pools";
 
 const dropIn = {
   hidden: {
@@ -39,11 +40,15 @@ export const StakingConfirmation = ({
     let toastId = toast.loading(`${nft.stakeEntry ? "Unstaking" : "Staking"}`);
 
     try {
+      const pool = await fetchPool(connection, race.poolAddress)
+      console.log(pool.identifier);
+      
       if (nft.stakeEntry) {
         const res = await unstake(
           connection,
           wallet,
-          new PublicKey(nft.tokenAddress)
+          new PublicKey(nft.tokenAddress),
+          Number(pool.identifier)
         );
 
         console.log(res);
@@ -60,7 +65,8 @@ export const StakingConfirmation = ({
         const res = await stake(
           connection,
           wallet,
-          new PublicKey(nft.tokenAddress)
+          new PublicKey(nft.tokenAddress),
+          Number(pool.identifier)
         );
 
         console.log(res);
