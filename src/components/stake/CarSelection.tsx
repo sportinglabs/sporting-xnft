@@ -26,10 +26,7 @@ export function CarSelection(props: {
   race: any;
 }) {
   const [reload, setReload] = useState<number>(0);
-  const nfts = useNFTs(reload, props.race.poolAddress);
-
-  console.log(props.race.poolAddress);
-  
+  const nfts = useNFTs(reload, props.race.poolAddress);  
 
   const [popup, setPopup] = useState<boolean>(false);
   const [currentNft, setCurrentNft] = useState<any>(null);
@@ -66,7 +63,7 @@ export function CarSelection(props: {
         {!nfts.loading && !nfts.error && nfts.nfts.length > 0 && (
           <>
           {/* TODO: Style Staked + Add total staked with props.race.staked */}
-            <div>{nfts.nfts.filter(nft => nft.stakeEntry !== null).length} Car{nfts.nfts.filter(nft => nft.stakeEntry !== null).length > 1 && "s"} Staked</div>
+            {props.race.status !== "upcoming" && <div>{nfts.nfts.filter(nft => nft.stakeEntry !== null).length} Car{nfts.nfts.filter(nft => nft.stakeEntry !== null).length > 1 && "s"} Staked</div>}
             <div className="car-selection-list">
               <div className="car-selection-list-content">
                 {nfts.nfts.map((nft: any) => (
