@@ -44,7 +44,7 @@ export const useNFTs = (reload?: number, poolAddress?: string) => {
 
           return {
             ...nft,
-            points: playerAccount?.data.points || 0,
+            points: playerAccount?.points || 0,
           };
         });
 
