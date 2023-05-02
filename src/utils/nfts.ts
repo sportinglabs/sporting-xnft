@@ -34,3 +34,13 @@ export const getNfts = async (owner: PublicKey) => {
     throw error;
   }
 };
+
+export const getAssets = async (assetId: string) => {
+  const { data } = await axios.post(import.meta.env.VITE_RPC_URL, {
+    jsonrpc: "2.0",
+    id: "my-id",
+    method: "getAsset",
+    params: [assetId],
+  });
+  return data.result;
+};

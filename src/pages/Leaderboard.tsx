@@ -52,7 +52,7 @@ export default function Leaderboard() {
                   className="leaderboard-item"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
-                  key={u.ownerWallet}
+                  key={u.owner}
                 >
                   <div className="leaderboard-item-content">
                     <div className="leaderboard-cell leaderboard-cell-rank">
@@ -62,7 +62,7 @@ export default function Leaderboard() {
                       {truncate(u.data.carMint.toBase58(), 3, 0)}
                     </div>
                     <div className="leaderboard-cell leaderboard-cell-name">
-                      {u.username ? u.username : truncate(u.ownerWallet, 3, 0)}
+                      {u.username ? u.username : truncate(u.owner || "error", 3, 0)} {/* TODO: Fix error */}
                     </div>
                     {/* <div className="leaderboard-cell leaderboard-cell-last">
                       {u.last}

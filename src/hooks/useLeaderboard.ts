@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getAllPlayers } from "@builderz/sporting-f1-sdk";
 import { ParsedAccountData } from "@solana/web3.js";
 import axios from "axios";
+import { getAssets } from "../utils/nfts";
 
 export const useLeaderboard = () => {
   const [leaderboard, setLeaderboard] = useState<any>();
@@ -17,39 +18,37 @@ export const useLeaderboard = () => {
       setError(false);
 
       try {
-        const leaderboard = await getAllPlayers(connection);
+        let leaderboard = await getAllPlayers(connection);
 
-        const withUserNames = await Promise.all(
+        leaderboard = await Promise.all(
           leaderboard.splice(0, 10).map(async (player) => {
+            const nft = await getAssets(player.data.carMint.toBase58());
+
+            return {
+              ...player,
+              owner: nft?.ownership.owner,
+            };
+          })
+        );
+
+        leaderboard = await Promise.all(
+          leaderboard.map(async (player) => {
             try {
-              const holder = (
-                await connection.getTokenLargestAccounts(player.data.carMint)
-              )?.value[0]?.address;
-
-              const largestAccountInfo = await connection.getParsedAccountInfo(
-                holder
-              );
-
-              const ownerWallet = (
-                largestAccountInfo.value?.data as ParsedAccountData
-              ).parsed.info.owner;
-
               const backpackUsername = await axios.get(
-                `https://xnft-api-server.xnfts.dev/v1/users/fromPubkey?publicKey=${ownerWallet}&blockchain=solana`
+                // @ts-ignore
+                `https://xnft-api-server.xnfts.dev/v1/users/fromPubkey?publicKey=${player.owner}&blockchain=solana`
               );
-
               return {
                 ...player,
                 username: backpackUsername.data.user.username,
-                ownerWallet: ownerWallet,
               };
             } catch (error) {
-              console.log(error);
+              return player;
             }
           })
         );
 
-        setLeaderboard(withUserNames);
+        setLeaderboard(leaderboard);
         setLoading(false);
       } catch (error) {
         console.error(error);
