@@ -27,15 +27,15 @@ export const NftItem = ({ nft, handleClick, withPoints }: any) => {
       whileHover={{ scale: 0.95 }}
       whileTap={{ scale: 0.9 }}
       transition={{ duration: 0.2 }}
-      key={nft.tokenAddress}
+      key={nft.id}
       onClick={() => handleClick && handleClick(nft)}
     >
       <div className="car-selection-item-content">
         <div className="car-selection-cover">
-          <img src={nft.imageUrl} />
+          <img src={nft.content.files[0]?.uri} />
         </div>
         <div className="car-selection-name">
-          {nft.name + (nft.stakeEntry ? " (staked)" : "")}
+          {nft.content.metadata.name + (nft.stakeEntry ? " (staked)" : "")}
         </div>
         {withPoints && (
           <div>
@@ -43,8 +43,8 @@ export const NftItem = ({ nft, handleClick, withPoints }: any) => {
           </div>
         )}
         <div className="car-selection-metadata">
-          {nft.traits.length > 1 &&
-            nft.traits.map((m: any) => (
+          {nft.content.metadata.attributes.length > 1 &&
+            nft.content.metadata.attributes.map((m: any) => (
               <div key={m.trait_type} className="car-selection-attribute">
                 <div className="car-selection-attribute-name">
                   {m.trait_type}

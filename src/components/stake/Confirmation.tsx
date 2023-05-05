@@ -47,7 +47,7 @@ export const StakingConfirmation = ({
         const res = await unstake(
           connection,
           wallet,
-          new PublicKey(nft.tokenAddress),
+          new PublicKey(nft.id),
           Number(pool.identifier)
         );
 
@@ -57,7 +57,7 @@ export const StakingConfirmation = ({
           render: "Unstaked",
           type: toast.TYPE.SUCCESS,
           isLoading: false,
-          autoClose: 5000,
+          autoClose: 2000,
         });
         reload();
         closeConfirmScreen();
@@ -65,7 +65,7 @@ export const StakingConfirmation = ({
         const res = await stake(
           connection,
           wallet,
-          new PublicKey(nft.tokenAddress),
+          new PublicKey(nft.id),
           Number(pool.identifier)
         );
 
@@ -75,7 +75,7 @@ export const StakingConfirmation = ({
           render: "Staked",
           type: toast.TYPE.SUCCESS,
           isLoading: false,
-          autoClose: 5000,
+          autoClose: 2000,
         });
         reload();
         closeConfirmScreen();
@@ -86,7 +86,7 @@ export const StakingConfirmation = ({
         render: "Error",
         type: toast.TYPE.ERROR,
         isLoading: false,
-        autoClose: 5000,
+        autoClose: 2000,
       });
     }
 
@@ -102,13 +102,13 @@ export const StakingConfirmation = ({
     >
       <motion.div className="stake-confirm-container">
         <motion.div className="stake-confirm-image">
-          <img src={nft.imageUrl} alt="image of the NFT" />
+          <img src={nft.content.files[0]?.uri} alt="image of the NFT" />
         </motion.div>
-        <motion.div className="stake-confirm-name">{nft.name}</motion.div>
+        <motion.div className="stake-confirm-name">{nft.content.metadata.name}</motion.div>
         <motion.div className="stake-confirm-metadata">
           <motion.div className="stake-confirm-metadata-content">
-            {nft.traits.length > 1 &&
-              nft.traits.map((m: any) => (
+            {nft.content.metadata.attributes.length > 1 &&
+              nft.content.metadata.attributes.map((m: any) => (
                 <div key={m.trait_type} className="stake-confirm-attribute">
                   <div className="stake-confirm-attribute-name">
                     {m.trait_type}

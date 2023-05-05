@@ -67,7 +67,7 @@ export function CarSelection(props: {
             <div className="car-selection-list">
               <div className="car-selection-list-content">
                 {nfts.nfts.map((nft: any) => (
-                  <NftItem key={nft.tokenAddress} nft={nft} handleClick={handleClick} />
+                  <NftItem key={nft.id} nft={nft} handleClick={handleClick} />
                 ))}
               </div>
             </div>
