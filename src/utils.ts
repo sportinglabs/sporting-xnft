@@ -1,4 +1,5 @@
 import { DateTime } from "@metaplex-foundation/js";
+import { Config } from "./types/types";
 
 export function parseNumber(str: string, precision: number) {
   if (str === "." || str === "") {
@@ -38,4 +39,19 @@ export const truncate = (wallet: string, startChars: any, endChars: number) => {
   var start = wallet.substring(0, startChars);
   var end = wallet.substring(wallet.length - endChars, wallet.length);
   return start + "..." + end;
+};
+
+export const sortConfigsByStatus = (configs: Config) => {
+  const previousConfigs: Config = [];
+  const otherConfigs: Config = [];
+
+  configs.forEach((config) => {
+    if (config.status === "previous" || config.status === "Finished") {
+      previousConfigs.push(config);
+    } else {
+      otherConfigs.push(config);
+    }
+  });
+
+  return [...otherConfigs, ...previousConfigs];
 };
