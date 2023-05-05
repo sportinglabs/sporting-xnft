@@ -1,6 +1,6 @@
 import { useConnection } from "@solana/wallet-adapter-react";
 import { useEffect, useState } from "react";
-import { getNfts } from "../utils/nfts";
+import { getAssetsByOwner, getNfts } from "../utils/nfts";
 import { useWallet } from "./useWallet";
 import { PublicKey } from "@solana/web3.js";
 import { PROGRAM_ID, StakeEntry } from "@builderz/sporting-f1-sdk";
@@ -20,6 +20,14 @@ export const useNFTs = (reload?: number, poolAddress?: string) => {
       setError(false);
 
       try {
+        const nfts1 = (await getAssetsByOwner(publicKey.toBase58())).filter(
+          (nft: any) =>
+            nft.grouping[0]?.group_value ===
+            "Et9ckpQCXFN5PsiYN781AczSVuQYyGEdDEPDJ7jrxz4c"
+        );
+        console.log(nfts1);
+        // TODO:
+
         const nfts = await getNfts(publicKey);
         //filtering NFT's to only load items from the sporting collection
         const filtered = [];
@@ -32,19 +40,23 @@ export const useNFTs = (reload?: number, poolAddress?: string) => {
           }
         }
 
+        console.log("filtered: ", filtered.length);
+
         const playerAccounts = await getPlayersByNftMints(
           connection,
           filtered.map((nft) => new PublicKey(nft.tokenAddress))
         );
 
+        console.log("playerAccounts: ", playerAccounts);
+
         const withPoints = filtered.map((nft) => {
           const playerAccount = playerAccounts.find(
-            (account) => account.carMint === nft.tokenAddress
+            (account) => account?.carMint.toBase58() === nft.tokenAddress
           );
 
           return {
             ...nft,
-            points: playerAccount?.points || 0,
+            points: Number(playerAccount?.points) || 0,
           };
         });
 

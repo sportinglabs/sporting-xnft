@@ -35,6 +35,35 @@ export const getNfts = async (owner: PublicKey) => {
   }
 };
 
+// TODO: DAS API pagination
+export const getAssetsByOwner = async (owner: string) => {
+  const sortBy = {
+    sortBy: "created",
+    sortDirection: "asc",
+  };
+  const limit = 50;
+  const page = 1;
+  const before = "";
+  const after = "";
+  const { data } = await axios.post(import.meta.env.VITE_RPC_URL, {
+    jsonrpc: "2.0",
+    id: "my-id",
+    method: "getAssetsByOwner",
+    params: [
+      owner, // "5AsKgxeYRaHRcZivZDXoCK6PmVCbc7Nnc4LURpBV7tPv",
+      sortBy,
+      limit,
+      page,
+      before,
+      after,
+    ],
+  });
+  // console.log("assets: ", data.result);
+  // console.log(data);
+
+  return data.result.items;
+};
+
 export const getAssets = async (assetId: string) => {
   const { data } = await axios.post(import.meta.env.VITE_RPC_URL, {
     jsonrpc: "2.0",
