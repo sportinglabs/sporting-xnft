@@ -3,6 +3,7 @@ import { useConnection } from "@solana/wallet-adapter-react";
 import { useEffect, useState } from "react";
 import { PublicKey } from "@solana/web3.js";
 import { Config } from "../types/types";
+import { sortConfigsByStatus } from "../utils";
 
 export const useConfig = () => {
   const [config, setConfig] = useState<Config>();
@@ -31,7 +32,9 @@ export const useConfig = () => {
           })
         );
 
-        setConfig(updatedConfig);
+        const sortedConfig = sortConfigsByStatus(updatedConfig);
+
+        setConfig(sortedConfig);
       } catch (error) {
         console.log(error);
         setError(true);
