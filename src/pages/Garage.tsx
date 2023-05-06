@@ -22,7 +22,7 @@ export default function Garage() {
                   <div className="car-selection-list">
                     <div className="car-selection-list-content">
                       {nfts.nfts.map((nft: any) => (
-                        <NftItem nft={nft} withPoints={true} />
+                        <NftItem key={nft.id} nft={nft} withPoints={true} />
                       ))}
                     </div>
                   </div>
