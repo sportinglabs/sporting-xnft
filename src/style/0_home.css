@@ -1,0 +1,37 @@
+.home {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.home-profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-profile {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 90vw;
+  height: 10vh;
+
+  background-color: #762000;
+  border: 1px solid #a02900;
+  border-radius: 10px;
+}
+.profile-stat {
+  width: 18vw;
+}
+
+.profile-picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-picture img {
+  width: 8vh;
+  height: 8vh;
+}

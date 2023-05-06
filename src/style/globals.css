@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(64, 109, 73);
+}
+
+.top-spacer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+
+  height: 10vh;
+  margin: 0;
+  padding: 0;
+}

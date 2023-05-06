@@ -1,0 +1,42 @@
+.navigation {
+    position: fixed;
+    left: 0;
+  
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .navigation-content {
+    display: block;
+    background-color: #161616;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
+  .navigation-button {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0px solid white;
+    background-color: #161616;
+    color: #a8a8a8;
+  }
+  
+  .navigation-button:hover {
+    background-color: #111111;
+  }
+  
+  .navigation-active {
+    background-color: #111111;
+    color: #ff4800;
+  }
+  .navigation-first {
+    border-top-right-radius: 10px;
+  }
+  .navigation-last {
+    border-bottom-right-radius: 10px;
+  }

@@ -10,7 +10,6 @@ import Stake from "./pages/Stake";
 import Leaderboard from "./pages/Leaderboard";
 import Garage from "./pages/Garage";
 import { ConnectionProvider } from "@solana/wallet-adapter-react";
-import Mint from "./pages/Mint";
 import { ToastContainer } from "react-toastify";
 
 declare global {
@@ -43,12 +42,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [{ index: true, element: <Leaderboard /> }],
   },
-  {
-    path: "/purchase",
-    element: <Layout />,
-    errorElement: <ErrorPage />,
-    children: [{ index: true, element: <Mint /> }],
-  },
 ]);
 
 function App() {
@@ -56,17 +49,17 @@ function App() {
     <ConnectionProvider endpoint={import.meta.env.VITE_RPC_URL}>
       <RouterProvider router={router} />
       <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </ConnectionProvider>
   );
 }
