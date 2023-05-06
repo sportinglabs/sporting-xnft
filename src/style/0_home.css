@@ -22,16 +22,33 @@
   border: 1px solid #a02900;
   border-radius: 10px;
 }
-.profile-stat {
-  width: 18vw;
-}
 
-.profile-picture {
+.home-profile-picture {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.profile-picture img {
-  width: 8vh;
-  height: 8vh;
+.home-profile-picture img {
+  width: 6vh;
+  height: 6vh;
+}
+
+.home-profile-stat {
+  width: 18vw;
+}
+.home-profile-stat-name {
+  font-family: "sonara";
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #e73e00;
+}
+
+.home-profile-rank {
+  width: 14vw;
+}
+.home-profile-points {
+  width: 20vw;
+}
+.home-profile-last {
+  width: 16vw;
 }
