@@ -15,11 +15,6 @@ export function Header() {
   }, [pathname]);
   return (
     <div className="header">
-      {!basePaths.some((base) => pathname === base) && (
-        <button onClick={() => navigate(-1)}>
-          <FaChevronLeft />
-        </button>
-      )}
     </div>
   );
 }

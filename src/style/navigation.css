@@ -1,19 +1,15 @@
 .navigation {
   position: fixed;
-  top: 0;
+  top: calc(22vh + 12px);
   left: 0;
 
-  height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
 .navigation-content {
   display: block;
-  background-color: #161616;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
 }
 
 .navigation-button {
@@ -23,21 +19,27 @@
   align-items: center;
   justify-content: center;
   border: 0px solid white;
-  background-color: #161616;
+  background-color: transparent;
   color: #a8a8a8;
+  cursor: pointer;
+
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .navigation-button:hover {
-  background-color: #111111;
+  background-color: #0f0f0f;
 }
 
 .navigation-active {
-  background-color: #111111;
+  background-color: #0e0e0e;
   color: #ff4800;
 }
-.navigation-first {
-  border-top-right-radius: 10px;
-}
+
 .navigation-last {
-  border-bottom-right-radius: 10px;
+  color: #ff4800;
+  background-color: #3b1000;
+  border: 1px solid #a02900;
+  border: 1px solid #a02900;
+  border-left: 0px solid black;
 }

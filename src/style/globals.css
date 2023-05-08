@@ -4,14 +4,33 @@
 }
 
 @font-face {
-  font-family: "raleway-regular";
-  src: url("./fonts/Raleway-Regular.ttf");
+  font-family: "raleway-semibold";
+  src: url("./fonts/Raleway-SemiBold.ttf");
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  display: none;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: rgb(64, 109, 73);
+  background-color: #050505;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .top-spacer {
@@ -20,7 +39,7 @@ body {
   justify-content: center;
   width: 100vw;
 
-  height: 8vh;
+  height: 12vh;
   margin: 0;
   padding: 0;
 }

@@ -4,13 +4,12 @@ globalThis.Buffer = buffer.Buffer;
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 //routes
 import { Layout } from "./components/Layout";
-import ErrorPage from "./pages/ErrorPage";
-import Home from "./pages/Home";
-import Stake from "./pages/Stake";
-import Leaderboard from "./pages/Leaderboard";
-import Garage from "./pages/Garage";
-import { ConnectionProvider } from "@solana/wallet-adapter-react";
 import { ToastContainer } from "react-toastify";
+import { ConnectionProvider } from "@solana/wallet-adapter-react";
+
+import Home from "./pages/Home";
+import Garage from "./pages/Garage";
+import ErrorPage from "./pages/ErrorPage";
 
 declare global {
   interface Window {
@@ -25,22 +24,10 @@ const router = createBrowserRouter([
     children: [{ index: true, element: <Home /> }],
   },
   {
-    path: "/stake",
-    element: <Layout />,
-    errorElement: <ErrorPage />,
-    children: [{ index: true, element: <Stake /> }],
-  },
-  {
     path: "/garage",
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [{ index: true, element: <Garage /> }],
-  },
-  {
-    path: "/leaderboard",
-    element: <Layout />,
-    errorElement: <ErrorPage />,
-    children: [{ index: true, element: <Leaderboard /> }],
   },
 ]);
 
