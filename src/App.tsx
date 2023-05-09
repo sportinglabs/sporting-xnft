@@ -9,6 +9,7 @@ import { ConnectionProvider } from "@solana/wallet-adapter-react";
 
 import Home from "./pages/Home";
 import Garage from "./pages/Garage";
+import GarageItemView from "./pages/GarageItemView";
 import ErrorPage from "./pages/ErrorPage";
 
 declare global {
@@ -28,6 +29,12 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [{ index: true, element: <Garage /> }],
+  },
+  {
+    path: "/garage/item",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [{ index: true, element: <GarageItemView /> }],
   },
 ]);
 
