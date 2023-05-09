@@ -4,6 +4,10 @@
 }
 
 @font-face {
+  font-family: "raleway-regular";
+  src: url("./fonts/Raleway-Regular.ttf");
+}
+@font-face {
   font-family: "raleway-semibold";
   src: url("./fonts/Raleway-SemiBold.ttf");
 }
@@ -31,6 +35,11 @@ body {
   background-color: #050505;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .top-spacer {

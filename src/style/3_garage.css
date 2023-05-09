@@ -3,4 +3,75 @@
   font-size: 16px;
   color: white;
   margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.garage-items {
+  height: 322px;
+  overflow-y: scroll;
+  border-radius: 10px;
+}
+
+.garage-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  background: rgba(20, 20, 20, 0.25);
+  border: 1px solid #141414;
+  box-shadow: inset 0px 0px 16px 4px rgba(20, 20, 20, 0.75);
+  border-radius: 10px;
+}
+.garage-item-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: calc(95vw - 70px);
+  padding: 10px;
+}
+
+.garage-item-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.garage-item-cover img {
+  width: 100px;
+  height: 100px;
+}
+
+.garage-item-name {
+  font-family: "sonara";
+  font-size: 10px;
+  color: white;
+
+  margin-bottom: 5px;
+}
+.garage-item-specs {
+  font-family: "raleway-regular";
+  font-size: 10px;
+  color: white;
+}
+
+.garage-item-spec {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(95vw - 70px - 20px - 100px - 10px);
+  /*100vw 
+    - 5vw body-margin-right 
+    - (60px navigation-width + 10px navigation-margin) 
+    - 20px garage-item-padding 
+    - 100px image-width
+    - 10px spec-margin-left
+    */
+
+  margin-top: 2px;
+}
+
+.garage-item-key {
+  color: #b02b02;
 }

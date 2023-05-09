@@ -1,6 +1,5 @@
 import React from "react";
-import icon from "../assets/pfp.png";
-
+import icon from "../../assets/pfp.png";
 
 export default function Rank() {
   return (

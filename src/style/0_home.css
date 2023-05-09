@@ -90,7 +90,10 @@
   margin-left: 5px;
   padding: 8px;
 
-  background-color: #13131371;
+  background: rgba(11, 11, 11, 0.25);
+  border: 1px solid #141414;
+  box-shadow: inset 0px 0px 16px 4px rgba(20, 20, 20, 0.75);
+  border-radius: 16px;
   border-radius: 5px;
 }
 
@@ -126,4 +129,32 @@
   border-radius: 20px;
   font-family: "raleway-semibold";
   font-size: 8px;
+}
+
+.home-wagon-unstaked {
+  color: rgb(255, 0, 225);
+  background-color: rgba(255, 0, 225, 0.25);
+}
+
+.home-wagon-shop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 152px;
+  margin-left: 5px;
+
+  background-color: #000000;
+  border: 1px dashed #454545;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 16px 4px rgba(20, 20, 20, 0.75);
+
+  font-family: "raleway-regular";
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.home-wagon-shop img {
+  width: 80px;
 }

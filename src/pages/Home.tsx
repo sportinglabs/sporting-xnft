@@ -1,11 +1,15 @@
-import Navigation from "../components/Navigation";
-import icon from "../assets/pfp.png";
-import nft from "../assets/nft.png";
-import newsline from "../assets/newsline.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Rank from "../components/general/Rank";
+import HomeWagon from "../components/home/HomeWagon";
+import Navigation from "../components/general/Navigation";
+
 import { faLock } from "@fortawesome/free-solid-svg-icons";
-import Rank from "../components/Rank";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import tensor from "../assets/tensor.png";
+import newsline from "../assets/newsline.png";
+
 export default function Home() {
+  const array = [0, 1, 2];
   return (
     <div className="home">
       <div className="top-spacer"></div>
@@ -24,27 +28,31 @@ export default function Home() {
       </div>
       <div className="home-wagons-container">
         <div className="home-wagons">
-          <div className="home-wagon">
-            <div className="home-wagon-content">
-              <div className="home-wagon-image">
-                <img src={nft} alt="nft" />
+          <a
+            href="https://www.tensor.trade/de/trade/sporting_f1"
+            target="_blank"
+          >
+            <div className="home-wagon-shop">
+              <div className="home-wagon-shop-content">
+                <div className="home-wagon-text">Become a racer today.</div>
+                <div className="home-wagon-text">Buy on tensor.</div>
+                <div className="home-wagon-image">
+                  <img src={tensor} alt="tensor" />
+                </div>
               </div>
-              <div className="home-wagon-title">#1047</div>
-              <div className="home-wagon-status home-wagon-staked">staked</div>
             </div>
-          </div>{" "}
-          <div className="home-wagon">
-            <div className="home-wagon-content">
-              <div className="home-wagon-image">
-                <img src={nft} alt="nft" />
-              </div>
-              <div className="home-wagon-title">#1047</div>
-              <div className="home-wagon-status home-wagon-staked">staked</div>
-            </div>
-          </div>
+          </a>
+
+          {array.map(() => (
+            <HomeWagon
+              name="Sporting F1 #724"
+              staked={false}
+              image="https://piluty6xffqyh23pbbnfomhwi3jmnawalmghzngvfwhairtzha5q.arweave.net/ehdJ49cpYYPrbwhaVzD2RtLGgsBbDHy01S2OBEZ5ODs?ext=png"
+            />
+          ))}
         </div>
       </div>
-      <Navigation id={1}/>
+      <Navigation id={1} />
     </div>
   );
 }
