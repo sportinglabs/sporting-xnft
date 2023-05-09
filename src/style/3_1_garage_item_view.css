@@ -1,0 +1,70 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: calc(95vw - 70px);
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  font-family: "sonara";
+  color: white;
+  font-size: 10px;
+}
+.breadcrumbs-icon {
+  color: #ff4800;
+  font-size: 12px;
+}
+.breadcrumbs-arrow {
+  color: #212121;
+  font-size: 12px;
+
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.toolbar-help {
+  background-color: transparent;
+  color: #212121;
+  border: 0px solid black;
+}
+
+.toolbar-help:hover {
+  color: white;
+}
+.preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 240px;
+}
+
+.preview img {
+  width: calc(95vw - 70px - 20px);
+}
+
+.garage-equipped-traits {
+  display: grid;
+  grid-template-columns: auto auto;
+
+  margin-top: 10px;
+}
+
+.garage-equipped-trait {
+  margin: 5px;
+  padding: 10px;
+
+  background: #131313;
+  border-radius: 7px;
+
+  font-family: "raleway-regular";
+  font-size: 10px;
+  color: white;
+}
+
+.garage-equipped-trait-key {
+  color: #606060;
+}

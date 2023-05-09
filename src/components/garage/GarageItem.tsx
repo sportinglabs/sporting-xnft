@@ -6,7 +6,8 @@ export default function GarageItem(props: {
   specs: string[];
 }) {
   return (
-    <a href="/garage/item">
+    //TODO: pass an argument from this view to the garage-item-view (E.g mint address )
+    <a href="/garage/item?id=936">
       <div className="garage-item">
         <div className="garage-item-content">
           <div className="garage-item-cover">
