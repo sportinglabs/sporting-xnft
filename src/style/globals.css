@@ -43,3 +43,17 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: right;
+
+  width: 95vw;
+  height: calc(100vh - 22vh - 2px);
+  overflow-y: scroll;
+}
+.container-content {
+  width: calc(95vw - 70px);
+  height: calc(100vh - 22vh - 12px);
+}
