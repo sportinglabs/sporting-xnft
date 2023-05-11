@@ -6,6 +6,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  background-color: #050505;
 }
 
 .navigation-content {
@@ -32,7 +33,9 @@
 }
 
 .navigation-active {
-  background-color: #0e0e0e;
+  background: rgba(20, 20, 20, 0.25);
+  border: 1px solid #141414;
+  box-shadow: inset 0px 0px 16px 4px rgba(20, 20, 20, 0.75);
   color: #ff4800;
 }
 

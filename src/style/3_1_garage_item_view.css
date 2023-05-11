@@ -36,14 +36,152 @@
   color: white;
 }
 .preview {
+  position: relative;
+
+  width: calc(95vw - 70px - 10px);
+  height: 240px;
+
+  margin-left: 5px;
+  margin-top: 20px;
+}
+.preview-car-layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: calc(95vw - 70px - 10px);
+
   height: 240px;
 }
 
-.preview img {
-  width: calc(95vw - 70px - 20px);
+.preview-car-layer img {
+  width: calc(95vw - 70px - 10px);
+}
+.preview-button-layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  z-index: 2;
+
+  width: calc(95vw - 70px - 10px);
+
+  height: 240px;
+}
+
+.preview-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  text-align: center;
+}
+.preview-button button {
+  padding: 5px;
+  margin: 0;
+
+  border: 2px solid #e73e00;
+  border-radius: 5px;
+  background: rgba(118, 32, 0, 0.13);
+
+  font-family: "sonara";
+  font-size: 8px;
+  color: white;
+}
+
+.preview-button-line-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 25vw;
+}
+.preview-button-line {
+  border: 0.5px solid #ff4800;
+  width: 0;
+  height: 75px;
+  border-radius: 100px;
+}
+
+.preview-button-1 {
+  top: 0;
+  left: 0;
+  margin-top: 40px;
+}
+.preview-button-1 .preview-button-line {
+  height: 60px;
+}
+.preview-button-2 {
+  top: 0;
+  left: 13vw;
+  margin-top: 0px;
+}
+.preview-button-2 .preview-button-line {
+  height: 90px;
+}
+.preview-button-3 {
+  top: 0;
+  left: 22vw;
+  margin-top: 40px;
+}
+
+.preview-button-3 .preview-button-line {
+  height: 40px;
+}
+.preview-button-4 {
+  top: 0;
+  left: 38vw;
+  margin-top: 0px;
+}
+
+.preview-button-4 .preview-button-line {
+  height: 75px;
+}
+.preview-button-5 {
+  top: 0;
+  left: 53vw;
+  margin-top: 40px;
+}
+
+.preview-button-5 .preview-button-line {
+  height: 30px;
+}
+.preview-button-6 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  width: calc(95vw - 70px);
+}
+
+.preview-button-line-6-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  margin: 0;
+}
+.preview-button-6 .preview-button-line {
+  height: 60px;
+
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.preview-button-6 .preview-button-line-6 {
+  border: 0.5px solid #ff4800;
+  width: 50vw;
+  margin-left: 20px;
+
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
 }
 
 .garage-equipped-traits {
@@ -67,4 +205,38 @@
 
 .garage-equipped-trait-key {
   color: #606060;
+}
+
+.garage-item-help-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+.garage-item-help-panel img {
+  width: 75vw;
+}
+.garage-item-help-panel-closer {
+  background-color: #0f0f0f;
+  border: 1px solid #111111;
+  border-radius: 5px;
+
+  margin-top: 20px;
+  padding: 10px;
+
+  font-family: "sonara";
+  font-size: 8px;
+  color: #ffffff;
 }
