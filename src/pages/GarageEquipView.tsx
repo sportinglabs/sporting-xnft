@@ -8,10 +8,12 @@ import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 import Rank from "../components/general/Rank";
 import Navigation from "../components/general/Navigation";
-import car_guide from "../assets/car-guide.png";
 import car_transparent from "../assets/car-transparent.png";
 
-export default function GarageItemView() {
+export default function GarageEquipView(props: {
+  mint: string;
+  trait: string;
+}) {
   const [query] = useSearchParams();
 
   const [showHelp, setShowHelp] = useState(false);
@@ -32,11 +34,13 @@ export default function GarageItemView() {
                 icon={faChevronRight}
                 className="breadcrumbs-arrow"
               />
-              sporting f1 #936
+              {"sporting f1 #936"}
+              <FontAwesomeIcon
+                icon={faChevronRight}
+                className="breadcrumbs-arrow"
+              />
+              
             </div>
-            <button className="toolbar-help" onClick={() => setShowHelp(true)}>
-              <FontAwesomeIcon icon={faQuestionCircle} />
-            </button>
           </div>
           <div className="preview">
             <div className="preview-button-layer">

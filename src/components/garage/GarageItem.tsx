@@ -1,12 +1,14 @@
 import nft from "../../assets/nft.png";
 
 export default function GarageItem(props: {
+  mint:string
   name: string;
   image: string;
   specs: string[];
 }) {
+  const anchor="/garage/item?mint="+props.mint;
   return (
-    <a href="/garage/item?mint=FFE51uQrCZjF6cqXFQGwUPt4aPDUUjXUo3xUDqY9P47">
+    <a href={anchor}>
       <div className="garage-item">
         <div className="garage-item-content">
           <div className="garage-item-cover">

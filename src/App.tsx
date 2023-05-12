@@ -9,8 +9,9 @@ import { ConnectionProvider } from "@solana/wallet-adapter-react";
 
 import Home from "./pages/Home";
 import Garage from "./pages/Garage";
-import GarageItemView from "./pages/GarageItemView";
+import GaragesingleView from "./pages/GarageSingleView";
 import ErrorPage from "./pages/ErrorPage";
+import GarageSingleView from "./pages/GarageSingleView";
 
 declare global {
   interface Window {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
     path: "/garage/item",
     element: <Layout />,
     errorElement: <ErrorPage />,
-    children: [{ index: true, element: <GarageItemView /> }],
+    children: [{ index: true, element: <GarageSingleView /> }],
   },
 ]);
 
