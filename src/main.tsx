@@ -10,6 +10,7 @@ import "./style/1_stake.css";
 import "./style/2_leaderboard.css";
 import "./style/3_0_garage.css";
 import "./style/3_1_garage_single_view.css";
+import "./style/3_2_garage_equip_view.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

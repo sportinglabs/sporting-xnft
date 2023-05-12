@@ -61,6 +61,7 @@ a {
   width: 95vw;
   height: calc(100vh - 22vh - 2px);
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 .container-content {
   width: calc(95vw - 70px);

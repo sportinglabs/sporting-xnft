@@ -4,16 +4,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 import Rank from "../components/general/Rank";
 import Navigation from "../components/general/Navigation";
-import car_guide from "../assets/car-guide.png";
 import car_transparent from "../assets/car-transparent.png";
 
 export default function GarageSingleView() {
   const [query] = useSearchParams();
-  const [anchor, setAnchor] = useState(window.location.href);
+  const mint = query.get("mint") || "null";
+  const path = window.location.href.split("?")[0] + "/equip/?mint=" + mint;
+  useEffect(() => {
+    console.log(path);
+  }, []);
 
   return (
     <div className="garage">
@@ -23,12 +25,15 @@ export default function GarageSingleView() {
         <div className="container-content">
           <div className="toolbar">
             <div className="breadcrumbs">
-              <FontAwesomeIcon icon={faGear} className="breadcrumbs-icon" />
+              <Link to={"/garage"}>
+                <FontAwesomeIcon icon={faGear} className="breadcrumbs-icon" />
+              </Link>
+
               <FontAwesomeIcon
                 icon={faChevronRight}
                 className="breadcrumbs-arrow"
               />
-              sporting f1 #936
+              <Link to={"/garage/item?mint=" + mint}>sporting f1 #936</Link>
             </div>
           </div>
           <div className="preview">
@@ -36,7 +41,7 @@ export default function GarageSingleView() {
               <img src={car_transparent} alt="car" />
             </div>
             <div className="preview-button-layer">
-              <Link to={anchor + "&trait=front_wing"}>
+              <Link to={path + "&trait=front_wing"}>
                 <div className="preview-button preview-button-1">
                   <button>front wing</button>
                   <div className="preview-button-line-container">
@@ -44,7 +49,7 @@ export default function GarageSingleView() {
                   </div>
                 </div>
               </Link>
-              <Link to={anchor + "&trait=cockpit"}>
+              <Link to={path + "&trait=cockpit"}>
                 <div className="preview-button preview-button-2">
                   <button>cockpit</button>
                   <div className="preview-button-line-container">
@@ -52,7 +57,7 @@ export default function GarageSingleView() {
                   </div>
                 </div>
               </Link>
-              <Link to={anchor + "&trait=driver"}>
+              <Link to={path + "&trait=driver"}>
                 <div className="preview-button preview-button-3">
                   <button>driver</button>
                   <div className="preview-button-line-container">
@@ -60,7 +65,7 @@ export default function GarageSingleView() {
                   </div>
                 </div>
               </Link>
-              <Link to={anchor + "&trait=engine"}>
+              <Link to={path + "&trait=engine"}>
                 <div className="preview-button preview-button-4">
                   <button>engine</button>
                   <div className="preview-button-line-container">
@@ -68,7 +73,7 @@ export default function GarageSingleView() {
                   </div>
                 </div>
               </Link>
-              <Link to={anchor + "&trait=rear_wing"}>
+              <Link to={path + "&trait=rear_wing"}>
                 <div className="preview-button preview-button-5">
                   <button>rear wing</button>
                   <div className="preview-button-line-container">
@@ -76,7 +81,7 @@ export default function GarageSingleView() {
                   </div>
                 </div>
               </Link>
-              <Link to={anchor + "&trait=tires"}>
+              <Link to={path + "&trait=tires"}>
                 <div className="preview-button preview-button-6">
                   <div className="preview-button-content">
                     <div className="preview-button-line-6-container">
@@ -92,54 +97,54 @@ export default function GarageSingleView() {
             </div>
           </div>
           <div className="garage-equipped-traits">
-            <a href="">
+            <Link to={path + "&trait=engine"}>
               <div className="garage-equipped-trait">
                 <div className="garage-equipped-trait-key">Engine</div>
                 <div className="garage-equipped-trait-value">
                   Ferrari 066 10 | Pos 18
                 </div>
               </div>
-            </a>
-            <a href="">
+            </Link>
+            <Link to={path + "&trait=driver"}>
               <div className="garage-equipped-trait">
                 <div className="garage-equipped-trait-key">Driver</div>
                 <div className="garage-equipped-trait-value">
                   Esteban Ocon | Pos 11
                 </div>
               </div>
-            </a>
-            <a href="">
+            </Link>
+            <Link to={path + "&trait=cockpit"}>
               <div className="garage-equipped-trait">
                 <div className="garage-equipped-trait-key">Cockpit</div>
                 <div className="garage-equipped-trait-value">
                   Logan Sargeant | Pos 15
                 </div>
               </div>
-            </a>
-            <a href="">
+            </Link>
+            <Link to={path + "&trait=front_wing"}>
               <div className="garage-equipped-trait">
                 <div className="garage-equipped-trait-key">Front Wing</div>
                 <div className="garage-equipped-trait-value">
                   Williams | Pos 13
                 </div>
               </div>
-            </a>
-            <a href="">
+            </Link>
+            <Link to={path + "&trait=rear_wing"}>
               <div className="garage-equipped-trait">
                 <div className="garage-equipped-trait-key">Rear Wing</div>
                 <div className="garage-equipped-trait-value">
                   George Russell | Pos 2
                 </div>
               </div>
-            </a>
-            <a href="">
+            </Link>
+            <Link to={path + "&trait=tires"}>
               <div className="garage-equipped-trait">
                 <div className="garage-equipped-trait-key">Tires</div>
                 <div className="garage-equipped-trait-value">
                   Esteban Ocon | Pos 2
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

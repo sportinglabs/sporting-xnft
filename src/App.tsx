@@ -12,6 +12,7 @@ import Garage from "./pages/Garage";
 import GaragesingleView from "./pages/GarageSingleView";
 import ErrorPage from "./pages/ErrorPage";
 import GarageSingleView from "./pages/GarageSingleView";
+import GarageEquipView from "./pages/GarageEquipView";
 
 declare global {
   interface Window {
@@ -36,6 +37,12 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [{ index: true, element: <GarageSingleView /> }],
+  },
+  {
+    path: "/garage/item/equip",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [{ index: true, element: <GarageEquipView /> }],
   },
 ]);
 

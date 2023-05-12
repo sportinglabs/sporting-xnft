@@ -1,0 +1,57 @@
+.garage-traits-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: left;
+  overflow-y: scroll;
+
+  margin-top: 10px;
+
+  height: 360px;
+}
+.garage-trait {
+  text-align: center;
+
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+
+  width: 28vw;
+
+  background-color: #751f0080;
+  border: 1px solid #a02900;
+  border-radius: 10px;
+}
+
+.garage-trait-image {
+  padding: 10px;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #a02900;
+  border-radius: 5px;
+}
+.garage-trait-image img {
+  width: 20vw;
+}
+
+.garage-trait-name {
+  margin-top: 5px;
+
+  font-family: "raleway-regular";
+  font-size: 12px;
+  color: white;
+}
+
+.garage-trait-button button {
+  margin-top: 5px;
+  padding: 7.5px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  background-color: #862400;
+  border: 0px solid #a02900;
+  border-radius: 100px;
+
+  font-family: "sonara";
+  font-size: 10px;
+  color: white;
+}
