@@ -23,8 +23,8 @@ export const useNFTs = (reload?: number, poolAddress?: string) => {
       try {
         let filtered = (await getAssetsByOwner(publicKey.toBase58())).filter(
           (nft: any) =>
-            nft.grouping[0]?.group_value ===
-            "Et9ckpQCXFN5PsiYN781AczSVuQYyGEdDEPDJ7jrxz4c"
+            nft.creators[0]?.address ===
+            "AKtpQfMi8FHTGUToxRrNn6vj8WD5532tcyXKpLzaPxob"
         );
 
         console.log("filtered: ", filtered);
