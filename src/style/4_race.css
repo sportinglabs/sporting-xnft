@@ -1,0 +1,77 @@
+.race-title {
+  font-family: "sonara";
+  font-size: 16px;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.race-items {
+  height: 322px;
+  overflow-y: scroll;
+  border-radius: 10px;
+}
+
+.race-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  background: rgba(20, 20, 20, 0.25);
+  color: white;
+  font-family: "sonara";
+  border: 1px solid #141414;
+  box-shadow: inset 0px 0px 16px 4px rgba(20, 20, 20, 0.75);
+  border-radius: 10px;
+}
+.race-item-content {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: calc(95vw - 70px);
+  padding: 10px;
+}
+.race-item-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.race-item-cover img {
+  width: 60px;
+}
+.race-item-details {
+  margin-left: 20px;
+}
+.race-item-date {
+  font-family: "raleway-regular";
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.race-item-name {
+  font-family: "sonara";
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #e73e00;
+}
+.race-item-track {
+  font-family: "raleway-regular";
+  font-size: 12px;
+}
+
+.race-item-status {
+  position: absolute;
+  top: 10px;
+  right:10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: right;
+
+  font-family: "raleway-regular";
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.5);
+}

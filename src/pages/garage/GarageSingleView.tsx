@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-import Rank from "../components/general/Rank";
-import Navigation from "../components/general/Navigation";
-import car_transparent from "../assets/car-transparent.png";
+import Rank from "../../components/general/Rank";
+import Navigation from "../../components/general/Navigation";
+import car_transparent from "../../assets/car-transparent.png";
 
 export default function GarageSingleView() {
   const [query] = useSearchParams();

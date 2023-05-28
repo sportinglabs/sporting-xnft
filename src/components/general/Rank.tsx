@@ -1,9 +1,19 @@
 import React from "react";
 import icon from "../../assets/pfp.png";
+import { motion } from "framer-motion";
 
 export default function Rank() {
   return (
-    <div className="profile-container">
+    <motion.div
+      className="profile-container"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{
+        duration: 0.2,
+        delay: 0.6,
+      }}
+      viewport={{ once: false }}
+    >
       <div className="profile">
         <div className="profile-stat profile-picture">
           <img src={icon} />
@@ -25,6 +35,6 @@ export default function Rank() {
           <div className="profile-stat-data">5/10</div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

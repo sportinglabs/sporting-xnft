@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-import Rank from "../components/general/Rank";
-import Navigation from "../components/general/Navigation";
+import Rank from "../../components/general/Rank";
+import Navigation from "../../components/general/Navigation";
 
-import trait_image from "../assets/trait.png";
+import trait_image from "../../assets/trait.png";
 
 export default function GarageEquipView() {
   const [query] = useSearchParams();
@@ -41,8 +41,8 @@ export default function GarageEquipView() {
             </div>
           </div>
           <div className="garage-traits-grid">
-            {traits.map(() => (
-              <div className="garage-trait">
+            {traits.map((index) => (
+              <div className="garage-trait" key={index}>
                 <div className="garage-trait-image">
                   <img src={trait_image} alt="trait" />
                 </div>

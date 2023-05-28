@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function HomeWagon(props: {
   image: string;
@@ -7,7 +8,16 @@ export default function HomeWagon(props: {
   staked: boolean;
 }) {
   return (
-    <div className="home-wagon">
+    <motion.div
+      className="home-wagon"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{
+        duration: 0.2,
+        delay: 0.8,
+      }}
+      viewport={{ once: false }}
+    >
       <div className="home-wagon-content">
         <div className="home-wagon-image">
           <img src={props.image} alt="nft" />
@@ -19,6 +29,6 @@ export default function HomeWagon(props: {
           <div className="home-wagon-status home-wagon-unstaked">unstaked</div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

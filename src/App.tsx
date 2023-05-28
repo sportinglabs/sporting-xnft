@@ -8,11 +8,12 @@ import { ToastContainer } from "react-toastify";
 import { ConnectionProvider } from "@solana/wallet-adapter-react";
 
 import Home from "./pages/Home";
-import Garage from "./pages/Garage";
-import GaragesingleView from "./pages/GarageSingleView";
 import ErrorPage from "./pages/ErrorPage";
-import GarageSingleView from "./pages/GarageSingleView";
-import GarageEquipView from "./pages/GarageEquipView";
+import Garage from "./pages/garage/Garage";
+import GarageEquipView from "./pages/garage/GarageEquipView";
+import GarageSingleView from "./pages/garage/GarageSingleView";
+import Leaderboard from "./pages/leaderboard/Leaderboard";
+import Race from "./pages/race/Race";
 
 declare global {
   interface Window {
@@ -43,6 +44,18 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [{ index: true, element: <GarageEquipView /> }],
+  },
+  {
+    path: "/leaderboard",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [{ index: true, element: <Leaderboard /> }],
+  },
+  {
+    path: "/race",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [{ index: true, element: <Race /> }],
   },
 ]);
 

@@ -1,6 +1,7 @@
-import Navigation from "../components/general/Navigation";
-import Rank from "../components/general/Rank";
-import GarageItem from "../components/garage/GarageItem";
+import Navigation from "../../components/general/Navigation";
+import Rank from "../../components/general/Rank";
+import GarageItem from "../../components/garage/GarageItem";
+import { motion } from "framer-motion";
 
 export default function Garage() {
   const array = [
@@ -70,10 +71,22 @@ export default function Garage() {
       <Rank />
       <div className="container">
         <div className="container-content">
-          <div className="garage-title">customise your nfts</div>
+          <motion.div
+            className="garage-title"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{
+              duration: 0.2,
+              delay: 0.7,
+            }}
+            viewport={{ once: false }}
+          >
+            garage
+          </motion.div>
           <div className="garage-items">
-            {array.map((w) => (
+            {array.map((w, index) => (
               <GarageItem
+                key={index}
                 mint={w.mint}
                 name={w.name}
                 image={w.image}

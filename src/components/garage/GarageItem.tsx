@@ -1,15 +1,24 @@
-import nft from "../../assets/nft.png";
+import { motion } from "framer-motion";
 
 export default function GarageItem(props: {
-  mint:string
+  mint: string;
   name: string;
   image: string;
   specs: string[];
 }) {
-  const anchor="/garage/item?mint="+props.mint;
+  const anchor = "/garage/item?mint=" + props.mint;
   return (
     <a href={anchor}>
-      <div className="garage-item">
+      <motion.div
+        className="garage-item"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{
+          duration: 0.2,
+          delay: 0.8,
+        }}
+        viewport={{ once: false }}
+      >
         <div className="garage-item-content">
           <div className="garage-item-cover">
             <img src={props.image} alt="nft" />
@@ -44,7 +53,7 @@ export default function GarageItem(props: {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </a>
   );
 }

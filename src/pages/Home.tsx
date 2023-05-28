@@ -4,6 +4,7 @@ import Navigation from "../components/general/Navigation";
 
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion } from "framer-motion";
 
 import tensor from "../assets/tensor.png";
 import newsline from "../assets/newsline.png";
@@ -14,7 +15,16 @@ export default function Home() {
     <div className="home">
       <div className="top-spacer"></div>
       <Rank />
-      <div className="home-news-container">
+      <motion.div
+        className="home-news-container"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{
+          duration: 0.2,
+          delay: 0.7,
+        }}
+        viewport={{ once: false }}
+      >
         <div className="home-news">
           <img src={newsline} alt="" />
           <div className="news-tab news-tab-name">Azerbaijan GP</div>
@@ -25,14 +35,23 @@ export default function Home() {
             <button>Stake</button>
           </div>
         </div>
-      </div>
+      </motion.div>
       <div className="home-wagons-container">
         <div className="home-wagons">
           <a
             href="https://www.tensor.trade/de/trade/sporting_f1"
             target="_blank"
           >
-            <div className="home-wagon-shop">
+            <motion.div
+              className="home-wagon-shop"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                duration: 0.2,
+                delay: 0.8,
+              }}
+              viewport={{ once: false }}
+            >
               <div className="home-wagon-shop-content">
                 <div className="home-wagon-text">Become a racer today.</div>
                 <div className="home-wagon-text">Buy on tensor.</div>
@@ -40,11 +59,12 @@ export default function Home() {
                   <img src={tensor} alt="tensor" />
                 </div>
               </div>
-            </div>
+            </motion.div>
           </a>
 
-          {array.map(() => (
+          {array.map((index) => (
             <HomeWagon
+              key={index}
               name="Sporting F1 #724"
               staked={false}
               image="https://piluty6xffqyh23pbbnfomhwi3jmnawalmghzngvfwhairtzha5q.arweave.net/ehdJ49cpYYPrbwhaVzD2RtLGgsBbDHy01S2OBEZ5ODs?ext=png"

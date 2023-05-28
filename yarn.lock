@@ -1044,10 +1044,10 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
-"@builderz/sporting-f1-sdk@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.npmjs.org/@builderz/sporting-f1-sdk/-/sporting-f1-sdk-0.0.11.tgz"
-  integrity sha512-qb5T0k9mX0HgJHI/pgkQGMrz/CAhQHMMqRNgLsYEbtuaPQ78EIxEzOPeY6Y0ZfPyfVzoe9KrghOc7uE2DkJR3Q==
+"@builderz/sporting-f1-sdk@0.0.19":
+  version "0.0.19"
+  resolved "https://registry.npmjs.org/@builderz/sporting-f1-sdk/-/sporting-f1-sdk-0.0.19.tgz"
+  integrity sha512-2na3JIWOjpHio+RGZM1TYePqQlD/Y2su0/hpxBuU4PpI6ZY0To3TJhVs6Zz7jGyMvrqOx8ajZ7huqnnkxUwECw==
   dependencies:
     "@cardinal/common" "^7.2.3"
     "@cardinal/token-manager" "^4.4.1"

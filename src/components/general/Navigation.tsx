@@ -1,87 +1,175 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
-  faGear,
-  faStore,
+  faWarehouse,
   faChartLine,
-  faCar,
-  faUser,
   faBoltLightning,
+  faFlagCheckered,
+  faRankingStar,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function Navigation(props: { id: number }) {
   return (
-    <div className="navigation">
+    <motion.div
+      className="navigation"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{
+        duration: 0.1,
+        delay: 0,
+      }}
+      viewport={{ once: false }}
+    >
       <div className="navigation-content">
         <Link to={"/"}>
           {props.id == 1 ? (
-            <button className="navigation-button navigation-first navigation-active">
+            <motion.button
+              className="navigation-button navigation-first navigation-active"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                duration: 0.1,
+                delay: 0.1,
+              }}
+              viewport={{ once: false }}
+            >
               <FontAwesomeIcon icon={faHome} />
-            </button>
+            </motion.button>
           ) : (
-            <button className="navigation-button navigation-first">
+            <motion.button
+              className="navigation-button navigation-first"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                duration: 0.1,
+                delay: 0.1,
+              }}
+              viewport={{ once: false }}
+            >
               <FontAwesomeIcon icon={faHome} />
-            </button>
+            </motion.button>
           )}
         </Link>
         <Link to={"/garage"}>
           {props.id == 2 ? (
-            <button className="navigation-button navigation-active">
-              <FontAwesomeIcon icon={faGear} />
-            </button>
+            <motion.button
+              className="navigation-button navigation-active"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                duration: 0.1,
+                delay: 0.2,
+              }}
+              viewport={{ once: false }}
+            >
+              <FontAwesomeIcon icon={faWarehouse} />
+            </motion.button>
           ) : (
-            <button className="navigation-button">
-              <FontAwesomeIcon icon={faGear} />
-            </button>
+            <motion.button
+              className="navigation-button"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                duration: 0.1,
+                delay: 0.2,
+              }}
+              viewport={{ once: false }}
+            >
+              <FontAwesomeIcon icon={faWarehouse} />
+            </motion.button>
           )}
         </Link>
-        <Link to={"/garage"}>
+        <Link to={"/race"}>
           {props.id == 3 ? (
-            <button className="navigation-button navigation-active">
-              <FontAwesomeIcon icon={faChartLine} />
-            </button>
+            <motion.button
+              className="navigation-button navigation-active"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                duration: 0.1,
+                delay: 0.3,
+              }}
+              viewport={{ once: false }}
+            >
+              <FontAwesomeIcon icon={faFlagCheckered} />
+            </motion.button>
           ) : (
-            <button className="navigation-button">
-              <FontAwesomeIcon icon={faChartLine} />
-            </button>
+            <motion.button
+              className="navigation-button"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                duration: 0.1,
+                delay: 0.3,
+              }}
+              viewport={{ once: false }}
+            >
+              <FontAwesomeIcon icon={faFlagCheckered} />
+            </motion.button>
           )}
         </Link>
-        <Link to={"/garage"}>
+        <Link to={"/leaderboard"}>
           {props.id == 4 ? (
-            <button className="navigation-button navigation-active">
-              <FontAwesomeIcon icon={faCar} />
-            </button>
+            <motion.button
+              className="navigation-button navigation-active"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                duration: 0.1,
+                delay: 0.4,
+              }}
+              viewport={{ once: false }}
+            >
+              <FontAwesomeIcon icon={faRankingStar} />
+            </motion.button>
           ) : (
-            <button className="navigation-button">
-              <FontAwesomeIcon icon={faCar} />
-            </button>
-          )}
-        </Link>
-        <Link to={"/garage"}>
-          {props.id == 5 ? (
-            <button className="navigation-button navigation-active">
-              <FontAwesomeIcon icon={faUser} />
-            </button>
-          ) : (
-            <button className="navigation-button">
-              <FontAwesomeIcon icon={faUser} />
-            </button>
+            <motion.button
+              className="navigation-button"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                duration: 0.1,
+                delay: 0.4,
+              }}
+              viewport={{ once: false }}
+            >
+              <FontAwesomeIcon icon={faRankingStar} />
+            </motion.button>
           )}
         </Link>
         <Link to={"/garage"}>
           {props.id == 6 ? (
-            <button className="navigation-button navigation-last navigation-active">
+            <motion.button
+              className="navigation-button navigation-last navigation-active"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                duration: 0.1,
+                delay: 0.5,
+              }}
+              viewport={{ once: false }}
+            >
               <FontAwesomeIcon icon={faBoltLightning} />
-            </button>
+            </motion.button>
           ) : (
-            <button className="navigation-button navigation-last">
+            <motion.button
+              className="navigation-button navigation-last"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{
+                duration: 0.1,
+                delay: 0.5,
+              }}
+              viewport={{ once: false }}
+            >
               <FontAwesomeIcon icon={faChartLine} />
-            </button>
+            </motion.button>
           )}
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }
