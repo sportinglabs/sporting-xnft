@@ -47,7 +47,7 @@ export const StakingConfirmation = ({
         const res = await unstake(
           connection,
           wallet,
-          new PublicKey(nft.id),
+          [new PublicKey(nft.id)],
           Number(pool.identifier)
         );
 
@@ -65,7 +65,7 @@ export const StakingConfirmation = ({
         const res = await stake(
           connection,
           wallet,
-          new PublicKey(nft.id),
+          [new PublicKey(nft.id)],
           Number(pool.identifier)
         );
 

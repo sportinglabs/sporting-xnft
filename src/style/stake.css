@@ -342,6 +342,24 @@ button.race-staked-amount {
   font-family: "jetbrains-light";
   color: var(--white);
 }
+
+.stake-unstake-all-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stake-unstake-all-button button {
+  width: 45vw;
+  margin: 0;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: var(--signature);
+  color: var(--black);
+  font-family: "jetbrains-bold";
+  font-size: 18px;
+}
+
 .stake-confirm-button {
   display: flex;
   align-items: center;
@@ -374,6 +392,21 @@ button.race-staked-amount {
 }
 
 .stake-confirm-button button:disabled {
+  background-color: var(--gray);
+  color: var(--gray-light);
+  cursor: not-allowed;
+}
+
+.stake-unstake-all-button button:hover {
+  background-color: var(--white);
+  color: var(--black);
+  transition-duration: 0.2s;
+}
+.stake-unstake-all-button button:not(:hover) {
+  transition-duration: 0.2s;
+}
+
+.stake-unstake-all-button button:disabled {
   background-color: var(--gray);
   color: var(--gray-light);
   cursor: not-allowed;
