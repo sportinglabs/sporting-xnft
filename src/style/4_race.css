@@ -16,62 +16,46 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 
+  width: calc(95vw - 73px);
+  height: 20vh;
   margin-top: 10px;
   margin-bottom: 10px;
 
-  background: rgba(20, 20, 20, 0.25);
+  background: black;
   color: white;
   font-family: "sonara";
-  border: 1px solid #141414;
-  box-shadow: inset 0px 0px 16px 4px rgba(20, 20, 20, 0.75);
+  border: 1px solid #511600;
   border-radius: 10px;
 }
-.race-item-content {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  width: calc(95vw - 70px);
-  padding: 10px;
+
+.race-details {
+  position: relative;
+
+  width: calc(70vw - 73px);
+  height: 20vh;
 }
-.race-item-cover {
+.race-image {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.race-item-cover img {
-  width: 60px;
-}
-.race-item-details {
-  margin-left: 20px;
-}
-.race-item-date {
-  font-family: "raleway-regular";
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
-}
-.race-item-name {
-  font-family: "sonara";
-  font-size: 14px;
-  letter-spacing: 1px;
-  color: #e73e00;
-}
-.race-item-track {
-  font-family: "raleway-regular";
-  font-size: 12px;
+
+  width: 25vw;
+  height: 20vh;
+
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(81, 22, 0, 0.5) 0px,
+    rgba(81, 22, 0, 0.5) 2px,
+    rgba(0, 0, 0, 0.5) 2px,
+    rgb(0, 0, 0) 10px
+  );
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
-.race-item-status {
-  position: absolute;
-  top: 10px;
-  right:10px;
-
-  display: flex;
-  align-items: center;
-  justify-content: right;
-
-  font-family: "raleway-regular";
-  font-size: 8px;
-  color: rgba(255, 255, 255, 0.5);
+.race-image img {
+  width: 20vw;
 }

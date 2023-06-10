@@ -22,29 +22,9 @@ export default function RaceItem(props: {
         }}
         viewport={{ once: false }}
       >
-        <div className="race-item-content">
-          <div className="race-item-cover">
-            <img src={props.image} alt="nft" />
-          </div>
-          <div className="race-item-details">
-            <div className="race-item-date">
-              {props.date.day.toString() +
-                "/" +
-                props.date.month.toString() +
-                "/" +
-                props.date.year.toString() +
-                " - " +
-                props.country.toString()}
-            </div>
-            <div className="race-item-name">{props.name}</div>
-            <div className="race-item-track">{props.racetrack}</div>
-          </div>
-        </div>
-        <div className="race-item-status">
-          {props.status}
-          {props.status == "expired" && <div className="blob red"></div>}
-          {props.status == "live" && <div className="blob green"></div>}
-          {props.status == "upcoming" && <div className="blob yellow"></div>}
+        <div className="race-details"></div>
+        <div className="race-image">
+          <img src={props.image} alt="nft" />
         </div>
       </motion.div>
     </a>

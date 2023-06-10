@@ -4,6 +4,7 @@ import RaceItem from "../../components/race/RaceItem";
 import { motion } from "framer-motion";
 
 export default function Race() {
+  
   const array = [
     {
       poolAddress: "TheAddressOfTheStakingPool",
