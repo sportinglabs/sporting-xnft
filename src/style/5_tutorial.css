@@ -1,0 +1,111 @@
+.tutorial {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(15.3px);
+  -webkit-backdrop-filter: blur(15.3px);
+}
+
+.tutorial-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tutorial-image img {
+  width: 15vw;
+}
+
+.tutorial-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "raleway-regular";
+  font-size: 12px;
+  color: white;
+  text-align: left;
+}
+.tutorial-intro-content {
+  width: 90vw;
+}
+
+.tutorial-list {
+
+  height: 60vh;
+
+  margin-top: 10px;
+
+  overflow-y: scroll;
+
+  color: white;
+  font-family: "raleway-regular";
+  font-size: 12px;
+}
+
+.tutorial-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 15px;
+}
+.tutorial-list-item-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80vw;
+}
+
+.tutorial-list-item-content svg{
+  margin-right: 10px;
+  font-size: 5px;
+}
+
+.tutorial-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 10px;
+}
+.tutorial-button button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 90vw;
+  height: 8vh;
+
+  margin: 0;
+  padding: 10px;
+
+  border: 0px solid black;
+  border-radius: 20px;
+
+  background-color: #121212;
+
+  font-family: "sonara";
+  color: white;
+
+  cursor: pointer;
+}
+
+.tutorial-button button:hover {
+  color: #121212;
+  background-color: white;
+  transition-duration: 0.2s;
+}
+
+.tutorial-button button:not(:hover) {
+  transition-duration: 0.2s;
+}

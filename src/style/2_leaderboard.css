@@ -1,0 +1,99 @@
+.leaderboard-intro {
+  position: relative;
+  width: calc(95vw - 73px);
+  height: 20vh;
+
+  border: 1px solid rgb(20, 20, 20);
+  border-radius: 20px;
+
+  background: repeating-linear-gradient(
+    -45deg,
+    rgb(20, 20, 20) 0px,
+    rgb(20, 20, 20) 1px,
+    rgba(0, 0, 0, 0.5) 2px,
+    rgb(0, 0, 0) 10px
+  );
+
+  color: white;
+}
+
+.leaderboard-intro-content {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+
+.leaderboard-year {
+  font-family: "sonara";
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.leaderboard-name {
+  font-family: "raleway-regular";
+  font-size: 18px;
+}
+
+.leaderboard-items {
+  height: 50vh;
+  overflow-y: scroll;
+}
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+  width: calc(95vw - 73px);
+  height: 7.5vh;
+
+  margin-top: 5px;
+  background-color: #0b1c2c;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+
+  font-family: "sonara";
+  color: white;
+}
+
+.leaderboard-item.first {
+  background-color: rgb(255, 206, 70);
+}
+.leaderboard-item.second {
+  background-color: rgb(126, 126, 126);
+}
+.leaderboard-item.third {
+  background-color: rgb(238, 156, 112);
+}
+
+.leaderboard-item-index {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+  width: 10vw;
+
+  padding-left: 15px;
+
+  color: rgba(255, 255, 255, 0.5);
+}
+.leaderboard-item-name {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+  width: 35vw;
+
+  padding-left: 15px;
+
+  font-family: "raleway-semibold";
+  text-transform: lowercase;
+}
+.leaderboard-item-points {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+
+  width: 35vw;
+
+  padding-right: 15px;
+}

@@ -13,7 +13,7 @@ export default function Race() {
       country: "Monaco",
       name: "F1 Monaco GP",
       racetrack: "Circuit de Monaco",
-      date: { start: 1, end: 2, month: "JUN" },
+      date: { startDay: 1, startMonth: 1, endDay: 2, endMonth: 2 },
       status: "finished",
       image:
         "https://raw.githubusercontent.com/them2dt/sl-resources/main/racemaps/abu-dhabi.svg",
@@ -23,7 +23,7 @@ export default function Race() {
       country: "Monaco",
       name: "F1 Monaco GP",
       racetrack: "Circuit de Monaco",
-      date: { start: 1, end: 2, month: "JUN" },
+      date: { startDay: 1, startMonth: 1, endDay: 2, endMonth: 2 },
 
       status: "live",
       image:
@@ -34,14 +34,51 @@ export default function Race() {
       country: "Monaco",
       name: "F1 Monaco GP",
       racetrack: "Circuit de Monaco",
-      date: { start: 1, end: 2, month: "JUN" },
+      date: { startDay: 1, startMonth: 1, endDay: 2, endMonth: 2 },
+
+      status: "live",
+      image:
+        "https://raw.githubusercontent.com/them2dt/sl-resources/main/racemaps/abu-dhabi.svg",
+    },
+    {
+      poolAddress: "TheAddressOfTheStakingPool",
+      country: "Monaco",
+      name: "F1 Monaco GP",
+      racetrack: "Circuit de Monaco",
+      date: { startDay: 1, startMonth: 1, endDay: 2, endMonth: 2 },
+
+      status: "live",
+      image:
+        "https://raw.githubusercontent.com/them2dt/sl-resources/main/racemaps/abu-dhabi.svg",
+    },
+    {
+      poolAddress: "TheAddressOfTheStakingPool",
+      country: "Monaco",
+      name: "F1 Monaco GP",
+      racetrack: "Circuit de Monaco",
+      date: { startDay: 1, startMonth: 1, endDay: 2, endMonth: 2 },
 
       status: "upcoming",
       image:
         "https://raw.githubusercontent.com/them2dt/sl-resources/main/racemaps/abu-dhabi.svg",
     },
   ];
-  const [array, setArray] = useState<any[]>([]);
+  const [array, setArray] = useState<
+    {
+      poolAddress: string;
+      country: string;
+      name: string;
+      racetrack: string;
+      date: {
+        startDay: number;
+        startMonth: number;
+        endDay: number;
+        endMonth: number;
+      };
+      status: string;
+      image: string;
+    }[]
+  >([]);
   useEffect(() => {
     const temp_array = [];
     if (selection == true) {
@@ -126,9 +163,10 @@ export default function Race() {
                 name={r.name}
                 racetrack={r.racetrack}
                 date={{
-                  start: r.date.start,
-                  end: r.date.end,
-                  month: r.date.month,
+                  startDay: r.date.startDay,
+                  startMonth: r.date.startMonth,
+                  endDay: r.date.endMonth,
+                  endMonth: r.date.endMonth,
                 }}
                 status={r.status}
                 image={r.image}

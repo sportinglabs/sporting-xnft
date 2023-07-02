@@ -40,16 +40,15 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: space-between;
 
   width: calc(95vw - 73px);
-  height: 20vh;
+  height: 10vh;
   margin-top: 10px;
   margin-bottom: 10px;
 
   background: black;
   color: white;
-  font-family: "sonara";
   border: 1px solid #511600;
   border-radius: 10px;
 }
@@ -59,112 +58,17 @@
   filter: grayscale(100%);
 }
 
-.race-details {
-  position: relative;
-
-  width: calc(70vw - 73px);
-  height: 20vh;
-}
-.race-image {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 25vw;
-  height: 20vh;
-
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(81, 22, 0, 0.5) 0px,
-    rgba(81, 22, 0, 0.5) 2px,
-    rgba(0, 0, 0, 0.5) 2px,
-    rgb(0, 0, 0) 10px
-  );
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.race-image img {
-  width: 20vw;
-}
-
-.race-details-status {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-
-  margin-top: 10px;
+.race-item-name {
   margin-left: 10px;
-  padding: 5px;
 
-  max-width: 80px;
-
-  border: 1px solid #3ce70040;
-  border-radius: 5px;
+  font-family: "sonara";
+  font-size: 14px;
 }
 
-.race-details-status.red {
-  border: 1px solid #ff525240;
-}
-.race-details-status.yellow {
-  border: 1px solid #ffb14240;
-}
-
-.race-details-text {
-  margin-left: 5px;
-  font-size: 8px;
-  letter-spacing: 1px;
-}
-
-.race-details-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.race-date {
-  margin-top: 10px;
+.race-item-date {
   margin-right: 10px;
-  text-align: right;
-}
 
-.race-date-days {
   font-family: "raleway-semibold";
-}
-.race-date-month {
-  font-family: "raleway-semibold";
-  font-size: 12px;
-  color: #737373;
-}
-
-.race-details-mid {
-  margin-left: 10px;
-}
-
-.race-title {
-  margin-bottom: 5px;
-  font-family: "sonara";
-  color: #e73e00;
-  font-size: 12px;
-}
-.race-description {
-  margin-bottom: 5px;
-  font-family: "raleway-regular";
-  color: white;
-  font-size: 10px;
-}
-.race-stake {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  font-family: "raleway-regular";
-  color: #737373;
-  font-size: 10px;
-}
-
-.race-stake-amount {
-  font-family: "sonara";
-  color: #e73e00;
-  margin-right: 5px;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.5);
 }

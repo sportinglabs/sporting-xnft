@@ -2,7 +2,7 @@ import Rank from "../components/general/Rank";
 import HomeWagon from "../components/home/HomeWagon";
 import Navigation from "../components/general/Navigation";
 
-import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { faClock, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 
@@ -27,12 +27,13 @@ export default function Home() {
       >
         <div className="home-news">
           <img src={newsline} alt="" />
-          <div className="news-tab news-tab-name">Azerbaijan GP</div>
-          <div className="news-tab news-tab-timer">
-            <FontAwesomeIcon icon={faLock} /> 23 h 14 m 2 s
+          <div className="news-tab-race">
+            <div className="news-tab-race-title"><FontAwesomeIcon icon={faClock}/>Lockdown</div>
+            <div className="news-tab-race-name">Azerbaijan GP</div>
           </div>
-          <div className="news-tab news-tab-stake-button">
-            <button>Stake</button>
+          <div className="news-tab-timer">
+            <FontAwesomeIcon icon={faLock} />
+            23 h 14 m 2 s
           </div>
         </div>
       </motion.div>
